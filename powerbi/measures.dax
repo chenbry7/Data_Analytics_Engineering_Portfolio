@@ -1,0 +1,61 @@
+// Create each measure separately in Power BI Desktop.
+
+Catalog Songs =
+COALESCE(DISTINCTCOUNT(GenreSongs[track_id]), 0)
+
+Analysis Songs =
+CALCULATE([Catalog Songs], KEEPFILTERS(GenreSongs[include_primary] = 1))
+
+Genre Memberships =
+COUNTROWS(GenreSongs)
+
+Genres in Selection =
+DISTINCTCOUNT(GenreSongs[track_genre])
+
+Popularity Conflict Songs =
+CALCULATE([Catalog Songs], KEEPFILTERS(GenreSongs[popularity_conflict] = 1))
+
+Metadata Missing Songs =
+CALCULATE([Catalog Songs], KEEPFILTERS(GenreSongs[metadata_missing] = 1))
+
+Excluded Songs =
+CALCULATE([Catalog Songs], KEEPFILTERS(GenreSongs[include_primary] = 0))
+
+Explicit Songs =
+CALCULATE([Catalog Songs], KEEPFILTERS(GenreSongs[explicit] = 1))
+
+Explicit Rate =
+DIVIDE([Explicit Songs], [Catalog Songs])
+
+Conflict Rate =
+DIVIDE([Popularity Conflict Songs], [Catalog Songs])
+
+Mean Energy =
+CALCULATE(
+    AVERAGEX(VALUES(GenreSongs[track_id]), CALCULATE(MAX(GenreSongs[energy]))),
+    KEEPFILTERS(GenreSongs[include_primary] = 1)
+)
+
+Mean Danceability =
+CALCULATE(
+    AVERAGEX(VALUES(GenreSongs[track_id]), CALCULATE(MAX(GenreSongs[danceability]))),
+    KEEPFILTERS(GenreSongs[include_primary] = 1)
+)
+
+Mean Acousticness =
+CALCULATE(
+    AVERAGEX(VALUES(GenreSongs[track_id]), CALCULATE(MAX(GenreSongs[acousticness]))),
+    KEEPFILTERS(GenreSongs[include_primary] = 1)
+)
+
+Mean Valence =
+CALCULATE(
+    AVERAGEX(VALUES(GenreSongs[track_id]), CALCULATE(MAX(GenreSongs[valence]))),
+    KEEPFILTERS(GenreSongs[include_primary] = 1)
+)
+
+Mean Duration Minutes =
+CALCULATE(
+    AVERAGEX(VALUES(GenreSongs[track_id]), CALCULATE(MAX(GenreSongs[duration_minutes]))),
+    KEEPFILTERS(GenreSongs[include_primary] = 1)
+)

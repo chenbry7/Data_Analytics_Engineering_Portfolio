@@ -1,0 +1,14 @@
+{
+  "name": "Spotify Audio Portfolio",
+  "dataColors": [
+    "#168A45",
+    "#357ABD",
+    "#D98C10",
+    "#7755AA",
+    "#C84E4E",
+    "#318B89"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#17251C",
+  "tableAccent": "#168A45"
+}

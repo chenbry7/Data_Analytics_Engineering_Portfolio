@@ -1,0 +1,70 @@
+[
+  {
+    "scenario": "all",
+    "catalog_songs": 89741,
+    "analysis_songs": 89740,
+    "genre_memberships": 113550,
+    "conflict_songs": 720,
+    "metadata_missing_songs": 1,
+    "means": {
+      "energy": 0.6344584717695565,
+      "danceability": 0.5621663550256295,
+      "acousticness": 0.32828496982828176,
+      "valence": 0.4694744376086472,
+      "duration_minutes": 3.819072759638957
+    }
+  },
+  {
+    "scenario": "acoustic",
+    "catalog_songs": 1000,
+    "analysis_songs": 1000,
+    "genre_memberships": 1000,
+    "conflict_songs": 2,
+    "metadata_missing_songs": 0,
+    "means": {
+      "energy": 0.43536810000000004,
+      "danceability": 0.549593,
+      "acousticness": 0.56681639833,
+      "valence": 0.42402300000000004,
+      "duration_minutes": 3.5816159499999998
+    }
+  },
+  {
+    "scenario": "acoustic + afrobeat",
+    "catalog_songs": 1999,
+    "analysis_songs": 1999,
+    "genre_memberships": 1999,
+    "conflict_songs": 5,
+    "metadata_missing_songs": 0,
+    "means": {
+      "energy": 0.5690860930465232,
+      "danceability": 0.6094707353676838,
+      "acousticness": 0.4189286396348174,
+      "valence": 0.5611801900950476,
+      "duration_minutes": 3.8610171919292986
+    }
+  },
+  {
+    "scenario": "empty",
+    "catalog_songs": 0,
+    "analysis_songs": 0,
+    "genre_memberships": 0,
+    "conflict_songs": 0,
+    "metadata_missing_songs": 0,
+    "means": {
+      "energy": null,
+      "danceability": null,
+      "acousticness": null,
+      "valence": null,
+      "duration_minutes": null
+    }
+  },
+  {
+    "scenario": "pop + pop-film",
+    "catalog_songs": 1768,
+    "analysis_songs": 1768,
+    "genre_memberships": 1992,
+    "conflict_songs": 15,
+    "mean_energy": 0.6065689479638009
+  }
+]

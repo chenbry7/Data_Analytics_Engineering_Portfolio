@@ -1,0 +1,19 @@
+{
+  "sample_sha256": "2aa50064c85b762e1b30bc6c917ae397c908fd12a0032edc1d4e994aab530947",
+  "replicates": 200,
+  "seed": 5437,
+  "promax_common_covariance_invariance_error": 9.992007221626409e-16,
+  "promax_rms_corrected": 0.05382355709716374,
+  "promax_rms_previously_reported": 0.053823557097163736,
+  "phi_order_mismatch_max_abs": 0.22151570493408734,
+  "alternative_start_better_by_over_1e_6": 1,
+  "default_start_better_by_over_1e_6": 162,
+  "fit_warning_count": 0,
+  "default_near_bound_count": 137,
+  "default_matching_below_095": 63,
+  "limits": [
+    "Two starts are a sensitivity check, not guaranteed global optimum.",
+    "Different seed from Step4; compare starts within this paired run.",
+    "Boundary and factor identification limitations remain."
+  ]
+}

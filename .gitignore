@@ -1,0 +1,10 @@
+outputs/
+__pycache__/
+*.pyc
+.env
+.venv/
+.venv-*/
+.vscode/
+*.code-workspace
+*.tmp
+~$*

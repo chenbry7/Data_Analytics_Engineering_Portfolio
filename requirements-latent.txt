@@ -1,0 +1,5 @@
+# Include SQL connectivity and the shared analysis dependencies.
+-r requirements.txt
+scipy==1.15.3
+factor-analyzer==0.5.1
+matplotlib==3.10.3

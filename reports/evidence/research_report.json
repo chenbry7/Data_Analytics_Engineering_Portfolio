@@ -1,0 +1,137 @@
+{
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "3.0.1",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.6.1",
+    "factor-analyzer": "0.5.1",
+    "matplotlib": "3.10.3"
+  },
+  "sample_rows": 89740,
+  "sample_sha256": "2aa50064c85b762e1b30bc6c917ae397c908fd12a0032edc1d4e994aab530947",
+  "source_sha256": "b202fa49909b2d5cef71a04b1d21243cfeb36414535f2ca9272aa646721177bd",
+  "seed": 437,
+  "parallel_repetitions": 200,
+  "selected_k_permutation": 3,
+  "selected_k_normal": 3,
+  "kmo": 0.5959207790001018,
+  "bartlett_chi2": 249172.28743188333,
+  "bartlett_p": 0.0,
+  "fa_offdiag_rms": 0.05382355709716374,
+  "fa_max_abs_offdiag": 0.20824552430256804,
+  "fa_near_bound_features": [
+    "danceability",
+    "energy",
+    "instrumentalness"
+  ],
+  "fa_warnings": [],
+  "fa_specification_checks": [
+    {
+      "rotation": "varimax",
+      "bound": 0.001,
+      "min_aligned_loading_correlation": 0.9999963211818542,
+      "offdiag_rms": 0.053974577502673295,
+      "warnings": []
+    },
+    {
+      "rotation": "varimax",
+      "bound": 0.01,
+      "min_aligned_loading_correlation": 0.9999942660945809,
+      "offdiag_rms": 0.05363813289271462,
+      "warnings": []
+    },
+    {
+      "rotation": "promax",
+      "bound": 0.005,
+      "min_aligned_loading_correlation": 0.9576444709169116,
+      "offdiag_rms": 0.053823557097163736,
+      "warnings": []
+    }
+  ],
+  "bootstrap_repetitions": 200,
+  "bootstrap_with_near_bound": 143,
+  "bootstrap_warnings": [],
+  "ica_excess_kurtosis": [
+    1.81768062677628,
+    -0.20022665801863138,
+    14.581799938186471
+  ],
+  "ica_seed_checks": [
+    {
+      "seed": 437,
+      "iterations": 5,
+      "min_aligned_mixing_correlation": 1.0,
+      "warnings": []
+    },
+    {
+      "seed": 0,
+      "iterations": 6,
+      "min_aligned_mixing_correlation": 0.999993793983669,
+      "warnings": []
+    },
+    {
+      "seed": 1,
+      "iterations": 5,
+      "min_aligned_mixing_correlation": 0.9999657527995451,
+      "warnings": []
+    },
+    {
+      "seed": 2,
+      "iterations": 4,
+      "min_aligned_mixing_correlation": 0.9999864726442163,
+      "warnings": []
+    },
+    {
+      "seed": 3,
+      "iterations": 6,
+      "min_aligned_mixing_correlation": 0.9999934243104711,
+      "warnings": []
+    },
+    {
+      "seed": 4,
+      "iterations": 6,
+      "min_aligned_mixing_correlation": 0.9999737689507882,
+      "warnings": []
+    },
+    {
+      "seed": 5,
+      "iterations": 9,
+      "min_aligned_mixing_correlation": 0.9999720728769479,
+      "warnings": []
+    },
+    {
+      "seed": 6,
+      "iterations": 7,
+      "min_aligned_mixing_correlation": 0.9999607637844398,
+      "warnings": []
+    },
+    {
+      "seed": 7,
+      "iterations": 8,
+      "min_aligned_mixing_correlation": 0.9999970843557692,
+      "warnings": []
+    },
+    {
+      "seed": 8,
+      "iterations": 7,
+      "min_aligned_mixing_correlation": 0.999995865435088,
+      "warnings": []
+    }
+  ],
+  "provenance": {
+    "implementation": "sqlserver_simple",
+    "source_sha256": "b202fa49909b2d5cef71a04b1d21243cfeb36414535f2ca9272aa646721177bd"
+  },
+  "validation": [
+    "PCA covariance comparison passed",
+    "Unique track IDs",
+    "200 full-song bootstrap fits",
+    "Optimal permutation/sign alignment"
+  ],
+  "limits": [
+    "Exploratory correlation-eigenvalue parallel analysis; not definitive factor count.",
+    "Bootstrap assumes independent tracks, not independent artists.",
+    "Boundary solutions limit FA interpretation.",
+    "ICA initialization stability is not external validity."
+  ]
+}

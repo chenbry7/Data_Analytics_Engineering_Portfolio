@@ -1,0 +1,67 @@
+# Analysis Findings
+
+## Objective and sample
+
+The analysis consumes the validated Silver output of the batch SQL pipeline and produces keyed model results for Gold reporting views. Descriptive metrics and PCA support the main reporting workflow; FA/ICA and resampling provide complementary statistical scrutiny.
+
+This analysis examines how nine audio features vary across a supplied Spotify catalog and whether lower-dimensional representations provide useful exploratory summaries. The current SQL Server run uses 89,740 unique positive-duration tracks exported from validated Silver data. Zero-tempo tracks remain in the primary sample.
+
+The source contains 114,000 records, 89,741 unique tracks and 113,550 track–genre memberships across 114 genres. Memberships overlap; genre totals cannot be added to obtain unique catalog size. The snapshot is not a representative measure of Spotify-wide market share.
+
+## Descriptive results
+
+| Metric | Value |
+|---|---:|
+| Mean energy | 0.6344584718 |
+| Mean danceability | 0.5621663550 |
+| Mean duration | 3.8190727 minutes |
+| Pop/pop-film union: unique eligible tracks | 1,768 |
+| Pop/pop-film union: mean energy | 0.606568948 |
+
+These averages count each eligible track once. Averaging the membership table directly across several genres would overweight tracks assigned to multiple genres.
+
+## Principal component analysis
+
+All nine features are standardized before full-SVD PCA. The first three components explain **61.8790%** of standardized variance. Saved scaler parameters and component axes reproduce the exported scores, and all score rows retain the original track IDs.
+
+PCA is the primary exploratory representation for the planned song explorer. Explained variance measures compression of feature variation, not musical importance or recommendation accuracy.
+
+## Dimension selection and factor analysis
+
+Both normal and permutation parallel analysis, each with 200 replicates, select three dimensions. This supports an exploratory three-dimensional representation rather than proving the existence of three causal musical factors.
+
+FA has KMO approximately **0.595921**, off-diagonal residual RMS **0.0538236** and maximum absolute residual approximately **0.208246**. Prominent patterns contrast energy/loudness with acousticness, pair danceability with valence, and isolate instrumentalness.
+
+Interpretation requires caution: danceability, energy and instrumentalness approach the uniqueness optimization bound. The first 200 bootstrap fits include 143 near-boundary replicates. A separate paired-start analysis evaluates 400 fits over 200 resamples; uncertainty remains wide even when selecting the better-fitting start.
+
+| Loading | Paired-start bootstrap 2.5%–97.5% interval |
+|---|---:|
+| Energy on F1 | 0.9273–0.9849 |
+| Danceability on F2 | 0.6425–0.9973 |
+| Instrumentalness on F3 | 0.1578–0.9764 |
+
+Two starts do not guarantee a global optimum. Resampling treats tracks as independent units without artist-cluster adjustment.
+
+### Method-quality correction
+
+A historical promax residual discrepancy was traced to factor ordering in factor-analyzer 0.5.1: loadings and structure were reordered without the matching factor-correlation permutation. The current implementation aligns the matrices. Corrected promax RMS is **0.0538236**, equal to varimax, with reconstructed covariance agreement to approximately 9.99e-16. The earlier value must not be interpreted as poorer promax fit.
+
+## Independent component analysis
+
+ICA converges across ten tested seeds without recorded convergence warnings. The weakest matched mixing-column correlation is approximately **0.9999608**. This supports initialization stability in the current sample, not out-of-sample validity or personalized recommendation performance.
+
+## Data-quality findings
+
+The pipeline preserves evidence for 450 redundant source records and 720 popularity-conflict tracks. One zero-duration track is excluded from primary analysis, while remaining in the catalog. There is one missing-metadata track, 229 typical-tempo warnings and 68 typical-loudness warnings. Categories may overlap and must not be summed as distinct affected songs.
+
+Popularity observations are retained without selecting a purported latest value, because observation timestamps are unavailable. Typical-range violations are warnings rather than automatic deletion rules.
+
+## Conclusion
+
+Use PCA for the main exploratory display, FA as an interpretation-oriented comparison with explicit boundary and resampling limitations, and ICA as complementary non-Gaussian analysis. The evidence does not justify claiming that FA is conclusively best or that all latent factors are highly stable.
+
+## Evidence and remaining work
+
+The current full analysis and SQL acceptance are documented in [Validation](VALIDATION.md). Compact numerical evidence is retained in [evidence/](evidence/); the complete local score exports and diagnostics are generated by Step 04. This report describes the current validated implementation.
+
+A three-page Power BI report is included. Report-definition and screenshot checks are recorded in [validation](VALIDATION.md); live refresh and complete interactive/model acceptance remain outside that review. No business impact evaluation is claimed.

@@ -1,0 +1,16 @@
+{
+  "analysis_utc": "2026-09-14T21:27:48.361072+00:00",
+  "checks": {
+    "completed_full_run": true,
+    "raw_hash": true,
+    "sample_hash": true,
+    "unique_sample": true,
+    "pca_scores.csv": true,
+    "research/fa_scores.csv": true,
+    "research/ica_scores.csv": true,
+    "pca_reconstruction": true,
+    "paired_bootstrap_400_fits": true,
+    "promax_covariance_invariant": true
+  },
+  "sql_evidence": "User-provided SSMS Results and Messages screenshots: Step 6 PASS and successful completion at 2026-09-14T17:28:39.6196026-04:00."
+}
