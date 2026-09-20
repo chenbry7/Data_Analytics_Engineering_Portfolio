@@ -18,17 +18,18 @@ from threadpoolctl import threadpool_limits
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from feature_contract import ROOT, CORE
+from feature_contract import CORE
 warnings.filterwarnings('ignore', category=FutureWarning)
-OUT = ROOT / 'analysis/step4'
 
 def fit_fa(x, k, rotation='varimax', bound=0.005):
+    """Fit maximum-likelihood FA and retain diagnostic warnings."""
     with warnings.catch_warnings(record=True) as caught:
         warnings.simplefilter('always', UserWarning)
         model = FactorAnalyzer(n_factors=k, method='ml', rotation=rotation, bounds=(bound, 1)).fit(x)
     return (model, [str(w.message) for w in caught if not issubclass(w.category, FutureWarning)])
 
 def align(ref, other):
+    """Match component columns and signs before comparing fitted solutions."""
     corr = np.corrcoef(ref.T, other.T)[:ref.shape[1], ref.shape[1]:]
     a, b = linear_sum_assignment(-np.abs(corr))
     order = b[np.argsort(a)]
@@ -37,22 +38,28 @@ def align(ref, other):
     return (other[:, order] * signs, np.abs(corr[np.arange(len(order)), order]))
 
 def main(input_file=None, output_dir=None, report_file=None, provenance=None):
-    OUT = Path(output_dir) if output_dir is not None else ROOT / 'analysis/step4'
-    OUT.mkdir(parents=True, exist_ok=True)
+    """Analyze the explicit Silver export and write reproducible research artifacts."""
+    # Validate the caller contract before creating any output files.
     if input_file is None or output_dir is None or report_file is None:
         raise ValueError('Run 04_audio_analysis.py with RUN_ADVANCED_ANALYSIS=True')
+    # Create only the explicit output directory supplied by Step 04 after validation.
+    OUT = Path(output_dir)
+    OUT.mkdir(parents=True, exist_ok=True)
     file = Path(input_file)
+    # Load the same keyed sample used by the main PCA workflow.
     data = pd.read_csv(file)
     x = data[CORE].to_numpy()
     n, p = x.shape
     if not data.track_id.is_unique or not np.isfinite(x).all():
         raise ValueError('Invalid explicit research sample')
     audit = {'source_sha256': (provenance or {}).get('source_sha256')}
+    # Standardize feature scales and seed parallel-analysis simulations.
     z = StandardScaler().fit_transform(x)
     rng = np.random.default_rng(437)
     observed = np.linalg.eigvalsh(np.corrcoef(z, rowvar=False))[::-1]
     null_normal = []
     null_perm = []
+    # Estimate null eigenvalue distributions using normal and permuted samples.
     for i in range(200):
         normal = rng.normal(size=z.shape)
         perm = np.column_stack([rng.permutation(z[:, j]) for j in range(p)])
@@ -63,6 +70,7 @@ def main(input_file=None, output_dir=None, report_file=None, provenance=None):
     qn = np.quantile(null_normal, 0.95, axis=0)
     qp = np.quantile(null_perm, 0.95, axis=0)
 
+    # Retain only consecutive leading eigenvalues above the null threshold.
     def leading(q):
         fail = np.flatnonzero(observed <= q)
         return int(fail[0]) if len(fail) else p
@@ -70,9 +78,10 @@ def main(input_file=None, output_dir=None, report_file=None, provenance=None):
     if not 1 <= k < p:
         raise ValueError('Dimension selection requires review')
     pd.DataFrame({'component': range(1, p + 1), 'observed': observed, 'normal_p95': qn, 'permutation_p95': qp}).to_csv(OUT / 'parallel_analysis.csv', index=False)
-    # Independent validation against Step 3 PCA.
+    # Cross-check PCA variance ratios against correlation-matrix eigenvalues.
     pc = PCA().fit(z)
     assert np.allclose(pc.explained_variance_ratio_, observed / observed.sum())
+    # Fit the primary FA model and quantify residual correlation and adequacy.
     fa, fa_warnings = fit_fa(x, k)
     L = fa.loadings_
     uni = fa.get_uniquenesses()
@@ -81,11 +90,13 @@ def main(input_file=None, output_dir=None, report_file=None, provenance=None):
     off = residual[np.triu_indices(p, 1)]
     kmo = calculate_kmo(x)[1]
     bartlett = calculate_bartlett_sphericity(x)
+    # Export loadings, uniqueness diagnostics and track-keyed factor scores.
     pd.DataFrame(L, index=CORE, columns=[f'F{i + 1}' for i in range(k)]).to_csv(OUT / 'fa_loadings.csv', index_label='feature')
     pd.DataFrame({'feature': CORE, 'communality': fa.get_communalities(), 'uniqueness': uni, 'near_lower_bound': uni <= 0.006}).to_csv(OUT / 'fa_diagnostics.csv', index=False)
     scores = pd.DataFrame(fa.transform(x), columns=[f'F{i + 1}' for i in range(k)])
     scores.insert(0, 'track_id', data.track_id)
     scores.to_csv(OUT / 'fa_scores.csv', index=False)
+    # Compare uniqueness bounds and rotations without changing the primary model.
     specs = []
     for rotation, bound in [('varimax', 0.001), ('varimax', 0.01), ('promax', 0.005)]:
         model, notes = fit_fa(x, k, rotation, bound)
@@ -98,6 +109,7 @@ def main(input_file=None, output_dir=None, report_file=None, provenance=None):
         values = rr[np.triu_indices(p, 1)]
         specs.append({'rotation': rotation, 'bound': bound, 'min_aligned_loading_correlation': float(corr.min()), 'offdiag_rms': float(np.sqrt(np.mean(values ** 2))), 'warnings': notes})
         pd.DataFrame(model.loadings_, index=CORE).to_csv(OUT / f'fa_{rotation}_{bound}_loadings.csv', index_label='feature')
+    # Resample complete tracks and align factor loadings for interval estimates.
     boots = []
     boot_warnings = []
     near = 0
@@ -111,6 +123,7 @@ def main(input_file=None, output_dir=None, report_file=None, provenance=None):
             print('Bootstrap', b + 1, flush=True)
     boots = np.asarray(boots)
     pd.DataFrame([{'feature': CORE[i], 'factor': j + 1, 'loading': L[i, j], 'p025': np.quantile(boots[:, i, j], 0.025), 'p975': np.quantile(boots[:, i, j], 0.975)} for i in range(p) for j in range(k)]).to_csv(OUT / 'fa_bootstrap_intervals.csv', index=False)
+    # Evaluate ICA initialization stability across ten reproducible seeds.
     stability = []
     reference = None
     for seed in [437, 0, 1, 2, 3, 4, 5, 6, 7, 8]:
@@ -128,11 +141,14 @@ def main(input_file=None, output_dir=None, report_file=None, provenance=None):
             ic_kurt = kurtosis(s, axis=0).tolist()
         corr = align(reference, model.mixing_)[1]
         stability.append({'seed': seed, 'iterations': int(model.n_iter_), 'min_aligned_mixing_correlation': float(corr.min()), 'warnings': notes})
+    # Assemble sample provenance, numerical diagnostics and interpretation limits.
     report = {'versions': {pkg: version(pkg) for pkg in ['numpy', 'pandas', 'scipy', 'scikit-learn', 'factor-analyzer', 'matplotlib']}, 'sample_rows': n, 'sample_sha256': hashlib.sha256(file.read_bytes()).hexdigest(), 'source_sha256': audit['source_sha256'], 'seed': 437, 'parallel_repetitions': 200, 'selected_k_permutation': k, 'selected_k_normal': leading(qn), 'kmo': float(kmo), 'bartlett_chi2': float(bartlett[0]), 'bartlett_p': float(bartlett[1]), 'fa_offdiag_rms': float(np.sqrt(np.mean(off ** 2))), 'fa_max_abs_offdiag': float(np.max(np.abs(off))), 'fa_near_bound_features': [CORE[i] for i in range(p) if uni[i] <= 0.006], 'fa_warnings': fa_warnings, 'fa_specification_checks': specs, 'bootstrap_repetitions': 200, 'bootstrap_with_near_bound': near, 'bootstrap_warnings': sorted(set(boot_warnings)), 'ica_excess_kurtosis': ic_kurt, 'ica_seed_checks': stability, 'provenance': provenance, 'validation': ['PCA covariance comparison passed', 'Unique track IDs', '200 full-song bootstrap fits', 'Optimal permutation/sign alignment'], 'limits': ['Exploratory correlation-eigenvalue parallel analysis; not definitive factor count.', 'Bootstrap assumes independent tracks, not independent artists.', 'Boundary solutions limit FA interpretation.', 'ICA initialization stability is not external validity.']}
+    # Re-read score exports to confirm ordered identifiers and finite values.
     for filename in ['fa_scores.csv', 'ica_scores.csv']:
         check = pd.read_csv(OUT / filename)
         assert check.track_id.equals(data.track_id) and np.isfinite(check.iloc[:, 1:]).all().all()
-    Path(report_file or ROOT / 'audit/analysis_step4.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+    Path(report_file).write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+    # Render parallel-analysis and factor-loading summaries for the current run.
     fig, axes = plt.subplots(1, 2, figsize=(12, 4.8), layout='constrained')
     axes[0].plot(range(1, p + 1), observed, 'o-', label='Observed')
     axes[0].plot(range(1, p + 1), qp, 'o--', label='Permutation 95%')

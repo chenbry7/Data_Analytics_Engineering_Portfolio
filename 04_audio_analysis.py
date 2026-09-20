@@ -241,7 +241,6 @@ def main():
         # Write the run status so incomplete or historical outputs are not mistaken for new results.
         (OUTPUT / 'run_status.json').write_text(json.dumps({'status': 'failed', 'note': 'Partial local files may exist; do not treat them as a completed run.'}), encoding='utf-8')
         raise
-    # Always release the database connection, including after an error.
     # Close the database connection even when execution exits through an exception.
     finally:
         if con is not None:

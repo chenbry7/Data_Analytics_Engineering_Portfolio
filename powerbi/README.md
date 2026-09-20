@@ -20,7 +20,7 @@
 
 The intended reporting model keeps the source and quality tables disconnected from genre/song selections. Normalized relationships remain in SQL Silver; the main reporting view already joins song attributes and PCA scores.
 
-`Catalog Songs` counts distinct `track_id` values. `Analysis Songs` retains only eligible tracks. Feature means average each eligible selected track once, rather than averaging membership rows. Song names are not unique identifiers. Scatter coordinates use Maximum at track-ID grain; genre is not a point-grouping field.
+`Catalog Songs` counts distinct `track_id` values. `Analysis Songs` retains only eligible tracks. Feature means average each eligible selected track once, rather than averaging membership rows. For an empty selection, `Catalog Songs` and its derived counts return zero; `Genre Memberships` returns BLANK because its definition uses `COUNTROWS` directly. Feature means remain BLANK. JSON benchmarks represent BLANK as `null`. Song names are not unique identifiers. Scatter coordinates use Maximum at track-ID grain; genre is not a point-grouping field.
 
 The quality chart filters `severity = WARN`. The rule table has no grand total because counts can overlap and mix source-record and track grains. `explained_variance_first3` is a fraction formatted as a percentage: 0.6187899 is approximately 61.88%. It describes three PCs, although the scatter displays only PC1 and PC2.
 

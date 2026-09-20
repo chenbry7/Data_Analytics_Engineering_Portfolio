@@ -4,7 +4,7 @@
 -- Existing tables are preserved; this file does not migrate incompatible schemas.
 
 -- STEP 1: SSMS. Run this complete file once; rerunning does not drop data.
--- A separate database avoids changing any previously deployed advanced version.
+-- Keep all project objects inside the dedicated Spotify database.
 USE master;
 GO
 IF DB_ID('Spotify') IS NULL

@@ -1,59 +1,74 @@
 // Create each measure separately in Power BI Desktop.
 
+// Count each selected track once across overlapping genres.
 Catalog Songs =
 COALESCE(DISTINCTCOUNT(GenreSongs[track_id]), 0)
 
+// Restrict selected tracks to the eligible positive-duration sample.
 Analysis Songs =
 CALCULATE([Catalog Songs], KEEPFILTERS(GenreSongs[include_primary] = 1))
 
+// Count membership rows; COUNTROWS returns BLANK for an empty selection.
 Genre Memberships =
 COUNTROWS(GenreSongs)
 
+// Count the distinct genre labels remaining in filter context.
 Genres in Selection =
 DISTINCTCOUNT(GenreSongs[track_genre])
 
+// Count distinct selected tracks with conflicting popularity observations.
 Popularity Conflict Songs =
 CALCULATE([Catalog Songs], KEEPFILTERS(GenreSongs[popularity_conflict] = 1))
 
+// Count distinct selected tracks with missing display metadata.
 Metadata Missing Songs =
 CALCULATE([Catalog Songs], KEEPFILTERS(GenreSongs[metadata_missing] = 1))
 
+// Count selected catalog tracks excluded from primary analysis.
 Excluded Songs =
 CALCULATE([Catalog Songs], KEEPFILTERS(GenreSongs[include_primary] = 0))
 
+// Count distinct selected tracks flagged as explicit.
 Explicit Songs =
 CALCULATE([Catalog Songs], KEEPFILTERS(GenreSongs[explicit] = 1))
 
+// Divide explicit tracks by selected catalog tracks; preserve blank denominators.
 Explicit Rate =
 DIVIDE([Explicit Songs], [Catalog Songs])
 
+// Divide conflict tracks by selected catalog tracks.
 Conflict Rate =
 DIVIDE([Popularity Conflict Songs], [Catalog Songs])
 
+// Average energy once per eligible selected track.
 Mean Energy =
 CALCULATE(
     AVERAGEX(VALUES(GenreSongs[track_id]), CALCULATE(MAX(GenreSongs[energy]))),
     KEEPFILTERS(GenreSongs[include_primary] = 1)
 )
 
+// Average danceability once per eligible selected track.
 Mean Danceability =
 CALCULATE(
     AVERAGEX(VALUES(GenreSongs[track_id]), CALCULATE(MAX(GenreSongs[danceability]))),
     KEEPFILTERS(GenreSongs[include_primary] = 1)
 )
 
+// Average acousticness once per eligible selected track.
 Mean Acousticness =
 CALCULATE(
     AVERAGEX(VALUES(GenreSongs[track_id]), CALCULATE(MAX(GenreSongs[acousticness]))),
     KEEPFILTERS(GenreSongs[include_primary] = 1)
 )
 
+// Average valence once per eligible selected track.
 Mean Valence =
 CALCULATE(
     AVERAGEX(VALUES(GenreSongs[track_id]), CALCULATE(MAX(GenreSongs[valence]))),
     KEEPFILTERS(GenreSongs[include_primary] = 1)
 )
 
+// Average duration once per eligible selected track.
 Mean Duration Minutes =
 CALCULATE(
     AVERAGEX(VALUES(GenreSongs[track_id]), CALCULATE(MAX(GenreSongs[duration_minutes]))),

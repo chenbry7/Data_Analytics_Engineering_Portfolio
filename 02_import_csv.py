@@ -113,7 +113,6 @@ def main():
         con.rollback()
         print('IMPORT FAILED: transaction rolled back; no partial new snapshot committed.')
         raise
-    # Always release the database connection, including after an error.
     # Release the database connection after either success or failure.
     finally:
         con.close()

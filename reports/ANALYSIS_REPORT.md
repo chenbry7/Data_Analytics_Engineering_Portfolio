@@ -24,7 +24,7 @@ These averages count each eligible track once. Averaging the membership table di
 
 All nine features are standardized before full-SVD PCA. The first three components explain **61.8790%** of standardized variance. Saved scaler parameters and component axes reproduce the exported scores, and all score rows retain the original track IDs.
 
-PCA is the primary exploratory representation for the planned song explorer. Explained variance measures compression of feature variation, not musical importance or recommendation accuracy.
+PCA is the primary exploratory representation for the included song explorer. Explained variance measures compression of feature variation, not musical importance or recommendation accuracy.
 
 ## Dimension selection and factor analysis
 

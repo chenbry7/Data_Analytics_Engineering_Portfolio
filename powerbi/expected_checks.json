@@ -48,7 +48,7 @@
     "scenario": "empty",
     "catalog_songs": 0,
     "analysis_songs": 0,
-    "genre_memberships": 0,
+    "genre_memberships": null,
     "conflict_songs": 0,
     "metadata_missing_songs": 0,
     "means": {

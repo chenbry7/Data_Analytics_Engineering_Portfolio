@@ -64,3 +64,45 @@ Project_2_Spotify_Audio_Features_Analysis/
 Import replaces the current snapshot and invalidates derived data. Cleaning invalidates previous PCA output. Model write-back is transactional, while partially written local files may remain after failures. Do not run stages concurrently or refresh Power BI mid-run.
 
 The design does not provide immutable run history, scheduled orchestration, concurrent writers or validated production access controls. These are potential extensions rather than completed capabilities.
+
+## Repository artifact responsibilities
+
+The six numbered files are the execution entry points. Research modules are invoked by Step 04; they do not add manual execution stages.
+
+| Artifact | Responsibility |
+|---|---|
+| `spotify_data.csv`, `spotify_README.pdf` | Source snapshot and original supplied documentation |
+| `01_create_layers.sql` | Create the dedicated database, schemas and physical tables |
+| `02_import_csv.py` | Validate and load raw records with source fingerprint and row reconciliation |
+| `03_clean_silver.sql` | Build typed entities, memberships, quality results and record lineage |
+| `04_audio_analysis.py` | Read eligible Silver tracks; compute PCA, call research helpers, write scores and produce current-run outputs |
+| `05_gold_views.sql` | Expose song, membership, genre, quality and provenance views |
+| `06_checks.sql` | Check readiness, reconciliation, score coverage and original-snapshot benchmarks |
+| `research/feature_contract.py` | Define the shared ordered feature list and project root |
+| `research/analyze_latent.py` | Parallel analysis, FA/ICA, bootstrap intervals and initialization checks |
+| `research/diagnose_fa.py` | Matched promax covariance and paired-start FA bootstrap diagnostics |
+| `reports/ANALYSIS_REPORT.md` | Curated findings and statistical limitations from the reviewed run |
+| `reports/VALIDATION.md` | Evidence index and boundaries of SQL, local and Power BI review |
+| `reports/evidence/analysis_metadata.json` | Fitted scaler/PCA parameters, versions and source/sample hashes |
+| `reports/evidence/run_status.json` | Completion, advanced-analysis and SQL-write-back status |
+| `reports/evidence/local_validation.json` | Recorded numerical validation outcomes |
+| `reports/evidence/research_report.json` | FA/ICA, dimension selection and initial-bootstrap findings |
+| `reports/evidence/diagnostic_report.json` | Paired-start and matched-covariance results |
+| `reports/evidence/fa_paired_bootstrap_intervals.csv` | Best-of-two-start loading intervals from the paired diagnostic run |
+| `powerbi/Spotify_Audio_Analytics.pbix` | Saved three-page report and embedded model |
+| `powerbi/measures.dax` | Reusable distinct-track counts and feature-average definitions |
+| `powerbi/expected_checks.json` | Reference selections and expected metrics; null represents BLANK |
+| `powerbi/theme.json` | Base presentation theme; visual overrides are allowed |
+| `powerbi/README.md` | Report pages, model contract and review scope |
+| `powerbi/screenshots/catalog-overview.png` | Catalog Overview preview |
+| `powerbi/screenshots/genre-song-explorer.png` | Genre & Song Explorer preview |
+| `powerbi/screenshots/data-quality-methodology.png` | Data Quality & Methodology preview |
+| `DATA_CATALOG.md` | Object/field definitions, grains, keys and lineage |
+| `QUALITY_RULES.md` | Cleaning, exception and aggregation policy |
+| `ARCHITECTURE.md`, `README.md` | Technical design and public project entry point |
+| `requirements.txt`, `requirements-latent.txt` | Pinned base and full-analysis dependencies |
+| `.gitignore` | Exclude generated outputs, local environments and caches |
+
+Step 04 writes a current-run report to `outputs/ANALYSIS_REPORT.md`; it does not overwrite the curated report or accepted evidence under `reports/`. The compact accepted interval CSV corresponds to generated `outputs/fa_diagnostics/best_of_two_starts_intervals.csv`. Fresh runs require evidence review before replacing public findings.
+
+The supplied PDF refers to an original filename `dataset.csv`; this repository intentionally uses `spotify_data.csv`. Its example code is source documentation, not an additional pipeline entry point.
