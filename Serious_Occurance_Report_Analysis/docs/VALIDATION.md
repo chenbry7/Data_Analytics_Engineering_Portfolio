@@ -48,4 +48,4 @@ Run [the SQL suite](../run_demo.ps1), [the SSIS suite](../tests/03_ssis_acceptan
 
 ## Scope
 
-Validation covers the supplied synthetic snapshots, local SQL/SSIS execution, saved PBIX data/configuration and report screenshots. Live Power BI refresh and exhaustive interactive tests were not executed as part of this validation. Scheduling, concurrent ingestion, compatibility with unavailable production exports and completeness of upstream business records are not established by these checks.
+Validation covers the supplied synthetic snapshots, local SQL/SSIS execution, saved PBIX data/configuration and report screenshots. Following the saved-file review, the project author confirmed successful Power BI Desktop refresh and full interactive acceptance. This closes the previously outstanding refresh and interaction acceptance items; the runtime result is author-confirmed rather than an independently rerun audit. Scheduling, concurrent ingestion, compatibility with unavailable production exports and completeness of upstream business records are not established by these checks.

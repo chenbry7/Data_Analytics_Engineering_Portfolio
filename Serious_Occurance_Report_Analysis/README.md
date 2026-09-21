@@ -6,7 +6,7 @@ An internship-derived data engineering project that turns event-status and categ
 
 The original workflow was implemented and deployed during the internship. This public version keeps that logic and adds post-internship improvements: typed validation, transactional Silver refresh, automated failure tests, separate reporting grains and reproducible synthetic data. Because the original internship data contains sensitive operational information and is subject to confidentiality and data-management requirements, the real database, source records and original Power BI report are not published. This repository instead provides an independently generated synthetic database, `SOR_Portfolio_Test`, and a Power BI report built from fictional records. The synthetic data is not an anonymized extract of the original records.
 
-**Delivery status:** the local SQL/SSIS workflow and supplied snapshots are validated. The completed Power BI file is included; its saved model, embedded data, report definitions and four supplied screenshots were reviewed. Live Power BI refresh and exhaustive interactive testing are outside the recorded review scope.
+**Delivery status:** the local SQL/SSIS workflow and supplied snapshots are validated. The completed Power BI file is included; its saved model, embedded data, report definitions and four supplied screenshots were reviewed. The project author has also confirmed successful Power BI Desktop refresh and full interactive acceptance.
 
 [Architecture](docs/ARCHITECTURE.md) · [Data contract](docs/DATA_CONTRACT.md) · [Validation](docs/VALIDATION.md) · [Power BI report](powerbi/README.md) · [Reproduce](#quick-start)
 
@@ -150,7 +150,7 @@ The previews show the synthetic-data report. No public interactive service link 
 
 ## Scope and limitations
 
-- SQL/SSIS execution, source-to-Gold reconciliation, saved PBIX data/model review and screenshot review are complete for the supplied snapshots. Live Power BI refresh and exhaustive click-through testing are not claimed.
+- SQL/SSIS execution, source-to-Gold reconciliation, saved PBIX data/model review and screenshot review are complete for the supplied snapshots. Power BI Desktop refresh and full interactive acceptance have also passed, as confirmed by the project author.
 - Synthetic distributions demonstrate functionality; they do not establish real incident rates, organizational performance or causal relationships.
 - The pipeline is a sequential local full-refresh demonstration. Scheduling, concurrent ingestion, incremental processing and deployment of this enhanced package to SSISDB are outside scope.
 - Validation cannot prove that an upstream export contains every real business record. The ISO input contract is a documented demonstration choice.

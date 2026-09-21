@@ -43,4 +43,4 @@ Distinct event/category branches overlap. Participants can cross age groups duri
 
 Date-range and YearMonth selections intersect. Clear both when returning to the full snapshot. The site/category matrix supports horizontal scrolling. Decomposition category branches overlap; their counts are not additive. The category-B example contains 115 events: 67 Closed, 24 Open and 24 Under Review.
 
-The saved data, report definitions and screenshots have been checked. Live refresh and exhaustive interactive testing are outside the recorded validation scope. See [validation evidence](../docs/VALIDATION.md).
+The saved data, report definitions and screenshots have been checked. The project author has also confirmed successful Power BI Desktop refresh and full interactive acceptance. See [validation evidence](../docs/VALIDATION.md).

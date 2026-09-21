@@ -74,4 +74,4 @@ PCA describes variation in audio features. It does not establish recommendation 
 
 The saved Power BI reports contain imported data. Refreshing them requires the corresponding SQL Server database and connection configuration.
 
-Pipeline execution and recorded report reviews are documented within each project. Live Power BI refresh and exhaustive interactive testing are outside the recorded validation scope. Data provenance, usage conditions and project-specific limitations are described in the respective READMEs.
+Pipeline execution and recorded report reviews are documented within each project. The project author has confirmed successful Power BI Desktop refresh and full interactive acceptance for both reports. Data provenance, usage conditions and project-specific limitations are described in the respective READMEs.

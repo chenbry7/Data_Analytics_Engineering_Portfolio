@@ -4,7 +4,7 @@
 
 A local batch analytics project demonstrating a complete data engineering workflow and rigorous data analysis: Python ingestion, Bronze/Silver/Gold SQL transformations, statistical modeling, and reporting-ready views. Data-quality rules, source lineage and metric definitions support reliable analytical outputs. The workflow runs through six numbered Python/SQL scripts.
 
-**Delivery status:** data pipeline and full statistical analysis validated for the supplied snapshot. A three-page Power BI report is included, with report-definition and screenshot review completed. Live refresh and full interactive acceptance are outside the recorded review scope.
+**Delivery status:** data pipeline and full statistical analysis validated for the supplied snapshot. A three-page Power BI report is included, with report-definition and screenshot review completed. The project author has also confirmed successful Power BI Desktop refresh and full interactive acceptance.
 
 [Findings](reports/ANALYSIS_REPORT.md) · [Architecture](ARCHITECTURE.md) · [Data catalog](DATA_CATALOG.md) · [Validation](reports/VALIDATION.md) · [Reproduce](#quick-start) · [Power BI report](powerbi/README.md)
 
@@ -164,7 +164,7 @@ Previews show the report state supplied on 19 September 2026. Opening the saved 
 
 ## Limitations and next steps
 
-- Recorded Power BI review covers report configuration and supplied screenshots; live refresh and exhaustive filter testing remain unverified.
+- Report configuration and screenshot review are complete; Power BI Desktop refresh and full interactive acceptance have also passed, as confirmed by the project author.
 - Preserve FA boundary/bootstrap caveats in report captions and interpretation.
 - Do not infer time trends, market share or user recommendation outcomes from this catalog snapshot.
 - Treat source load timestamps as pipeline events, not Spotify observation dates.

@@ -26,9 +26,9 @@ The quality chart filters `severity = WARN`. The rule table has no grand total b
 
 ## Review scope
 
-The included PBIX report definitions and supplied screenshots were reviewed. Page 2 eligibility filtering, scatter identifiers/aggregations, warning filtering, percentage formatting and removal of the quality total were confirmed. The report's compressed semantic model was not independently executed or fully decoded. This review does not certify all embedded DAX, relationships or refresh behavior.
+The included PBIX report definitions and supplied screenshots were reviewed. Page 2 eligibility filtering, scatter identifiers/aggregations, warning filtering, percentage formatting and removal of the quality total were confirmed. The report's compressed semantic model was not independently executed or fully decoded. Separately, the project author has confirmed successful Power BI Desktop refresh and full interactive acceptance.
 
-Reference checks include 89,741 catalog songs, 89,740 eligible songs and mean energy 0.634458472 without filters. The pop/pop-film union benchmark is 1,768 distinct songs and mean energy 0.606568948. These are acceptance benchmarks, not a claim that every interaction was executed in Desktop. See [validation](../reports/VALIDATION.md).
+Reference checks include 89,741 catalog songs, 89,740 eligible songs and mean energy 0.634458472 without filters. The pop/pop-film union benchmark is 1,768 distinct songs and mean energy 0.606568948. These benchmarks document expected results; completion of the report's refresh and interactive acceptance is confirmed by the project author. See [validation](../reports/VALIDATION.md).
 
 ## Opening and reproducing
 
