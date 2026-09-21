@@ -1,0 +1,13 @@
+.vs/
+bin/
+obj/
+*.dtproj.user
+*.suo
+.pbi/cache.abf
+.pbi/localSettings.json
+
+__pycache__/
+*.pyc
+*.log
+*.tmp
+~$*

@@ -1,0 +1,4 @@
+Site ID,Site name,Relates to individual placed at non-funded non-licensed OPR?,SOR ID,Confidential private SOR,Status,SOR Initiator,Date of Serious Occurrence,Time of Serious Occurrence,Date of Report Submission,Time of Report Submission,Last Update Date,Last Update Time,Update Due Date,Revision Due Date,SOR Level,Media attention,# of individuals,# of unique non-client individuals (associated to specific COVID 19 SORs),# of unique categories,Categories
+DEMO-SITE-01, Demo Site A , y , DEMO-E001 ,,Open,,2026-06-01,09:30:00,2026-06-02,10:00:00,2026-06-03,12:00:00,,n/a,1,N,2,2,2,
+DEMO-SITE-02,Demo Site B,N,DEMO-E002,,Closed,,2026-06-02,08:00:00,2026-06-02,11:00:00,2026-06-04,13:00:00,,,2,Y,1,1,2,
+DEMO-SITE-01,Demo Site A,N,DEMO-E003,,Open,,2026-06-03,,2026-06-04,,2026-06-05,,,,1,N,0,0,0,

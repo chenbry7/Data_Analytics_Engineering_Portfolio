@@ -1,0 +1,32 @@
+{
+  "events": 420,
+  "category_records": 855,
+  "events_with_categories": 402,
+  "known_participants": 119,
+  "sites": 6,
+  "categories": 8,
+  "programs": 4,
+  "media_events": 53,
+  "media_attention_rate": 0.1261904761904762,
+  "avg_report_delay_days": 1.230952380952381,
+  "unknown_age_records": 81,
+  "missing_id_records": 11,
+  "monthly_events": {
+    "2025-09": 26,
+    "2025-10": 31,
+    "2025-11": 28,
+    "2025-12": 35,
+    "2026-01": 30,
+    "2026-02": 38,
+    "2026-03": 42,
+    "2026-04": 36,
+    "2026-05": 45,
+    "2026-06": 39,
+    "2026-07": 34,
+    "2026-08": 36
+  },
+  "csv_sha256": {
+    "SO_status.csv": "a5d337b25d97ffb84db26220e713f53029b9426a8dec4d6c02fc9598ab4d3273",
+    "SO_category.csv": "8cddc98673823bb5c880291726340b3f87241f474161568b1aa311b11bb53923"
+  }
+}

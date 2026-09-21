@@ -1,0 +1,16 @@
+// Create each definition below as a SEPARATE measure.
+Event Count = COALESCE(COUNTROWS(Events), 0)
+
+Category Records = COALESCE(COUNTROWS(Categories), 0)
+
+Events with Categories = COALESCE(DISTINCTCOUNT(Categories[sor_id]), 0)
+
+Known Participants = COALESCE(DISTINCTCOUNTNOBLANK(Categories[client_id]), 0)
+
+Site Count = COALESCE(DISTINCTCOUNTNOBLANK(Events[site_id]), 0)
+
+Media Event Count = COALESCE(CALCULATE(COUNTROWS(Events), KEEPFILTERS(Events[media_attention] = "Yes")), 0)
+
+Media Attention Rate = DIVIDE([Media Event Count], [Event Count])
+
+Avg Report Delay Days = AVERAGE(Events[report_delay_days])

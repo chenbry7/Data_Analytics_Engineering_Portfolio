@@ -1,0 +1,9 @@
+Calendar =
+ADDCOLUMNS(
+    CALENDAR(
+        MIN(Events[date_serious_occur]),
+        MAX(Events[date_serious_occur])
+    ),
+    "YearMonth", FORMAT([Date], "yyyy-MM"),
+    "MonthStart", DATE(YEAR([Date]), MONTH([Date]), 1)
+)
