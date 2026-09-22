@@ -385,7 +385,7 @@ Track grain. Fields inherited unchanged from silver.track: `track_id`, `artists`
 |---|---|---|
 | track_name_display | nvarchar(1000) | track_name or 'Unknown track'; non-null display value |
 | artists_display | nvarchar(1000) | artists or 'Unknown artist'; non-null display value |
-| duration_minutes | decimal(28,6) | duration_ms / 60000.0; non-null for returned tracks |
+| duration_minutes | decimal(27,7) | duration_ms / 60000.0; non-null for returned tracks |
 | explicit | int | Converted Silver bit, 0/1 |
 | metadata_missing, include_primary, tempo_warning, loudness_warning | int | Converted Silver flags, 0/1 |
 | popularity_min, popularity_max | int | Joined track-level popularity bounds |
@@ -404,7 +404,7 @@ Contains every SongAnalysis column, plus:
 | Field | Result type | Definition |
 |---|---|---|
 | track_genre | nvarchar(100) | Genre from silver.track_genre; part of the logical view key |
-| fractional_catalog_weight | decimal(14,12) | 1.0 / genre_count; allocation uses the track's full-snapshot membership count |
+| fractional_catalog_weight | decimal(13,12) | 1.0 / genre_count; allocation uses the track's full-snapshot membership count |
 
 Logical unique key: (track_id, track_genre). Views do not declare a physical PK. Fractional weights sum approximately to the catalog count over all memberships; they are not distinct-song counts within a partial genre selection or market-share estimates.
 
@@ -419,7 +419,7 @@ Logical unique key: (track_id, track_genre). Views do not declare a physical PK.
 | analysis_mean_danceability | float | Eligible-track mean danceability |
 | analysis_mean_acousticness | float | Eligible-track mean acousticness |
 | analysis_mean_valence | float | Eligible-track mean valence |
-| analysis_mean_duration_minutes | decimal(38,6) | Eligible-track mean duration in minutes |
+| analysis_mean_duration_minutes | decimal(38,7) | Eligible-track mean duration in minutes |
 | popularity_conflict_count | int | Sum of popularity-conflict flags |
 | metadata_missing_count | int | Sum of missing-metadata flags |
 | fractional_catalog_equivalents | decimal(38,12) | Sum of fractional membership weights |

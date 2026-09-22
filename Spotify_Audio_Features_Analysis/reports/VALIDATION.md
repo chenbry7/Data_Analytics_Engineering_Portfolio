@@ -1,6 +1,6 @@
 # Validation and Execution Evidence
 
-Reviewed run: **14 September 2026**. The numerical pipeline is validated for the supplied snapshot. The included Power BI report received a separate configuration and screenshot review on 19–20 September 2026.
+Reviewed run: **14 September 2026**. The numerical pipeline is validated for the supplied snapshot. The included Power BI report received a separate configuration and screenshot review on 19–20 September 2026. A file-consistency audit, saved-model reconciliation and direct read-only SQL acceptance check were completed on 22 September 2026.
 
 ## Evidence sources
 
@@ -27,9 +27,9 @@ These compact files are retained independently of the ignored outputs directory.
 
 SSMS execution screenshots reviewed for this run show Step 06 PASS and successful completion at **2026-09-14 17:28:39 -04:00**. The displayed results reconcile 114,000 source records, 89,741 catalog tracks, 113,550 memberships, 114 genres and 89,740 PCA-scored tracks. Required-value rules pass; warning counts and metric benchmarks match the analysis report.
 
-This SQL acceptance statement is based on reviewed operator-provided screenshots; it is not an independently executed database query in the review environment. The screenshots are not included in this evidence directory. The read-only [06_checks.sql](../06_checks.sql) script is the reproducible acceptance entry point.
+The historical execution statement above is based on operator-provided screenshots, which are not included here. On 22 September 2026, the read-only [06_checks.sql](../06_checks.sql) was independently rerun against the current local database and passed. Current source/sample fingerprints agree with the retained evidence; snapshot counts and metric benchmarks also agree. Runtime timestamps in the report describe the later database load/model write, not the date of the original evidence review.
 
-## Known limitations
+## Interpretation and display notes
 
 The latest report screenshot displays the tempo warning as 50-250 BPM. The SQL description uses the same ASCII range for reproducible display. FA boundary and uncertainty limitations are documented in the analysis report. There is no production orchestration, concurrency or access-control acceptance claim.
 
@@ -37,4 +37,4 @@ The latest report screenshot displays the tempo warning as 50-250 BPM. The SQL d
 
 The [PBIX](../powerbi/Spotify_Audio_Analytics.pbix) and [three supplied previews](../powerbi/README.md) are included. Read-only report-definition inspection confirms Page 2's `include_primary = 1` filter, track-ID scatter grouping with Maximum coordinates, a WARN-only quality chart, a quality table without totals and a percentage-formatted PCA variance card. Screenshot values reconcile with the documented global and acoustic benchmarks at displayed precision.
 
-The preview images were supplied by the report author; they are not independently rendered exports. The offline review did not independently execute the binary model DAX/relationships. The project author has subsequently confirmed successful Power BI Desktop refresh and full interactive acceptance. This closes the previously outstanding refresh and interaction acceptance items; the runtime result is author-confirmed rather than an independently rerun audit.
+The preview images were supplied by the report author; they are not independently rendered exports. The subsequent offline audit decoded all three business tables and 15 measures. Membership keys, numeric fields and PCA scores match SQL; all 89,740 score rows also reconstruct from the retained scaler/component parameters. Text differences in song, album and artist labels are limited to letter case, while track IDs match exactly. The imported quality descriptions include the saved Power Query correction of the historical tempo-range encoding; the checked-in SQL already emits ASCII 50-250. Source timestamps agree at displayed precision. The business tables are disconnected, and the measure formulas match `powerbi/measures.dax`. Offline inspection does not execute interactive DAX. The project author has subsequently confirmed successful Power BI Desktop refresh and full interactive acceptance. This closes the previously outstanding refresh and interaction acceptance items; the runtime result is author-confirmed rather than an independently rerun audit.

@@ -49,7 +49,7 @@ The first Power BI report imports `gold.GenreSongDetail` as `GenreSongs`. It use
 ## Repository layout
 
 ```text
-Project_2_Spotify_Audio_Features_Analysis/
+Spotify_Audio_Features_Analysis/
 ├── 01_create_layers.sql ... 06_checks.sql  # Supported entry files
 ├── research/                              # Helpers invoked by Step 04
 ├── reports/                               # Findings, validation and compact evidence

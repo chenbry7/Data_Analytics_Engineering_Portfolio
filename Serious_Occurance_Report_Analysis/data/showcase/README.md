@@ -50,7 +50,7 @@ The small acceptance runners restore the small fixture. Run `run_showcase.ps1` a
 | Known Participants | 119 |
 | Site Count | 6 |
 | Media Event Count | 53 |
-| Media Attention Rate | 12.6% |
+| Media Attention Rate | 12.62% |
 | Avg Report Delay Days | 1.23 |
 
 Use the existing [Power BI model and metric guide](../../powerbi/README.md). There are 12 populated occurrence months. Distinct participant/event breakdowns are not additive across categories. Unknown-age records are not the same metric as distinct participants in the Unknown group.

@@ -115,7 +115,7 @@ Re-running ingestion replaces the current snapshot and clears derived data. Use 
 ## Repository structure
 
 ```text
-Project_2_Spotify_Audio_Features_Analysis/
+Spotify_Audio_Features_Analysis/
 ├── README.md
 ├── 01_create_layers.sql
 ├── 02_import_csv.py
@@ -160,7 +160,7 @@ Full-snapshot counts, six warning rules, source metadata and statistical limitat
 
 ![Data Quality and Methodology](powerbi/screenshots/data-quality-methodology.png)
 
-Previews show the report state supplied on 19 September 2026. Opening the saved report and refreshing its data are separate operations: refresh requires the SQL Server database and Gold views. See [validation scope](reports/VALIDATION.md) for completed checks and remaining runtime checks.
+Previews show the report state supplied on 19 September 2026. Opening the saved report and refreshing its data are separate operations: refresh requires the SQL Server database and Gold views. See [validation scope](reports/VALIDATION.md) for completed checks and the author-confirmed refresh and interactive acceptance.
 
 ## Limitations and next steps
 

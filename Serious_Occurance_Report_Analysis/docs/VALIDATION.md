@@ -1,6 +1,6 @@
 # Validation
 
-Validated on 21 September 2026 with SQL Server Express 17.0.1000.7, DTExec 17.0.1000.7 and MSOLEDBSQL19.1, using Windows authentication against the marked synthetic database `SOR_Portfolio_Test`.
+Validated on 22 September 2026 with SQL Server Express 17.0.1000.7, DTExec 17.0.1000.7 and MSOLEDBSQL19.1, using Windows authentication against the marked synthetic database `SOR_Portfolio_Test`.
 
 ## Executed checks
 
@@ -40,7 +40,7 @@ The saved report's ZIP integrity passed. Embedded Events and Categories match th
 
 Screenshot headline metrics, monthly event counts and the decomposition example agree with the data. Category B contains 115 events: 67 Closed, 24 Open and 24 Under Review. The site/category matrix requires horizontal scrolling for its full width.
 
-Reviewed PBIX SHA-256: `af6068404414efa0263587728c914f66bcd9e250302524091f10ddba1f28bddd`.
+Reviewed PBIX SHA-256: `a0a087956a334210d527b74e1b16fd45797ff8ecf5a6ae4e0bbfc4374bdbf855`.
 
 ## Reproduce
 
