@@ -58,6 +58,10 @@ try {
         $options = $case.Options
         try { & $runner -Server $Server @options 2>&1 | ForEach-Object { $messages.Add($_.ToString()) } }
         catch { $failed = $true; $messages.Add($_.Exception.Message) }
+        # Publish the captured diagnostics as well as the acceptance result for each expected failure.
+        Write-Output "BEGIN expected-failure diagnostics: $($case.Name)"
+        $messages | ForEach-Object { Write-Output $_ }
+        Write-Output "END expected-failure diagnostics: $($case.Name)"
         if (-not $failed) { throw "Expected SSIS failure: $($case.Name)" }
         if (($messages -join "`n") -notmatch $case.Pattern) {
             throw "Unexpected failure for $($case.Name): $($messages -join ' | ')"

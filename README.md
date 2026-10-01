@@ -10,7 +10,7 @@ Each project includes source code, reproduction instructions, validation evidenc
 
 | Project | Focus | Key Results |
 |---|---|---|
-| [Serious Occurrence Reporting](Serious_Occurance_Report_Analysis/README.md) | Internship-derived SSIS pipeline, data quality and operational reporting | Transactional Silver refresh; 19 SQL tests and 5 SSIS checks passed; four-page Power BI report |
+| [Serious Occurrence Reporting](Serious_Occurrence_Report_Analysis/README.md) | Internship-derived SSIS pipeline, data quality and operational reporting | Transactional Silver refresh; 19 SQL tests and 5 SSIS checks passed; four-page Power BI report |
 | [Spotify Analytics](Spotify_Audio_Features_Analysis/README.md) | Python/SQL pipeline, audio-feature analysis and catalog reporting | 114,000 records processed into 89,741 unique tracks; PCA and complementary diagnostics; three-page Power BI report |
 
 ## 1. Serious Occurrence Reporting
@@ -31,9 +31,9 @@ The original workflow was implemented and deployed during the internship. This p
 
 **Data confidentiality:** original operational data and the internship report are not published because of sensitivity and confidentiality requirements. The public demonstration uses independently generated fictional records: **420 events and 855 category records across 12 months and six sites**. These are demonstration values, not organizational results.
 
-[Project Documentation](Serious_Occurance_Report_Analysis/README.md) · [Validation](Serious_Occurance_Report_Analysis/docs/VALIDATION.md) · [Power BI Report](Serious_Occurance_Report_Analysis/powerbi/SOR_analysis.pbix)
+[Project Documentation](Serious_Occurrence_Report_Analysis/README.md) · [Validation](Serious_Occurrence_Report_Analysis/docs/VALIDATION.md) · [Power BI Report](Serious_Occurrence_Report_Analysis/powerbi/SOR_analysis.pbix)
 
-![Serious Occurrence Reporting Overview](Serious_Occurance_Report_Analysis/powerbi/screenshots/overview.png)
+![Serious Occurrence Reporting Overview](Serious_Occurrence_Report_Analysis/powerbi/screenshots/overview.png)
 
 ## 2. Spotify Analytics
 

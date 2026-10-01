@@ -1,0 +1,88 @@
+
+(3 rows affected)
+
+(4 rows affected)
+Microsoft (R) SQL Server Execute Package Utility
+Version 17.0.1000.7 for 64-bit
+Copyright (C) 2025 Microsoft. All rights reserved.
+
+Started:  14:44:18
+DTExec: The package execution returned DTSER_SUCCESS (0).
+Started:  14:44:18
+Finished: 14:44:18
+Elapsed:  0.532 seconds
+SSIS CSV ingestion, Silver refresh and count validation succeeded.
+PASS: CSV/SSIS output exactly matches SQL fixture baseline.
+BEGIN expected-failure diagnostics: Invalid category date
+Microsoft (R) SQL Server Execute Package Utility
+Version 17.0.1000.7 for 64-bit
+Copyright (C) 2025 Microsoft. All rights reserved.
+
+Started:  14:44:18
+Error: 2026-10-01 14:44:19.22
+   Code: 0xC002F210
+   Source: Load tables (silver) Execute SQL Task
+   Description: Executing the query "IF DB_NAME() <> N'SOR_Portfolio_Test'
+    THROW 52..." failed with the following error: "Invalid SO_category.date_time_report_submit: use the documented ISO or nonnegative integer format.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+End Error
+DTExec: The package execution returned DTSER_FAILURE (1).
+Started:  14:44:18
+Finished: 14:44:19
+Elapsed:  0.484 seconds
+SSIS package failed with exit code 1
+END expected-failure diagnostics: Invalid category date
+PASS: Invalid category date rejected and complete Silver snapshot preserved.
+BEGIN expected-failure diagnostics: Duplicate event ID
+Microsoft (R) SQL Server Execute Package Utility
+Version 17.0.1000.7 for 64-bit
+Copyright (C) 2025 Microsoft. All rights reserved.
+
+Started:  14:44:19
+Error: 2026-10-01 14:44:19.82
+   Code: 0xC002F210
+   Source: Load tables (silver) Execute SQL Task
+   Description: Executing the query "IF DB_NAME() <> N'SOR_Portfolio_Test'
+    THROW 52..." failed with the following error: "Status event identifiers must be unique after trimming.". Possible failure reasons: Problems with the query, "ResultSet" property not set correctly, parameters not set correctly, or connection not established correctly.
+End Error
+DTExec: The package execution returned DTSER_FAILURE (1).
+Started:  14:44:19
+Finished: 14:44:19
+Elapsed:  0.516 seconds
+SSIS package failed with exit code 1
+END expected-failure diagnostics: Duplicate event ID
+PASS: Duplicate event ID rejected and complete Silver snapshot preserved.
+BEGIN expected-failure diagnostics: Missing CSV
+Microsoft (R) SQL Server Execute Package Utility
+Version 17.0.1000.7 for 64-bit
+Copyright (C) 2025 Microsoft. All rights reserved.
+
+Started:  14:44:19
+Error: 2026-10-01 14:44:20.33
+   Code: 0xC020200E
+   Source: upload SO_status (bronze) SO_status source [61]
+   Description: Cannot open the datafile "<TEMP>\sor-ssis-tests-994f017e25d14da6949ebc56aee24fe5\missing.csv".
+End Error
+Error: 2026-10-01 14:44:20.33
+   Code: 0xC004701A
+   Source: upload SO_status (bronze) SSIS.Pipeline
+   Description: SO_status source failed the pre-execute phase and returned error code 0xC020200E.
+End Error
+DTExec: The package execution returned DTSER_FAILURE (1).
+Started:  14:44:19
+Finished: 14:44:20
+Elapsed:  0.453 seconds
+SSIS package failed with exit code 1
+END expected-failure diagnostics: Missing CSV
+PASS: Missing CSV rejected and complete Silver snapshot preserved.
+Microsoft (R) SQL Server Execute Package Utility
+Version 17.0.1000.7 for 64-bit
+Copyright (C) 2025 Microsoft. All rights reserved.
+
+Started:  14:44:20
+DTExec: The package execution returned DTSER_SUCCESS (0).
+Started:  14:44:20
+Finished: 14:44:20
+Elapsed:  0.484 seconds
+SSIS CSV ingestion, Silver refresh and count validation succeeded.
+PASS: final valid CSV reload restores the expected demonstration.
+SSIS acceptance complete: 5 checks passed.

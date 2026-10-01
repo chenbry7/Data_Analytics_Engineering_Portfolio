@@ -1,0 +1,34 @@
+{
+  "review_date": "2026-10-01",
+  "timezone": "America/Toronto",
+  "database": "SOR_Portfolio_Test",
+  "sql_tests_passed": 19,
+  "ssis_checks_passed": 5,
+  "showcase_restored": {
+    "events": 420,
+    "category_records": 855
+  },
+  "sha256": {
+    "data/showcase/expected_metrics.json": "0a77850d539fe2cddfab8c12174672fbcbc67b70b04589ad1196a5b1a79b85ba",
+    "data/showcase/SO_category.csv": "8cddc98673823bb5c880291726340b3f87241f474161568b1aa311b11bb53923",
+    "data/showcase/SO_status.csv": "a5d337b25d97ffb84db26220e713f53029b9426a8dec4d6c02fc9598ab4d3273",
+    "data/synthetic/SO_category.csv": "076a9615e92eb0ad3c5652cc2c6577927ad02b2011dffbaf2903362d19a3c978",
+    "data/synthetic/SO_status.csv": "a1c2d8edbd86b3994aa4ac5848f83a1e64655417350c0b05ad7c55228a06d756",
+    "powerbi/SOR_analysis.pbix": "a0a087956a334210d527b74e1b16fd45797ff8ecf5a6ae4e0bbfc4374bdbf855",
+    "run_demo.ps1": "0dc8fd75c7adce8affc38552aaf4cb4d04483bc7f6fc9913cabd0b5461928825",
+    "run_showcase.ps1": "1d816652d43b228c66128eb981af586b6c15f3ee1f07c7ae2acd17aa3c096355",
+    "run_ssis_demo.ps1": "0c1aaa8b7a837e236cca9d215f802218737d83d718494cebeb433825a6f0af22",
+    "scripts/showcase_data.py": "049312d243a06eac1e7da59ba4e0e399facc1cf3fc71641dd5c573b972eaa8be",
+    "sql/00_create_demo_database.sql": "80668beb420fae40f8ea6e82a262c749bd55efd6138abeadd4d6e1b96cfb9ebf",
+    "sql/01_create_layers.sql": "a2b95ead5312765b4b505c8035b4a25f042880beea7109b49b05fc03d6b4357d",
+    "sql/02_load_silver.sql": "12ee0eca54bf4002bd47157306d9ca1418a3a96d4086adcf6f8b7d236e35ef94",
+    "sql/03_gold_views.sql": "397be1bf06c194d90abcea5d579f01d460fd9449da1728478c8dd2a97fad7e9b",
+    "ssis/SOR_Portfolio_Demo.dtsx": "07557337cb4014bd0d7766b615a9785e29ecd01f33b7b4e17451aeb39b7765af",
+    "tests/01_synthetic_fixture.sql": "03f5832fce485096084dc46c7f283b63ef15e3c4945c0da455ae7dcddeb829b9",
+    "tests/02_acceptance.sql": "3f5aad2d32712d521aa5ae9fbdb5a04bb450df024103c02f205f5c79ba575093",
+    "tests/03_ssis_acceptance.ps1": "cef1ffc42d8dbc14997448509a096cc56618cb35526c7d9d97d4fbc8b194fbda",
+    "docs/evidence/2026-10-01/showcase-reconciliation.txt": "059b640b3bac88bb03d4426ba0ca1aff39dcd0498300bad4ecad92c0d01af36c",
+    "docs/evidence/2026-10-01/sql-acceptance.txt": "9daf31418770c45f13dc1261724a58b8bd114702f197b025b1849c7251217576",
+    "docs/evidence/2026-10-01/ssis-acceptance.txt": "99cc96664f31ba1ed1dc2feb319f01df7e67b8d21833240335642f083340232b"
+  }
+}

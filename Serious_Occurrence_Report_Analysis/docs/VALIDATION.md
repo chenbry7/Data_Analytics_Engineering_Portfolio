@@ -2,6 +2,10 @@
 
 Validated on 22 September 2026 with SQL Server Express 17.0.1000.7, DTExec 17.0.1000.7 and MSOLEDBSQL19.1, using Windows authentication against the marked synthetic database `SOR_Portfolio_Test`.
 
+## Latest reproducible run
+
+On **1 October 2026**, all 19 SQL tests and 5 SSIS checks passed again after the directory rename. The showcase was reloaded and every Gold field and record reconciled with the supplied CSVs. The final database contains 420 events and 855 category records. [Captured outputs and file fingerprints](evidence/2026-10-01/README.md) are included for external review. This rerun did not execute Power BI Desktop.
+
 ## Executed checks
 
 | Component | Evidence | Result |

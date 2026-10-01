@@ -35,6 +35,8 @@ The main contribution is the integration of ingestion, validation, transactional
 | SQL acceptance tests | 19 passed |
 | SSIS acceptance checks | 5 passed |
 
+The SQL/SSIS checks were rerun successfully on **1 October 2026**; [captured outputs and tested-file fingerprints](docs/evidence/2026-10-01/README.md) are included. The showcase was restored and reconciled afterward.
+
 The separate 3-event/4-category fixture supports small, inspectable acceptance tests. The larger showcase supports 12-month visual exploration. Both datasets are entirely fictional. All 18 event fields and 24 category fields in the saved PBIX reconcile with the showcase source projection, comparing times at the source's whole-second precision.
 
 ## Architecture
@@ -102,7 +104,7 @@ The PBIX connection is `.\SQLEXPRESS` / `SOR_Portfolio_Test`. If using another s
 ## Repository structure
 
 ```text
-Serious_Occurance_Report_Analysis/
+Serious_Occurrence_Report_Analysis/
 ├── README.md
 ├── LICENSE
 ├── run_demo.ps1

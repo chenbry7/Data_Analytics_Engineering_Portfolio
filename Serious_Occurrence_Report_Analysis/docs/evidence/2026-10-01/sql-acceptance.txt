@@ -1,0 +1,39 @@
+Running sql\00_create_demo_database.sql
+Changed database context to 'master'.
+Running sql\01_create_layers.sql
+Running sql\02_load_silver.sql
+Running sql\03_gold_views.sql
+Running tests\01_synthetic_fixture.sql
+
+(3 rows affected)
+
+(4 rows affected)
+Running tests\02_acceptance.sql
+test_name result
+--------- ------
+Ambiguous non-ISO date PASS
+Category occurrence after submission PASS
+Duplicate event after trimming PASS
+Empty category snapshot PASS
+Empty status snapshot PASS
+Fractional integer count PASS
+Fractional timestamp would lose precision PASS
+Impossible date PASS
+Invalid birth date PASS
+Invalid clock time PASS
+Missing category event ID PASS
+Missing status event ID PASS
+Negative participant count PASS
+Occurrence after submission PASS
+Orphan category event PASS
+Repeated full refresh produces identical output PASS
+Rollback after mid-write constraint failure PASS
+Unique event grain and preserved repeated participants PASS
+Valid load, normalization, optional nulls and timestamp precision PASS
+passed_tests
+------------
+19
+bronze_events bronze_category_rows silver_events silver_category_rows gold_events gold_category_rows
+------------- -------------------- ------------- -------------------- ----------- ------------------
+3 4 3 4 3 4
+Completed. SOR_Portfolio_Test contains only the restored synthetic fixture.
