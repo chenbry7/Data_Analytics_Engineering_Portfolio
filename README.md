@@ -2,9 +2,9 @@
 
 **SQL Server · Python · SSIS · Power BI · DAX · Statistical Analysis**
 
-Projects demonstrating how raw data becomes validated, interpretable reporting through data pipelines, quality checks, statistical analysis and Power BI dashboards.
+Projects demonstrating how raw data becomes validated, interpretable reporting through data pipelines, quality checks, statistical analysis, visual explanations and Power BI dashboards.
 
-Each project includes source code, reproduction instructions, validation evidence and report previews.
+Each project includes source code, reproduction instructions, validation evidence and visual previews.
 
 ## Featured Projects
 
@@ -12,6 +12,7 @@ Each project includes source code, reproduction instructions, validation evidenc
 |---|---|---|
 | [Serious Occurrence Reporting](Serious_Occurrence_Report_Analysis/README.md) | Internship-derived SSIS pipeline, data quality and operational reporting | Transactional Silver refresh; 19 SQL tests and 5 SSIS checks passed; four-page Power BI report |
 | [Spotify Analytics](Spotify_Audio_Features_Analysis/README.md) | Python/SQL pipeline, audio-feature analysis and catalog reporting | 114,000 records processed into 89,741 unique tracks; PCA and complementary diagnostics; three-page Power BI report |
+| [NBA Player Role Map](NBA_player_Role_Map/README.md) | Python statistical analysis, standardized PCA and player-role visualization | 421 players and 18 features; two components explain 73.82% of variance; reproducible notebook and multivariate diagnostics |
 
 ## 1. Serious Occurrence Reporting
 
@@ -55,6 +56,26 @@ PCA describes variation in audio features. It does not establish recommendation 
 
 ![Spotify Catalog Overview](Spotify_Audio_Features_Analysis/powerbi/screenshots/catalog-overview.png)
 
+## 3. NBA Player Role Map
+
+**Python · pandas · NumPy · scikit-learn · SciPy · Matplotlib**
+
+A statistical analysis of 2023–24 NBA per-game player profiles that uses standardized PCA to summarize offensive involvement and interior-versus-perimeter playing style.
+
+### Key Features
+
+- **Data preparation:** filters **572 source players to 421 eligible players** using at least 10 games played and 10 minutes per game, then selects 18 core statistics.
+- **Dimension reduction:** the first two principal components explain **73.82% of standardized variance**, providing a compact map of player profiles.
+- **Interpretable results:** uses variable–component correlations and labeled score extremes to explain offensive involvement and interior-versus-perimeter style.
+- **Statistical diagnostics:** examines multivariate normality and Mahalanobis distances, identifying **23 exploratory extreme profiles** while retaining all eligible players.
+- **Reproducibility:** includes the source CSV, an executed notebook, pinned dependencies, a fresh-kernel runner, and independent numerical checks.
+
+The role map is descriptive. Player positions are not ability rankings, causal effects or performance predictions; the documentation explains selection, percentage encoding and diagnostic limitations.
+
+[Project Documentation](NBA_player_Role_Map/README.md) · [Analysis Notebook](NBA_player_Role_Map/NBA_code.ipynb) · [Written Report](NBA_player_Role_Map/NBA_report.pdf)
+
+![NBA Player Role Map](NBA_player_Role_Map/figures/Fig3_scores_PC1_PC2_labeled.png)
+
 ## Skills Demonstrated
 
 | Area | Implementation Examples |
@@ -62,16 +83,16 @@ PCA describes variation in audio features. It does not establish recommendation 
 | Data Engineering | Python and SSIS ingestion, layered SQL transformations, transactional snapshot loading |
 | Data Quality | Key constraints, validation rules, source fingerprints, reconciliation and failure tests |
 | Data Modeling | Separate event/category and track/genre grains; explicit relationships and aggregation rules |
-| Data Analysis | Exploratory analysis, PCA, FA, ICA and statistical diagnostics |
+| Data Analysis | Exploratory analysis, PCA, FA, ICA, player-role interpretation and multivariate diagnostics |
 | Business Intelligence | Power BI data models, DAX measures, filtering and interactive report pages |
 | Reproducibility | Execution scripts, documented dependencies, test fixtures and validation evidence |
 
 ## Explore or Reproduce
 
 1. Open a project README for its objectives, architecture and results.
-2. View the report screenshots or download the PBIX file to explore it in Power BI Desktop.
-3. Follow the project-specific setup instructions to reproduce its pipeline.
+2. View project previews and reports: Power BI dashboards for SOR and Spotify, or the role map, notebook and PDF for NBA.
+3. Follow the project-specific setup instructions to reproduce its pipeline or statistical analysis.
 
-The saved Power BI reports contain imported data. Refreshing them requires the corresponding SQL Server database and connection configuration.
+For SOR and Spotify, the saved Power BI reports contain imported data. Refreshing them requires the corresponding SQL Server database and connection configuration.
 
-Pipeline execution and recorded report reviews are documented within each project. The project author has confirmed successful Power BI Desktop refresh and full interactive acceptance for both reports. Data provenance, usage conditions and project-specific limitations are described in the respective READMEs.
+Pipeline and analysis execution are documented within each project. The NBA notebook was run from start to finish in a fresh kernel, with independent checks of feature scaling, PCA loadings and Mahalanobis distances. The project author has confirmed successful Power BI Desktop refresh and full interactive acceptance for both reports. Data provenance, usage conditions and project-specific limitations are described in the respective READMEs.
