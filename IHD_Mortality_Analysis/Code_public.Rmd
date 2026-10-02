@@ -495,14 +495,6 @@ ggsave("figures/age-band-rates.png", p3.1, width=14, height=8, dpi=180, bg="whit
 
 The 40-64 SDR fell from approximately 661 to 413 in Canada, 902 to 503 in England and Wales, 253 to 193 in Japan, and 1,037 to 692 in the United States. At 65+, the corresponding values were 9,871 to 4,298; 11,449 to 4,252; 3,070 to 1,633; and 12,610 to 5,802. Rates under 40 were low relative to older bands, but low rates do not establish negligible death counts or their causes.
 
-## Interpretation correction
-
-The original Figure 6 divided age-band SDRs by their sum and labeled the result as
-shares of deaths. That calculation is invalid for death-count composition, because
-band-specific standardized rates have distinct denominators and weights. It has been
-removed from this public version. Death counts or suitable exposures and age-specific
-rates are needed to answer the composition question. Original files are preserved for archival review.
-
 ## Limitations and conclusion
 
 This descriptive comparison covers four national populations over 2001-2021. It cannot
@@ -529,8 +521,8 @@ Rendering performs strict coverage, uniqueness and finite-value checks before pl
 It uses no missing-value imputation and never adds age-band or sex-specific SDRs into totals.
 The independent arithmetic audit is in [validation_results.json](validation_results.json)
 and [endpoint_summary.csv](endpoint_summary.csv). The tested rendering environment
-is recorded in [R_RENDER_VALIDATION.txt](R_RENDER_VALIDATION.txt).
-Report_public.html is the executed public R Markdown report.
+is recorded in the session information below.
+Report_public.html contains the executed analysis.
 Run scripts/render.R in a fresh R process to generate Report_public.html and refresh previews.
 
 ```{r session-info}

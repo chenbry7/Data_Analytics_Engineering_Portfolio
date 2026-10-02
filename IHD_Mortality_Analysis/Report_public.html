@@ -369,7 +369,6 @@ narrow within countries</a></li>
 Women show larger proportional declines in every country</a></li>
 <li><a href="#age-band-standardized-rates-remain-highest-at-65" id="toc-age-band-standardized-rates-remain-highest-at-65">5. Age-band
 standardized rates remain highest at 65+</a></li>
-<li><a href="#interpretation-correction" id="toc-interpretation-correction">Interpretation correction</a></li>
 <li><a href="#limitations-and-conclusion" id="toc-limitations-and-conclusion">Limitations and conclusion</a></li>
 <li><a href="#joint-contribution" id="toc-joint-contribution">Joint
 contribution</a></li>
@@ -439,16 +438,6 @@ United States. At 65+, the corresponding values were 9,871 to 4,298;
 were low relative to older bands, but low rates do not establish
 negligible death counts or their causes.</p>
 </div>
-<div id="interpretation-correction" class="section level2">
-<h2>Interpretation correction</h2>
-<p>The original Figure 6 divided age-band SDRs by their sum and labeled
-the result as shares of deaths. That calculation is invalid for
-death-count composition, because band-specific standardized rates have
-distinct denominators and weights. It has been removed from this public
-version. Death counts or suitable exposures and age-specific rates are
-needed to answer the composition question. Original files are preserved
-for archival review.</p>
-</div>
 <div id="limitations-and-conclusion" class="section level2">
 <h2>Limitations and conclusion</h2>
 <p>This descriptive comparison covers four national populations over
@@ -479,10 +468,10 @@ interpretation, and report writing.</p>
 checks before plotting. It uses no missing-value imputation and never
 adds age-band or sex-specific SDRs into totals. The independent
 arithmetic audit is in <a href="validation_results.json">validation_results.json</a> and <a href="endpoint_summary.csv">endpoint_summary.csv</a>. The tested
-rendering environment is recorded in <a href="R_RENDER_VALIDATION.txt">R_RENDER_VALIDATION.txt</a>.
-Report_public.html is the executed public R Markdown report. Run
-scripts/render.R in a fresh R process to generate Report_public.html and
-refresh previews.</p>
+rendering environment is recorded in the session information below.
+Report_public.html contains the executed analysis. Run scripts/render.R
+in a fresh R process to generate Report_public.html and refresh
+previews.</p>
 <pre><code>## R version 4.6.1 (2026-06-24 ucrt)
 ## Platform: x86_64-w64-mingw32/x64
 ## Running under: Windows 11 x64 (build 26200)
