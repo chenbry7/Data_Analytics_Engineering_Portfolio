@@ -1,0 +1,7 @@
+.local-r-library/
+.Rhistory
+.RData
+*.knit.md
+*.utf8.md
+scripts/__pycache__/
+github-release/

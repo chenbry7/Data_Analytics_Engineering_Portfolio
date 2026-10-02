@@ -1,0 +1,63 @@
+# Publication checklist
+
+Review date: 1 October 2026. Scope: this project directory only. No push, repository visibility change or deployment was performed.
+
+## Public file list
+
+- `README.md`, `DATA_PROVENANCE.md`, `PUBLICATION_CHECKLIST.md`, `GITHUB_SETUP.md`, `.gitignore`
+- `Code_public.Rmd` (analysis entry point)
+- `hcd_sdr_filtered.csv` (included frozen analysis dataset; acquisition metadata remains incomplete)
+- `Report_public.html` (successfully executed, self-contained public R Markdown report)
+- `figures/overall-trend.png`, `figures/sex-trends.png`, `figures/endpoint-comparison.png`, `figures/sex-gap.png`, `figures/age-band-rates.png`
+- `scripts/install_dependencies.R`, `scripts/render.R`, `scripts/prepare_data.R`, `scripts/validate_data.py`, `scripts/export_public.py`
+- `validation_results.json`, `endpoint_summary.csv`, `R_RENDER_VALIDATION.txt`
+- Optional after TeX execution and visual review: `Report_public.pdf`.
+
+Exclude from a new standalone public repository: archival `Code.Rmd`, archival `Report.pdf`, earlier `Report_public_snapshot.html`, `.local-r-library/`, raw source downloads, course drafts, teacher templates, local logs, inspection intermediates and personal metadata. Files on this exclusion list remain locally preserved. This checklist is a packaging instruction, not an automatic removal from existing Git history.
+
+## Data and license
+
+- [x] Read the complete Rmd and all nine pages of report text; inspect the five retained charts visually.
+- [x] Compare the supplied CSV with the local formal full source: 1,965 corresponding records; identical keys; rates agree within 1e-8 absolute tolerance. Maximum difference 3.64e-12.
+- [x] Confirm exact country, sex and age-band labels; cause is exclusively I033; units in the extract/report are SDR per million.
+- [x] Verify official HCD explanatory notes and HMD user agreement; add links and institutional attribution in DATA_PROVENANCE.md.
+- [ ] Confirm original download files/date, I033 codebook mapping and European Standard Population 2013 designation.
+- [ ] Confirm local CSV is HMD-constructed estimates covered by CC BY 4.0 and document the exact original output series and license status. Provider input data have separate terms. The author has included the frozen CSV; provenance limitations and acquisition/preparation instructions remain documented.
+
+## Privacy and authorship
+
+- [x] Preserve Bryan Hao Yang Chen and Zhuoyang Li as collaborators.
+- [x] Public analysis uses project-relative paths; no student numbers, emails or personal absolute paths found in public narrative/code/snapshot. Data preparation accepts a user-provided input path rather than embedding one.
+- [x] Preserve originals unchanged; exclude them from standalone packaging.
+- [x] Bryan confirmed that both authors jointly completed all steps of the original project; the README and public report use that shared contribution statement.
+- [x] Standalone folder and ZIP use an explicit 21-file allowlist, excludes all source-repository Git history, and checks relative Markdown links and ZIP integrity. No remote repository has been created or published.
+- [x] Re-check the included CSV: hash matches the verified extract; complete 1,260-row analysis grid and all 60 original-report checks pass. README links resolve to packaged files.
+- [ ] Review actual GitHub visibility and repository contents when uploading.
+
+## Arithmetic and analysis validation actually performed
+
+- [x] Python standard-library audit executed against the frozen CSV and full formal source; outputs saved in `validation_results.json` and `endpoint_summary.csv`.
+- [x] Complete 2001-2021 Cartesian grid: 1,260 observations, zero duplicate keys, zero missing/nonfinite/negative rates.
+- [x] Independently verify all four overall endpoint values and changes, eight sex-specific endpoint changes, four absolute gap changes and 32 age-band endpoint labels against the original report.
+- [x] Remove automatic installation and missing-value filling from public analysis; fail explicitly on invalid coverage.
+- [x] Replace rate summation with selection of unique supplied observations.
+- [x] Correct female/male percentage-change wording and distinguish proportional change from absolute-gap arithmetic.
+- [x] Remove original Figure 6 and its death-share claims. Age-band rates cannot be converted into death-count composition by normalization.
+- [x] Regenerate five figures from the executed public Rmd; visually inspect them and correct overlapping sex labels and endpoint annotation placement. Source and SDR units are explicit.
+- [x] Public R-rendered HTML embeds its five figure images. The earlier static snapshot is retained locally as a superseded reading copy and excluded from the standalone package.
+
+## Execution environment and remaining acceptance work
+
+Independent validation and initial PDF preview extraction used the bundled Python runtime, the standard library, pypdf/pypdfium2 and Pillow. Final report and all five PNGs were generated by R Markdown / ggplot2. Missing ggrepel 0.9.8 was installed into the project-local `.local-r-library`; this binary library is excluded from publication.
+
+- [x] Fresh R execution: Windows R registry identified an existing non-default R installation. The final public Rmd executed successfully under R 4.6.1 using `Rscript --vanilla`. R was present but absent from PATH; the earlier default-location check was incomplete.
+- [x] Render `Code_public.Rmd` using RStudio-bundled Pandoc. Final render completed without chunk warnings; actual session is recorded in `R_RENDER_VALIDATION.txt`. All five figures were visually reviewed. All 12 plotted endpoint pairs and percentage changes matched the independent Python audit within 0.0001.
+- [ ] Optional public PDF render and visual review require an existing TeX setup. No public PDF was generated and none is claimed verified.
+- [x] Update README and checklist to point to the actual R-rendered report. No numerical changes were required. The old static snapshot remains explicitly labeled and is not presented as the final report.
+- [ ] The optional data-preparation helper has been statically reviewed but not executed against a new official download; confirm source metadata before obtaining/replacing data.
+
+## Recommended repository metadata
+
+Name: `ihd-mortality-four-country-analysis`
+
+Description: `R and ggplot2 analysis of ischaemic heart disease mortality trends, sex gaps, and age-band rates in four countries, 2001-2021.`

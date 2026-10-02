@@ -1,0 +1,61 @@
+{
+  "extract_rows": 1965,
+  "analysis_rows": 1260,
+  "missing_or_duplicate_keys": 0,
+  "nonfinite_or_negative_rates": 0,
+  "sha256": "5f02c4d9f02babf68de6b1f011530ce52163d335a0146bb857a0ce35475b646f",
+  "coverage": {
+    "canada": [
+      2000,
+      2022
+    ],
+    "england and wales": [
+      2001,
+      2022
+    ],
+    "japan": [
+      1981,
+      2021
+    ],
+    "united states": [
+      1979,
+      2023
+    ]
+  },
+  "source_comparison": {
+    "rows": 660915,
+    "matching_subset_rows": 1965,
+    "sha256": "59133c5bf179da58a8406259cb8985cdba7674a05cdf58f37809d4d1c8936a53",
+    "max_absolute_difference": 3.637978807091713e-12,
+    "absolute_tolerance": 1e-08,
+    "result": "All keys match; rates agree within floating-point serialization tolerance"
+  },
+  "sex_gap": {
+    "canada": {
+      "2001": 1282.9590000000003,
+      "2021": 669.665,
+      "percent_change": -47.80308645872551
+    },
+    "england and wales": {
+      "2001": 1707.3059999999998,
+      "2021": 869.1329999999999,
+      "percent_change": -49.093308405171655
+    },
+    "japan": {
+      "2001": 405.48900000000003,
+      "2021": 341.23699999999997,
+      "percent_change": -15.845559312336476
+    },
+    "united states": {
+      "2001": 1470.1580000000004,
+      "2021": 963.614,
+      "percent_change": -34.4550721759158
+    }
+  },
+  "original_report_check": {
+    "all_labels_and_male_higher_checks_match": true,
+    "checks": 60,
+    "warning": null
+  },
+  "scope": "Data checks and independent arithmetic only; no R execution"
+}

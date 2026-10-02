@@ -1,0 +1,625 @@
+---
+title: "Ischaemic Heart Disease Mortality in Four Countries, 2001-2021"
+author: "Bryan Hao Yang Chen & Zhuoyang Li"
+output:
+  html_document:
+    toc: true
+    self_contained: true
+  pdf_document: default
+---
+
+## Research questions and data
+
+How did national IHD mortality rates and absolute male-female gaps change in Canada,
+England and Wales, Japan and the United States between 2001 and 2021?
+We compare overall trends, sex-specific trajectories, endpoints and age-band rates.
+The course extract identifies IHD as I033 and reports SDR per million, not death counts.
+The original report identifies the standard as European Standard Population 2013;
+the CSV does not encode the standard, so this provenance still requires author confirmation.
+Age-band SDRs are standardized within the respective bands. Neither sex-specific nor
+age-band SDRs should be added to obtain a total or normalized into death-count shares.
+Source: Human Cause of Deaths data series (HCD), Human Mortality Database,
+Max Planck Institute for Demographic Research, University of California, Berkeley,
+and French Institute for Demographic Studies; https://www.mortality.org/.
+See DATA_PROVENANCE.md for the frozen extract, license and unresolved metadata.
+
+```{r setup, include=FALSE}
+if (dir.exists(".local-r-library")) .libPaths(c(normalizePath(".local-r-library"), .libPaths()))
+pkgs <- c("ggplot2", "readr", "dplyr", "tidyr", "stringr", "scales", "ggrepel", "knitr", "rmarkdown")
+missing <- setdiff(pkgs, rownames(installed.packages()))
+if (length(missing)) stop("Install dependencies with scripts/install_dependencies.R: ", paste(missing, collapse=", "))
+suppressPackageStartupMessages(lapply(pkgs, library, character.only=TRUE))
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=TRUE, fig.align="center", dpi=160)
+set.seed(313)
+dat <- readr::read_csv("hcd_sdr_filtered.csv", show_col_types=FALSE)
+stopifnot(identical(names(dat), c("country","year","sex","cause","age_group","sdr_per_million")))
+norm <- function(x) tolower(stringr::str_trim(x))
+dat <- dat %>% mutate(across(c(country, sex, age_group), norm), cause=toupper(stringr::str_trim(cause)))
+countries4 <- c("canada", "england and wales", "japan", "united states")
+cause_focus <- "I033"
+age_total <- "total"
+dat <- dat %>% filter(country %in% countries4, cause == cause_focus, between(year, 2001, 2021))
+expected <- tidyr::expand_grid(country=countries4, year=2001:2021,
+  sex=c("total","males","females"), cause="I033",
+  age_group=c("total","0-14","15-39","40-64","65 and above"))
+keys <- c("country","year","sex","cause","age_group")
+stopifnot(nrow(dat)==1260L, !anyDuplicated(dat[keys]),
+  nrow(anti_join(expected, dat, by=keys))==0L,
+  all(is.finite(dat$sdr_per_million)), all(dat$sdr_per_million >= 0))
+country_lab <- c("canada"="Canada", "england and wales"="England and Wales",
+  "japan"="Japan", "united states"="United States")
+pal_country <- c("canada"="#1f77b4", "england and wales"="#2ca02c", "japan"="#ff7f0e", "united states"="#9467bd")
+theme_clean <- theme_minimal(base_size=16) + theme(panel.grid.major.x=element_blank(),
+  panel.grid.minor=element_blank(), plot.title=element_text(face="bold", hjust=.5, size=16), legend.position="none")
+dir.create("figures", showWarnings=FALSE)
+```
+
+## 1. Overall mortality declines at different speeds
+
+```{r figure-1, fig.width=12, fig.height=7.5}
+fig1_dat <- dat %>%
+  filter(country %in% countries4,
+         cause   == cause_focus,
+         sex     %in% c("total","both","all"),
+         age_group %in% age_total,
+         year >= 2001, year <= 2021) %>%
+  group_by(country, year) %>%
+  summarise(rate = first(sdr_per_million), .groups = "drop")
+
+
+country_lab <- c("canada"="Canada","japan"="Japan",
+                 "united states"="United States","england and wales"="England and Wales")
+
+x_breaks <- sort(unique(c(seq(2001, 2021, by = 2), 2021)))
+label_df <- fig1_dat %>%
+  group_by(country) %>%
+  filter(year == min(year)) %>%
+  ungroup()
+
+ends <- fig1_dat %>%
+  group_by(country) %>%
+  summarise(
+    rate_start = rate[year == 2001],
+    rate_end   = rate[year == 2021],
+    pct        = (rate_end - rate_start) / rate_start * 100,
+    .groups = "drop"
+  ) %>%
+  mutate(
+    year = 2021,
+    rate = rate_end,
+    label = paste0(
+      ifelse(pct < 0, "-", "+"), sprintf("%.1f%%", abs(pct))
+    )
+  )
+
+
+p1.1 <- ggplot(fig1_dat, aes(x = year, y = rate, colour = country)) +
+  geom_line(linewidth = 1.1) +
+  geom_point(aes(shape = country), size = 1.8) +
+  geom_text(
+    data = label_df,
+    aes(label = country_lab[country]),
+    hjust = 0.6,
+    vjust = -0.5, 
+    size = 4,
+    show.legend = FALSE
+  ) +
+  
+  scale_color_manual(values = pal_country,
+                     labels = country_lab) +
+  scale_x_continuous(
+  breaks = x_breaks,
+  limits = c(2001-2, 2021 + 0.5),   
+  expand = expansion(mult = c(0, 0.02)),  
+  guide = guide_axis(check.overlap = TRUE)
+  ) +
+  scale_y_continuous(labels = scales::comma,
+                     limits = c(0, 3000), 
+                     breaks = seq(0, 3000, by = 500)) + 
+  labs(
+    title = "Ischaemic heart disease: long-term mortality trend by country \nfrom 2001 to 2021",
+    caption = "Figure 1: Four-country ischaemic heart disease mortality trends (2001-2021), showing \ndeclines but varying paces",
+    x = "Year", y = "SDR per million "
+  ) +
+  geom_text_repel(
+    data = ends,
+    aes(x = year + 0.5, y = rate, label = label, colour = country),
+    size = 4,
+    direction = "y",
+    hjust = 0,
+    segment.alpha = 0.3,
+    min.segment.length = 0,
+    max.overlaps = Inf,
+    show.legend = FALSE
+  )+
+  theme_clean+
+  theme(
+    plot.caption = element_text(
+      size = 15,           
+      hjust = 0,           
+      face = "plain",      
+      color = "black",     
+      margin = margin(t = 10)  
+    )
+  )
+
+
+
+p1.1 <- p1.1 + labs(subtitle="Source: HCD / Human Mortality Database; course extract")
+p1.1
+ggsave("figures/overall-trend.png", p1.1, width=12, height=7.5, dpi=180, bg="white")
+```
+
+All four overall rates declined. Canada fell from 2,151.1 to 980.9 per million (-54.4%), England and Wales from 2,541.7 to 1,002.9 (-60.5%), Japan from 688.5 to 385.8 (-44.0%), and the United States from 2,817.7 to 1,371.8 (-51.3%). The US-Japan difference narrowed from approximately 2,129 to 986 per million. These are endpoint changes, not an assertion of monotonic decline.
+
+## 2. Male-female gaps narrow within countries
+
+```{r figure-2, fig.width=14, fig.height=9}
+countries4  <- c("canada","england and wales","japan","united states")
+country_lab <- c(
+  "canada"             = "Canada",
+  "england and wales"  = "England and Wales",
+  "japan"              = "Japan",
+  "united states"      = "United States"
+)
+cause_focus <- "I033"
+
+pal_country <- c(
+  "canada"             = "#1f77b4",
+  "england and wales"  = "#2ca02c",
+  "japan"              = "#ff7f0e",
+  "united states"      = "#9467bd"
+)
+pal_country_light <- c(
+  "canada"             = "#9ecae1",
+  "england and wales"  = "#a6dba0",
+  "japan"              = "#fdbf6f",
+  "united states"      = "#c5b0d5"
+)
+
+year_min  <- 2001
+year_max  <- 2021
+x_breaks  <- seq(year_min, year_max, by = 2)
+
+
+fig2_wide <- dat %>%
+  filter(country %in% countries4,
+         cause   == cause_focus,
+         sex     %in% c("males","females"),
+         age_group %in% c("total"),
+         year >= year_min, year <= year_max) %>%
+  group_by(country, year, sex) %>%
+  summarise(rate = first(sdr_per_million), .groups = "drop") %>%
+  tidyr::pivot_wider(names_from = sex, values_from = rate) %>%
+  rename(male = males, female = females) %>%
+  arrange(country, year) %>%
+
+  mutate(country_show = country_lab[country])
+
+fig2_long <- fig2_wide %>%
+  select(country, country_show, year, male, female) %>%
+  pivot_longer(male:female, names_to = "sex", values_to = "rate") %>%
+  mutate(
+    col     = ifelse(sex == "male", pal_country[country], pal_country_light[country]),
+    sex_lab = ifelse(sex == "male", "males", "females")  
+  )
+
+
+rng <- fig2_long %>%
+  group_by(country, country_show, sex_lab) %>%
+  summarise(
+    x0  = min(year),
+    y0  = rate[year == x0][1],
+    x1  = max(year),
+    y1  = rate[year == x1][1],
+    col = col[year == x1][1],
+    .groups = "drop"
+  ) %>%
+  mutate(
+    pct     = (y1 - y0) / pmax(y0, 1e-8),
+    end_txt = paste0(ifelse(pct < 0, "-", "+"), percent(abs(pct), accuracy = 0.1))
+  )
+
+
+front_lab <- rng %>%
+  transmute(
+    country, country_show, sex_lab, col,
+    x = x0 + 0.25,
+    y = y0 + ifelse(sex_lab == "males", 70, -70),
+    lab = sex_lab
+  )
+
+
+end_lab <- rng %>%
+  transmute(
+    country, country_show, sex_lab, col,
+    x = x1 + 0.6,
+    y = y1 + ifelse(sex_lab == "males", 70, -70),
+    lab = end_txt
+  )
+
+p2 <- ggplot() +
+  
+  geom_ribbon(data = fig2_wide,
+              aes(x = year, ymin = female, ymax = male),
+              fill = "grey80", alpha = 0.8) +
+  
+  geom_line(data = fig2_long,
+            aes(x = year, y = rate, colour = col, group = sex),
+            linewidth = 1.1, show.legend = FALSE) +
+  scale_colour_identity() +
+  facet_wrap(~ country_show, ncol = 2) +
+  scale_x_continuous(breaks = x_breaks,
+                     limits = c(year_min-1.5, year_max + 2)) +
+  scale_y_continuous(labels = scales::comma,
+                     limits = c(0, 4000),
+                     breaks = seq(0, 4000, by = 500)) +
+  labs(
+    title = "Ischaemic heart disease: male - female gap by country from 2001 to 2021",
+    caption = "Figure 2: Ribbons show male-female differences in standardized rates.",
+    x = "Year",
+    y = "SDR per million"
+  ) +
+  
+  coord_cartesian(clip = "off") +
+  theme_minimal(base_size = 25) +
+  theme(
+    legend.position      = "none",
+    panel.grid.minor     = element_blank(),
+    panel.grid.major.x   = element_blank(),
+    axis.text.x          = element_text(angle = 45, hjust = 1, vjust = 1),
+    plot.title           = element_text(face = "bold", hjust = 0.5, size = 25),
+    plot.margin          = margin(5.5, 28, 5.5, 10),
+    plot.caption = element_text(
+      size = 24,           
+      hjust = 0,           
+      face = "plain",      
+      color = "black",     
+      margin = margin(t = 10)  
+    )
+  ) +
+  
+  geom_text(data = front_lab,
+            aes(x = x, y = y, label = lab, colour = col),
+            hjust = 0, vjust = 0.5, size = 5, fontface = "italic",
+            show.legend = FALSE) +
+  
+  geom_text(data = end_lab,
+            aes(x = x, y = y, label = lab, colour = col),
+            hjust = 0.2, vjust = 0.5, size = 6, fontface = "bold",
+            show.legend = FALSE)
+
+p2 <- p2 + labs(subtitle="Source: HCD / Human Mortality Database; course extract")
+p2
+ggsave("figures/sex-trends.png", p2, width=14, height=9, dpi=180, bg="white")
+```
+
+Male rates exceeded female rates in all four countries. Male/female proportional declines were 53.5%/58.1% in Canada, 58.2%/66.6% in England and Wales, 37.7%/54.7% in Japan, and 48.1%/57.2% in the United States. Ribbons show rate differences, not numbers of excess deaths.
+
+## 3. Absolute sex gaps remain in 2021
+
+```{r figure-3, fig.width=12, fig.height=7.5}
+countries4  <- c("canada", "england and wales", "japan", "united states")
+country_lab <- c("canada"="Canada", "england and wales"="England and Wales",
+                 "japan"="Japan", "united states"="United States")
+pal_country <- c("canada"="#1f77b4", "england and wales"="#2ca02c",
+                 "japan"="#ff7f0e", "united states"="#9467bd")
+cause_focus <- "I033"
+year_min <- 2001; year_max <- 2021
+x_breaks <- seq(year_min, year_max, by = 2)  
+
+
+gap_df <- dat %>%
+  filter(country %in% countries4,
+         cause   == cause_focus,
+         sex     %in% c("males", "females"),
+         age_group %in% c("total"),
+         year >= year_min, year <= year_max) %>%
+  group_by(country, year, sex) %>%
+  summarise(rate = first(sdr_per_million), .groups = "drop") %>%
+  tidyr::pivot_wider(names_from = sex, values_from = rate) %>%
+  rename(male = males, female = females) %>%          
+  arrange(country, year) %>%
+
+  mutate(
+    diff = male - female,                 
+    country_show = country_lab[country]
+  )
+
+start_lab <- gap_df %>%
+  group_by(country, country_show) %>%
+  filter(year == min(year)) %>%
+  ungroup() %>%
+  mutate(lab = country_show)
+
+chg_lab <- gap_df %>%
+  group_by(country, country_show) %>%
+  summarise(
+    x0  = min(year),
+    x1  = max(year),
+    y0  = diff[year == x0][1],
+    y1  = diff[year == x1][1],
+    .groups = "drop"
+  ) %>%
+  mutate(
+    pct = (y1 - y0) / pmax(abs(y0), 1e-8),
+    end_txt = paste0(ifelse(pct < 0, "-", "+"),
+                     scales::percent(abs(pct), accuracy = 0.1))
+  )
+
+
+p_base <- ggplot(gap_df, aes(x = year, y = diff, colour = country)) +
+  geom_hline(yintercept = 0, linetype = "dotted", colour = "grey45") +
+  geom_line(linewidth = 1.1) +
+  geom_point(aes(shape = country), size = 1.5) +
+  geom_text(data = start_lab,
+            aes(x = year - 0.2, y = diff, label = lab, colour = country),
+            show.legend = FALSE, hjust = 0.5, vjust = -0.6, size = 5) +
+  geom_text(data = chg_lab,
+            aes(x = x1 + 0.4, y = y1, label = end_txt, colour = country),
+            inherit.aes = FALSE, hjust = 0, vjust = 0.5,
+            size = 5, fontface = "bold", show.legend = FALSE) +
+  scale_colour_manual(values = pal_country, labels = country_lab, name = "country") +
+  scale_x_continuous(breaks = x_breaks, limits = c(year_min - 1, year_max + 1)) +  
+  scale_y_continuous(labels = scales::comma, limits = c(0, 1800),
+                     breaks = seq(0, 1800, by = 200)) +
+  labs(
+    title    = "By-country sex gap (males - females) in Ischaemic heart disease \nmortality from 2001 to 2021",
+    caption = "Figure 3: Temporal evolution of sex-specific mortality gaps, revealing country-specific patterns \nin ischemic heart disease burden",
+    x = "Year",
+    y = "Gap in death rate per million"
+  )
+
+
+p1.3 <- p_base + 
+  theme_minimal(base_size = 20) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor   = element_blank(),
+    plot.title         = element_text(face = "bold", hjust = 0.5, size = 18),
+    plot.subtitle      = element_text(hjust = 0.5),
+    legend.position    = "none",
+    plot.margin        = margin(5.5, 35, 5.5, 5.5),
+    plot.caption = element_text(
+      size = 17,           
+      hjust = 0,           
+      face = "plain",      
+      color = "black",     
+      margin = margin(t = 15)  
+    )
+  )
+
+p1.3 <- p1.3 + labs(subtitle="Source: HCD / Human Mortality Database; course extract")
+p1.3
+ggsave("figures/sex-gap.png", p1.3, width=12, height=7.5, dpi=180, bg="white")
+```
+
+The absolute male-female SDR gap decreased by 47.8% in Canada, 49.1% in England and Wales, 15.8% in Japan, and 34.5% in the United States. Japan had the smallest remaining gap; the United States had the largest. A smaller absolute gap does not necessarily imply a smaller rate ratio.
+
+## 4. Women show larger proportional declines in every country
+
+```{r figure-4, fig.width=12, fig.height=7.5}
+countries4  <- c("canada", "england and wales", "japan", "united states")
+cause_focus <- "i033"
+years_keep  <- c(2001, 2021)
+sex_keep    <- c("males", "females")
+
+db_dat <- dat %>%
+  mutate(
+    country   = tolower(country),
+    cause     = tolower(cause),
+    sex       = tolower(sex),
+    age_group = tolower(age_group)
+  ) %>%
+  filter(country %in% countries4,
+         cause   == cause_focus,
+         sex     %in% sex_keep,
+         age_group == "total",
+         year %in% years_keep) %>%
+  group_by(country, sex, year) %>%
+  summarise(rate = first(sdr_per_million), .groups = "drop") %>%
+  tidyr::pivot_wider(names_from = year, values_from = rate, names_prefix = "y") %>%
+  mutate(
+    
+    pct     = (y2021 - y2001) / pmax(y2001, 1e-8),
+    end_lab = paste0(ifelse(pct < 0, "- ", "+ "),
+                     scales::percent(abs(pct), accuracy = 0.1)),
+    country_show = recode(country,
+      "united states"      = "United States",
+      "england and wales"  = "England and Wales",
+      "canada"             = "Canada",
+      "japan"              = "Japan"
+    ),
+    
+    country_show = factor(country_show,
+      levels = c("Canada", "England and Wales", "Japan", "United States"))
+  )
+
+
+pal_sex <- c(males = "#4E79A7", females = "#E15759")
+
+
+y_max <- max(c(db_dat$y2001, db_dat$y2021), na.rm = TRUE)
+top_pad <- y_max * 0.12
+
+p_dumbbell_vertical <- ggplot(db_dat, aes(x = country_show)) +
+  geom_segment(aes(y = y2001, yend = y2021, xend = country_show),
+               linewidth = 2, colour = "grey70", lineend = "round") +
+  
+  geom_point(aes(y = y2001),
+             shape = 21, fill = "white", colour = "grey25",
+             size = 3.6, stroke = 0.9) +
+  
+  geom_point(aes(y = y2021, colour = sex), size = 3.2) +
+  geom_text_repel(
+    aes(y = y2021, label = end_lab, colour = sex),
+    size = 4.5, fontface = "bold",
+    nudge_y = -y_max * 0.03, direction = "y",
+    box.padding = 0.25, point.padding = 0.15,
+    min.segment.length = 0, seed = 1, show.legend = FALSE
+  ) +
+  facet_wrap(~ sex, nrow = 1,
+             labeller = as_labeller(c(males = "males", females = "females"))) +
+  scale_colour_manual(values = pal_sex, guide = "none") +
+  scale_y_continuous(
+    labels = scales::comma,
+    expand = expansion(mult = c(0.02, 0.02)),
+    limits = c(0, y_max + top_pad),
+    breaks = seq(0, 4000, by = 500)
+  ) +
+  labs(
+    title = "2001 vs. 2021 | Ischaemic heart disease mortality change by country ",
+    x = NULL, y = "SDR per million",
+    caption = "Figure 4: Mortality rate changes from 2001 to 2021, showing consistent declines across sexes and \ncountries"
+  ) +
+  theme_minimal(base_size = 19) +
+  theme(
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(face = "bold", hjust =0.5, size = 17),
+    plot.subtitle = element_text(hjust = 0.5),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 16),
+    plot.margin = margin(5.5, 20, 5.5, 5.5),
+    plot.caption = element_text(
+      size = 16,           
+      hjust = 0,           
+      face = "plain",      
+      color = "black",     
+      margin = margin(t = 15)  
+    )
+  )
+
+p_dumbbell_vertical <- p_dumbbell_vertical + labs(subtitle="Source: HCD / Human Mortality Database; course extract")
+p_dumbbell_vertical
+ggsave("figures/endpoint-comparison.png", p_dumbbell_vertical, width=12, height=7.5, dpi=180, bg="white")
+```
+
+Women had larger proportional reductions in all four countries. Both sexes declined, and the absolute gap narrowed because the absolute decline in male rates exceeded that in female rates. Larger female percentage reductions alone do not explain absolute-gap convergence. Open circles mark 2001; colored circles mark 2021.
+
+## 5. Age-band standardized rates remain highest at 65+
+
+```{r figure-5, fig.width=12, fig.height=7.5}
+countries4 <- c("canada", "japan", "england and wales", "united states")
+cause_focus <- "i033"
+
+country_lab <- c(
+  "canada" = "Canada",
+  "england and wales" = "England and Wales",
+  "japan" = "Japan",
+  "united states" = "United States"
+)
+
+collapse_age <- function(x){
+  x <- tolower(x)
+  case_when(
+    str_detect(x, "^0") ~ "0-14",
+    str_detect(x, "^15") ~ "15-39",
+    str_detect(x, "^40") ~ "40-64",
+    str_detect(x, "^65") ~ "65+",
+    TRUE ~ NA_character_
+  )
+}
+
+figB <- dat %>%
+  mutate(across(c(country, sex, cause, age_group), tolower)) %>%
+  filter(country %in% countries4,
+         cause == cause_focus,
+         sex %in% c("total"),         
+         year %in% c(2001, 2021)) %>%
+  mutate(age_bin = collapse_age(age_group)) %>%
+  filter(!is.na(age_bin)) %>%
+  group_by(country, age_bin, year) %>%
+  summarise(rate = first(sdr_per_million), .groups = "drop") %>%
+  mutate(country = country_lab[country],
+         year = factor(year))
+
+
+pal_year <- c("2001" = "#9e9e9e", "2021" = "#1f77b4")
+
+
+p3.1<-ggplot(figB, aes(x = age_bin, y = rate, fill = year)) +
+  geom_col(position = position_dodge(width = 1.0), width = 0.5) +
+  geom_text(
+    aes(label = round(rate)),  
+    position = position_dodge(width = 0.9),
+    vjust = -0.5,  
+    size = 3
+  ) +
+  facet_wrap(~ country, nrow = 1) +
+  scale_fill_manual(values = pal_year) +
+  scale_y_continuous(labels = scales::comma, limits = c(0, 14000),
+                     breaks = seq(0, 14000, by = 2000)) +
+  labs(
+    title = "Ischaemic heart disease: age-band standardized rates (2001 vs 2021)",
+    caption = "Figure 5: Age-band standardized death rates in 2001 and 2021; these are not death-count shares.",
+    x = "Age group", y = "SDR per million ", fill = "Year"
+  ) +
+  theme_minimal(base_size = 16) +
+  theme(
+    legend.position = "top",
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank(),
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(face = "bold", hjust =0.5, size =16),
+    plot.subtitle = element_text(hjust = 0.5),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 14),
+    plot.margin = margin(5.5, 20, 5.5, 5.5),
+    plot.caption = element_text(
+      size = 15,           
+      hjust = 0,           
+      color = "black",     
+      margin = margin(t = 15)  
+    )
+  )
+
+
+p3.1 <- p3.1 + labs(subtitle="Source: HCD / Human Mortality Database; course extract")
+p3.1
+ggsave("figures/age-band-rates.png", p3.1, width=14, height=8, dpi=180, bg="white")
+```
+
+The 40-64 SDR fell from approximately 661 to 413 in Canada, 902 to 503 in England and Wales, 253 to 193 in Japan, and 1,037 to 692 in the United States. At 65+, the corresponding values were 9,871 to 4,298; 11,449 to 4,252; 3,070 to 1,633; and 12,610 to 5,802. Rates under 40 were low relative to older bands, but low rates do not establish negligible death counts or their causes.
+
+## Interpretation correction
+
+The original Figure 6 divided age-band SDRs by their sum and labeled the result as
+shares of deaths. That calculation is invalid for death-count composition, because
+band-specific standardized rates have distinct denominators and weights. It has been
+removed from this public version. Death counts or suitable exposures and age-specific
+rates are needed to answer the composition question. Original files are preserved for archival review.
+
+## Limitations and conclusion
+
+This descriptive comparison covers four national populations over 2001-2021. It cannot
+identify causal effects of treatments, policies or risk factors, nor show subnational inequalities.
+Standardization aids comparisons but does not measure actual deaths or healthcare burden.
+Broad age bands hide variation, and the available sex categories are males, females and total.
+Cause-of-death coding, reconstruction methods and pandemic-era changes may affect comparisons.
+Endpoint percentages conceal intervening fluctuations; absolute sex gaps differ from relative gaps.
+The frozen extract's download date and 2013 standard designation remain unverified.
+
+Overall SDRs and absolute sex gaps decreased, with persistent differences across countries.
+Women experienced larger proportional reductions in all four settings. Age-band SDRs
+were highest at 65+, without establishing how deaths were distributed across age groups.
+
+## Joint contribution
+
+Bryan Hao Yang Chen and Zhuoyang Li jointly completed all steps of the original
+project: research-question development, data preparation, exploratory analysis,
+visualization design and implementation, interpretation, and report writing.
+
+## Reproducibility
+
+Rendering performs strict coverage, uniqueness and finite-value checks before plotting.
+It uses no missing-value imputation and never adds age-band or sex-specific SDRs into totals.
+The independent arithmetic audit is in validation_results.json and endpoint_summary.csv.
+Report_public_snapshot.html preserves the earlier static reading copy, not an R render.
+Report_public.html is the executed public R Markdown report.
+Run scripts/render.R in a fresh R process to generate Report_public.html and refresh previews.
+
+```{r session-info}
+sessionInfo()
+```

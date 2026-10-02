@@ -1,0 +1,1966 @@
+country,year,sex,cause,age_group,sdr_per_million
+canada,2000,males,I033,total,3069.956
+canada,2000,males,I033,0-14,0
+canada,2000,males,I033,15-39,29.509
+canada,2000,males,I033,40-64,1146.371
+canada,2000,males,I033,65 and above,13727.047
+canada,2000,females,I033,total,1682.6919999999998
+canada,2000,females,I033,0-14,0.39
+canada,2000,females,I033,15-39,9.453
+canada,2000,females,I033,40-64,300.762
+canada,2000,females,I033,65 and above,8097.15
+canada,2000,total,I033,total,2260.865
+canada,2000,total,I033,0-14,0.19
+canada,2000,total,I033,15-39,19.56
+canada,2000,total,I033,40-64,718.623
+canada,2000,total,I033,65 and above,10328.366999999998
+canada,2001,males,I033,total,2896.733
+canada,2001,males,I033,0-14,0
+canada,2001,males,I033,15-39,24.232
+canada,2001,males,I033,40-64,1056.827
+canada,2001,males,I033,65 and above,13000.943
+canada,2001,females,I033,total,1613.774
+canada,2001,females,I033,0-14,0
+canada,2001,females,I033,15-39,7.018
+canada,2001,females,I033,40-64,274.42999999999995
+canada,2001,females,I033,65 and above,7793.149
+canada,2001,total,I033,total,2151.0950000000003
+canada,2001,total,I033,0-14,0
+canada,2001,total,I033,15-39,15.706
+canada,2001,total,I033,40-64,661.102
+canada,2001,total,I033,65 and above,9870.549
+canada,2002,males,I033,total,2765.76
+canada,2002,males,I033,0-14,0.352
+canada,2002,males,I033,15-39,28.287999999999997
+canada,2002,males,I033,40-64,1012.85
+canada,2002,males,I033,65 and above,12398.099
+canada,2002,females,I033,total,1544.044
+canada,2002,females,I033,0-14,0
+canada,2002,females,I033,15-39,7.893
+canada,2002,females,I033,40-64,255.138
+canada,2002,females,I033,65 and above,7467.312000000001
+canada,2002,total,I033,total,2054.406
+canada,2002,total,I033,0-14,0.18
+canada,2002,total,I033,15-39,18.191000000000003
+canada,2002,total,I033,40-64,629.658
+canada,2002,total,I033,65 and above,9424.627
+canada,2003,males,I033,total,2709.927
+canada,2003,males,I033,0-14,0
+canada,2003,males,I033,15-39,30.401999999999997
+canada,2003,males,I033,40-64,1027.265
+canada,2003,males,I033,65 and above,12083.94
+canada,2003,females,I033,total,1474.1329999999998
+canada,2003,females,I033,0-14,0.4
+canada,2003,females,I033,15-39,5.908
+canada,2003,females,I033,40-64,256.14000000000004
+canada,2003,females,I033,65 and above,7109.9
+canada,2003,total,I033,total,1995.287
+canada,2003,total,I033,0-14,0.195
+canada,2003,total,I033,15-39,18.276
+canada,2003,total,I033,40-64,637.3539999999999
+canada,2003,total,I033,65 and above,9108.087
+canada,2004,males,I033,total,2533.685
+canada,2004,males,I033,0-14,0.375
+canada,2004,males,I033,15-39,28.755
+canada,2004,males,I033,40-64,967.643
+canada,2004,males,I033,65 and above,11284.874
+canada,2004,females,I033,total,1399.747
+canada,2004,females,I033,0-14,0
+canada,2004,females,I033,15-39,6.509
+canada,2004,females,I033,40-64,243.82800000000003
+canada,2004,females,I033,65 and above,6748.96
+canada,2004,total,I033,total,1876.593
+canada,2004,total,I033,0-14,0.193
+canada,2004,total,I033,15-39,17.741
+canada,2004,total,I033,40-64,601.764
+canada,2004,total,I033,65 and above,8561.394999999999
+canada,2005,males,I033,total,2390.681
+canada,2005,males,I033,0-14,0
+canada,2005,males,I033,15-39,28.427999999999997
+canada,2005,males,I033,40-64,901.702
+canada,2005,males,I033,65 and above,10665.631
+canada,2005,females,I033,total,1341.695
+canada,2005,females,I033,0-14,0.726
+canada,2005,females,I033,15-39,5.1739999999999995
+canada,2005,females,I033,40-64,235.159
+canada,2005,females,I033,65 and above,6467.673
+canada,2005,total,I033,total,1783.39
+canada,2005,total,I033,0-14,0.354
+canada,2005,total,I033,15-39,16.91
+canada,2005,total,I033,40-64,564.906
+canada,2005,total,I033,65 and above,8147.937999999999
+canada,2006,males,I033,total,2230.942
+canada,2006,males,I033,0-14,0.362
+canada,2006,males,I033,15-39,28.078
+canada,2006,males,I033,40-64,879.507
+canada,2006,males,I033,65 and above,9884.844
+canada,2006,females,I033,total,1229.105
+canada,2006,females,I033,0-14,0
+canada,2006,females,I033,15-39,8.785
+canada,2006,females,I033,40-64,209.521
+canada,2006,females,I033,65 and above,5929.188
+canada,2006,total,I033,total,1655.496
+canada,2006,total,I033,0-14,0.186
+canada,2006,total,I033,15-39,18.522
+canada,2006,total,I033,40-64,541.191
+canada,2006,total,I033,65 and above,7530.387
+canada,2007,males,I033,total,2139.16
+canada,2007,males,I033,0-14,0.33499999999999996
+canada,2007,males,I033,15-39,26.429
+canada,2007,males,I033,40-64,867.639
+canada,2007,males,I033,65 and above,9437.201
+canada,2007,females,I033,total,1177.017
+canada,2007,females,I033,0-14,0.345
+canada,2007,females,I033,15-39,6.5569999999999995
+canada,2007,females,I033,40-64,225.384
+canada,2007,females,I033,65 and above,5638.0779999999995
+canada,2007,total,I033,total,1590.341
+canada,2007,total,I033,0-14,0.33999999999999997
+canada,2007,total,I033,15-39,16.56
+canada,2007,total,I033,40-64,543.5369999999999
+canada,2007,total,I033,65 and above,7195.218
+canada,2008,males,I033,total,2079.209
+canada,2008,males,I033,0-14,0.396
+canada,2008,males,I033,15-39,22.396
+canada,2008,males,I033,40-64,861.3589999999999
+canada,2008,males,I033,65 and above,9146.913
+canada,2008,females,I033,total,1133.1989999999998
+canada,2008,females,I033,0-14,0.394
+canada,2008,females,I033,15-39,7.053
+canada,2008,females,I033,40-64,205.252
+canada,2008,females,I033,65 and above,5447.127
+canada,2008,total,I033,total,1541.3829999999998
+canada,2008,total,I033,0-14,0.395
+canada,2008,total,I033,15-39,14.772
+canada,2008,total,I033,40-64,530.8159999999999
+canada,2008,total,I033,65 and above,6968.8060000000005
+canada,2009,males,I033,total,1961.752
+canada,2009,males,I033,0-14,0.32999999999999996
+canada,2009,males,I033,15-39,22.756
+canada,2009,males,I033,40-64,795.727
+canada,2009,males,I033,65 and above,8656.8
+canada,2009,females,I033,total,1063.307
+canada,2009,females,I033,0-14,0.361
+canada,2009,females,I033,15-39,7.063
+canada,2009,females,I033,40-64,208.311
+canada,2009,females,I033,65 and above,5083.462
+canada,2009,total,I033,total,1450.997
+canada,2009,total,I033,0-14,0.345
+canada,2009,total,I033,15-39,14.947
+canada,2009,total,I033,40-64,500.2159999999999
+canada,2009,total,I033,65 and above,6557.621000000001
+canada,2010,males,I033,total,1854.351
+canada,2010,males,I033,0-14,0
+canada,2010,males,I033,15-39,26.894
+canada,2010,males,I033,40-64,777.99
+canada,2010,males,I033,65 and above,8130.191000000001
+canada,2010,females,I033,total,998.474
+canada,2010,females,I033,0-14,0.398
+canada,2010,females,I033,15-39,4.1
+canada,2010,females,I033,40-64,202.386
+canada,2010,females,I033,65 and above,4765.847
+canada,2010,total,I033,total,1367.846
+canada,2010,total,I033,0-14,0.194
+canada,2010,total,I033,15-39,15.503
+canada,2010,total,I033,40-64,488.7929999999999
+canada,2010,total,I033,65 and above,6150.068
+canada,2011,males,I033,total,1735.222
+canada,2011,males,I033,0-14,0
+canada,2011,males,I033,15-39,19.43
+canada,2011,males,I033,40-64,724.5930000000001
+canada,2011,males,I033,65 and above,7622.872
+canada,2011,females,I033,total,936.987
+canada,2011,females,I033,0-14,0
+canada,2011,females,I033,15-39,5.5
+canada,2011,females,I033,40-64,183.636
+canada,2011,females,I033,65 and above,4480.84
+canada,2011,total,I033,total,1285.39
+canada,2011,total,I033,0-14,0
+canada,2011,total,I033,15-39,12.463
+canada,2011,total,I033,40-64,452.957
+canada,2011,total,I033,65 and above,5793.775
+canada,2012,males,I033,total,1682.506
+canada,2012,males,I033,0-14,0
+canada,2012,males,I033,15-39,20.057
+canada,2012,males,I033,40-64,707.434
+canada,2012,males,I033,65 and above,7381.014
+canada,2012,females,I033,total,905.42
+canada,2012,females,I033,0-14,0.356
+canada,2012,females,I033,15-39,5.704
+canada,2012,females,I033,40-64,186.524
+canada,2012,females,I033,65 and above,4313.3820000000005
+canada,2012,total,I033,total,1245.599
+canada,2012,total,I033,0-14,0.17400000000000002
+canada,2012,total,I033,15-39,12.853000000000002
+canada,2012,total,I033,40-64,445.895
+canada,2012,total,I033,65 and above,5601.086
+canada,2013,males,I033,total,1633.118
+canada,2013,males,I033,0-14,0.33899999999999997
+canada,2013,males,I033,15-39,20.406
+canada,2013,males,I033,40-64,698.4269999999999
+canada,2013,males,I033,65 and above,7142.3820000000005
+canada,2013,females,I033,total,871.5659999999999
+canada,2013,females,I033,0-14,0.375
+canada,2013,females,I033,15-39,3.655
+canada,2013,females,I033,40-64,175.946
+canada,2013,females,I033,65 and above,4161.187
+canada,2013,total,I033,total,1208.295
+canada,2013,total,I033,0-14,0.358
+canada,2013,total,I033,15-39,12.012
+canada,2013,total,I033,40-64,435.704
+canada,2013,total,I033,65 and above,5428.476999999999
+canada,2014,males,I033,total,1635.71
+canada,2014,males,I033,0-14,0
+canada,2014,males,I033,15-39,23.172
+canada,2014,males,I033,40-64,685.81
+canada,2014,males,I033,65 and above,7173.231
+canada,2014,females,I033,total,851.4569999999999
+canada,2014,females,I033,0-14,0
+canada,2014,females,I033,15-39,4.663999999999999
+canada,2014,females,I033,40-64,181.152
+canada,2014,females,I033,65 and above,4047.82
+canada,2014,total,I033,total,1191.6919999999998
+canada,2014,total,I033,0-14,0
+canada,2014,total,I033,15-39,13.891
+canada,2014,total,I033,40-64,431.703
+canada,2014,total,I033,65 and above,5347.513
+canada,2015,males,I033,total,1578.608
+canada,2015,males,I033,0-14,0.347
+canada,2015,males,I033,15-39,17.537000000000003
+canada,2015,males,I033,40-64,657.382
+canada,2015,males,I033,65 and above,6937.913
+canada,2015,females,I033,total,834.329
+canada,2015,females,I033,0-14,0
+canada,2015,females,I033,15-39,4.784
+canada,2015,females,I033,40-64,184.195
+canada,2015,females,I033,65 and above,3954.566
+canada,2015,total,I033,total,1159.318
+canada,2015,total,I033,0-14,0.17700000000000002
+canada,2015,total,I033,15-39,11.145
+canada,2015,total,I033,40-64,418.841
+canada,2015,total,I033,65 and above,5207.809
+canada,2016,males,I033,total,1460.966
+canada,2016,males,I033,0-14,0
+canada,2016,males,I033,15-39,20.491999999999997
+canada,2016,males,I033,40-64,667.496
+canada,2016,males,I033,65 and above,6312.832
+canada,2016,females,I033,total,770.245
+canada,2016,females,I033,0-14,0
+canada,2016,females,I033,15-39,5.728
+canada,2016,females,I033,40-64,177.903
+canada,2016,females,I033,65 and above,3635.242
+canada,2016,total,I033,total,1078.8729999999998
+canada,2016,total,I033,0-14,0
+canada,2016,total,I033,15-39,13.103
+canada,2016,total,I033,40-64,420.4369999999999
+canada,2016,total,I033,65 and above,4789.563
+canada,2017,males,I033,total,1453.14
+canada,2017,males,I033,0-14,0
+canada,2017,males,I033,15-39,18.686
+canada,2017,males,I033,40-64,632.5369999999999
+canada,2017,males,I033,65 and above,6335.627
+canada,2017,females,I033,total,755.201
+canada,2017,females,I033,0-14,0
+canada,2017,females,I033,15-39,4.785
+canada,2017,females,I033,40-64,171.68800000000002
+canada,2017,females,I033,65 and above,3570.2679999999996
+canada,2017,total,I033,total,1066.211
+canada,2017,total,I033,0-14,0
+canada,2017,total,I033,15-39,11.729
+canada,2017,total,I033,40-64,399.88
+canada,2017,total,I033,65 and above,4762.128000000001
+canada,2018,males,I033,total,1413.065
+canada,2018,males,I033,0-14,0
+canada,2018,males,I033,15-39,20.363
+canada,2018,males,I033,40-64,619.2930000000001
+canada,2018,males,I033,65 and above,6150.1990000000005
+canada,2018,females,I033,total,726.4730000000001
+canada,2018,females,I033,0-14,0
+canada,2018,females,I033,15-39,4.595
+canada,2018,females,I033,40-64,167.105
+canada,2018,females,I033,65 and above,3431.118
+canada,2018,total,I033,total,1033.048
+canada,2018,total,I033,0-14,0
+canada,2018,total,I033,15-39,12.515
+canada,2018,total,I033,40-64,391.007
+canada,2018,total,I033,65 and above,4606.058
+canada,2019,males,I033,total,1323.739
+canada,2019,males,I033,0-14,0
+canada,2019,males,I033,15-39,19.695
+canada,2019,males,I033,40-64,598.2930000000001
+canada,2019,males,I033,65 and above,5729.262000000001
+canada,2019,females,I033,total,690.112
+canada,2019,females,I033,0-14,0
+canada,2019,females,I033,15-39,4.221
+canada,2019,females,I033,40-64,159.168
+canada,2019,females,I033,65 and above,3258.882
+canada,2019,total,I033,total,976.3
+canada,2019,total,I033,0-14,0
+canada,2019,total,I033,15-39,11.985
+canada,2019,total,I033,40-64,376.572
+canada,2019,total,I033,65 and above,4340.6810000000005
+canada,2020,males,I033,total,1354.26
+canada,2020,males,I033,0-14,0
+canada,2020,males,I033,15-39,18.346
+canada,2020,males,I033,40-64,674.909
+canada,2020,males,I033,65 and above,5756.296
+canada,2020,females,I033,total,689.055
+canada,2020,females,I033,0-14,0
+canada,2020,females,I033,15-39,4.78
+canada,2020,females,I033,40-64,173.95800000000003
+canada,2020,females,I033,65 and above,3227.164
+canada,2020,total,I033,total,990.623
+canada,2020,total,I033,0-14,0
+canada,2020,total,I033,15-39,11.627
+canada,2020,total,I033,40-64,422.065
+canada,2020,total,I033,65 and above,4336.552000000001
+canada,2021,males,I033,total,1345.77
+canada,2021,males,I033,0-14,0
+canada,2021,males,I033,15-39,22.931
+canada,2021,males,I033,40-64,661.6940000000001
+canada,2021,males,I033,65 and above,5728.176
+canada,2021,females,I033,total,676.105
+canada,2021,females,I033,0-14,0.364
+canada,2021,females,I033,15-39,5.277
+canada,2021,females,I033,40-64,168.24599999999998
+canada,2021,females,I033,65 and above,3169.4790000000003
+canada,2021,total,I033,total,980.864
+canada,2021,total,I033,0-14,0.17800000000000002
+canada,2021,total,I033,15-39,14.213
+canada,2021,total,I033,40-64,412.778
+canada,2021,total,I033,65 and above,4298.201
+canada,2022,males,I033,total,1380.022
+canada,2022,males,I033,0-14,0
+canada,2022,males,I033,15-39,22.252
+canada,2022,males,I033,40-64,662.871
+canada,2022,males,I033,65 and above,5902.88
+canada,2022,females,I033,total,678.823
+canada,2022,females,I033,0-14,0
+canada,2022,females,I033,15-39,5.664999999999999
+canada,2022,females,I033,40-64,175.975
+canada,2022,females,I033,65 and above,3169.8230000000003
+canada,2022,total,I033,total,997.092
+canada,2022,total,I033,0-14,0
+canada,2022,total,I033,15-39,14.089
+canada,2022,total,I033,40-64,417.179
+canada,2022,total,I033,65 and above,4374.204
+england and wales,2001,males,I033,total,3546.044
+england and wales,2001,males,I033,0-14,0.988
+england and wales,2001,males,I033,15-39,36.388
+england and wales,2001,males,I033,40-64,1437.428
+england and wales,2001,males,I033,65 and above,15656.756
+england and wales,2001,females,I033,total,1838.738
+england and wales,2001,females,I033,0-14,0.205
+england and wales,2001,females,I033,15-39,7.948
+england and wales,2001,females,I033,40-64,380.109
+england and wales,2001,females,I033,65 and above,8763.617
+england and wales,2001,total,I033,total,2541.6659999999997
+england and wales,2001,total,I033,0-14,0.605
+england and wales,2001,total,I033,15-39,22.07
+england and wales,2001,total,I033,40-64,902.18
+england and wales,2001,total,I033,65 and above,11448.701
+england and wales,2002,males,I033,total,3412.0550000000003
+england and wales,2002,males,I033,0-14,0.415
+england and wales,2002,males,I033,15-39,38.562000000000005
+england and wales,2002,males,I033,40-64,1360.961
+england and wales,2002,males,I033,65 and above,15098.011
+england and wales,2002,females,I033,total,1777.817
+england and wales,2002,females,I033,0-14,0.194
+england and wales,2002,females,I033,15-39,9.605
+england and wales,2002,females,I033,40-64,352.92999999999995
+england and wales,2002,females,I033,65 and above,8495.267
+england and wales,2002,total,I033,total,2448.3310000000006
+england and wales,2002,total,I033,0-14,0.307
+england and wales,2002,total,I033,15-39,23.997
+england and wales,2002,total,I033,40-64,850.458
+england and wales,2002,total,I033,65 and above,11056.099
+england and wales,2003,males,I033,total,3258.685
+england and wales,2003,males,I033,0-14,0.181
+england and wales,2003,males,I033,15-39,33.522000000000006
+england and wales,2003,males,I033,40-64,1306.095
+england and wales,2003,males,I033,65 and above,14413.958
+england and wales,2003,females,I033,total,1723.204
+england and wales,2003,females,I033,0-14,0.21800000000000003
+england and wales,2003,females,I033,15-39,10.015
+england and wales,2003,females,I033,40-64,328.272
+england and wales,2003,females,I033,65 and above,8256.885999999999
+england and wales,2003,total,I033,total,2360.61
+england and wales,2003,total,I033,0-14,0.199
+england and wales,2003,total,I033,15-39,21.709
+england and wales,2003,total,I033,40-64,810.6519999999999
+england and wales,2003,total,I033,65 and above,10678.361
+england and wales,2004,males,I033,total,3015.856
+england and wales,2004,males,I033,0-14,0.205
+england and wales,2004,males,I033,15-39,35.673
+england and wales,2004,males,I033,40-64,1194.019
+england and wales,2004,males,I033,65 and above,13357.782
+england and wales,2004,females,I033,total,1563.411
+england and wales,2004,females,I033,0-14,0.195
+england and wales,2004,females,I033,15-39,8.958
+england and wales,2004,females,I033,40-64,282.857
+england and wales,2004,females,I033,65 and above,7517.161000000001
+england and wales,2004,total,I033,total,2165.19
+england and wales,2004,total,I033,0-14,0.201
+england and wales,2004,total,I033,15-39,22.251
+england and wales,2004,total,I033,40-64,732.504
+england and wales,2004,total,I033,65 and above,9809.595
+england and wales,2005,males,I033,total,2845.623
+england and wales,2005,males,I033,0-14,0.196
+england and wales,2005,males,I033,15-39,34.145
+england and wales,2005,males,I033,40-64,1115.1909999999998
+england and wales,2005,males,I033,65 and above,12622.654
+england and wales,2005,females,I033,total,1463.885
+england and wales,2005,females,I033,0-14,0.8450000000000001
+england and wales,2005,females,I033,15-39,6.4990000000000006
+england and wales,2005,females,I033,40-64,275.661
+england and wales,2005,females,I033,65 and above,7022.507
+england and wales,2005,total,I033,total,2038.085
+england and wales,2005,total,I033,0-14,0.512
+england and wales,2005,total,I033,15-39,20.26
+england and wales,2005,total,I033,40-64,690.15
+england and wales,2005,total,I033,65 and above,9233.446
+england and wales,2006,males,I033,total,2612.2619999999997
+england and wales,2006,males,I033,0-14,0.19
+england and wales,2006,males,I033,15-39,33.156
+england and wales,2006,males,I033,40-64,1071.719
+england and wales,2006,males,I033,65 and above,11502.191
+england and wales,2006,females,I033,total,1341.218
+england and wales,2006,females,I033,0-14,1.089
+england and wales,2006,females,I033,15-39,7.367999999999999
+england and wales,2006,females,I033,40-64,256.605
+england and wales,2006,females,I033,65 and above,6424.6
+england and wales,2006,total,I033,total,1874.152
+england and wales,2006,total,I033,0-14,0.629
+england and wales,2006,total,I033,15-39,20.204
+england and wales,2006,total,I033,40-64,659.112
+england and wales,2006,total,I033,65 and above,8446.078
+england and wales,2007,males,I033,total,2487.781
+england and wales,2007,males,I033,0-14,0.39
+england and wales,2007,males,I033,15-39,36.324
+england and wales,2007,males,I033,40-64,1007.053
+england and wales,2007,males,I033,65 and above,10969.722000000002
+england and wales,2007,females,I033,total,1275.399
+england and wales,2007,females,I033,0-14,0.212
+england and wales,2007,females,I033,15-39,8.252
+england and wales,2007,females,I033,40-64,238.582
+england and wales,2007,females,I033,65 and above,6117.3460000000005
+england and wales,2007,total,I033,total,1785.93
+england and wales,2007,total,I033,0-14,0.303
+england and wales,2007,total,I033,15-39,22.227
+england and wales,2007,total,I033,40-64,617.903
+england and wales,2007,total,I033,65 and above,8061.506
+england and wales,2008,males,I033,total,2363.079
+england and wales,2008,males,I033,0-14,1.341
+england and wales,2008,males,I033,15-39,34.771
+england and wales,2008,males,I033,40-64,962.224
+england and wales,2008,males,I033,65 and above,10408.924
+england and wales,2008,females,I033,total,1212.772
+england and wales,2008,females,I033,0-14,0.2
+england and wales,2008,females,I033,15-39,8.008
+england and wales,2008,females,I033,40-64,232.87
+england and wales,2008,females,I033,65 and above,5806.39
+england and wales,2008,total,I033,total,1697.1719999999998
+england and wales,2008,total,I033,0-14,0.7839999999999999
+england and wales,2008,total,I033,15-39,21.336
+england and wales,2008,total,I033,40-64,592.934
+england and wales,2008,total,I033,65 and above,7650.252
+england and wales,2009,males,I033,total,2201.348
+england and wales,2009,males,I033,0-14,0
+england and wales,2009,males,I033,15-39,33.177
+england and wales,2009,males,I033,40-64,903.1
+england and wales,2009,males,I033,65 and above,9684.741000000002
+england and wales,2009,females,I033,total,1090.083
+england and wales,2009,females,I033,0-14,0.194
+england and wales,2009,females,I033,15-39,6.583
+england and wales,2009,females,I033,40-64,209.132
+england and wales,2009,females,I033,65 and above,5220.2660000000005
+england and wales,2009,total,I033,total,1560.155
+england and wales,2009,total,I033,0-14,0.095
+england and wales,2009,total,I033,15-39,19.829
+england and wales,2009,total,I033,40-64,551.734
+england and wales,2009,total,I033,65 and above,7021.343
+england and wales,2010,males,I033,total,2117.681
+england and wales,2010,males,I033,0-14,0.388
+england and wales,2010,males,I033,15-39,29.226
+england and wales,2010,males,I033,40-64,876.396
+england and wales,2010,males,I033,65 and above,9307.517
+england and wales,2010,females,I033,total,1029.842
+england and wales,2010,females,I033,0-14,0
+england and wales,2010,females,I033,15-39,7.959
+england and wales,2010,females,I033,40-64,205.393
+england and wales,2010,females,I033,65 and above,4915.732999999999
+england and wales,2010,total,I033,total,1489.717
+england and wales,2010,total,I033,0-14,0.199
+england and wales,2010,total,I033,15-39,18.55
+england and wales,2010,total,I033,40-64,536.581
+england and wales,2010,total,I033,65 and above,6688.1050000000005
+england and wales,2011,males,I033,total,1899.98
+england and wales,2011,males,I033,0-14,0.741
+england and wales,2011,males,I033,15-39,33.24
+england and wales,2011,males,I033,40-64,803.255
+england and wales,2011,males,I033,65 and above,8310.088
+england and wales,2011,females,I033,total,918.666
+england and wales,2011,females,I033,0-14,0
+england and wales,2011,females,I033,15-39,5.301
+england and wales,2011,females,I033,40-64,189.217
+england and wales,2011,females,I033,65 and above,4377.618
+england and wales,2011,total,I033,total,1337.726
+england and wales,2011,total,I033,0-14,0.38
+england and wales,2011,total,I033,15-39,19.226
+england and wales,2011,total,I033,40-64,492.177
+england and wales,2011,total,I033,65 and above,5983.722000000001
+england and wales,2012,males,I033,total,1850.614
+england and wales,2012,males,I033,0-14,0.389
+england and wales,2012,males,I033,15-39,27.25
+england and wales,2012,males,I033,40-64,750.502
+england and wales,2012,males,I033,65 and above,8157.366000000001
+england and wales,2012,females,I033,total,902.829
+england and wales,2012,females,I033,0-14,0.548
+england and wales,2012,females,I033,15-39,6.659
+england and wales,2012,females,I033,40-64,188.016
+england and wales,2012,females,I033,65 and above,4295.857
+england and wales,2012,total,I033,total,1307.0739999999998
+england and wales,2012,total,I033,0-14,0.466
+england and wales,2012,total,I033,15-39,16.921999999999997
+england and wales,2012,total,I033,40-64,465.443
+england and wales,2012,total,I033,65 and above,5876.052000000001
+england and wales,2013,males,I033,total,1818.159
+england and wales,2013,males,I033,0-14,0.5740000000000001
+england and wales,2013,males,I033,15-39,27.226
+england and wales,2013,males,I033,40-64,762.8629999999999
+england and wales,2013,males,I033,65 and above,7969.578
+england and wales,2013,females,I033,total,870.979
+england and wales,2013,females,I033,0-14,0.583
+england and wales,2013,females,I033,15-39,7.681
+england and wales,2013,females,I033,40-64,196.451
+england and wales,2013,females,I033,65 and above,4116.376
+england and wales,2013,total,I033,total,1278.769
+england and wales,2013,total,I033,0-14,0.5780000000000001
+england and wales,2013,total,I033,15-39,17.399
+england and wales,2013,total,I033,40-64,475.699
+england and wales,2013,total,I033,65 and above,5712.427
+england and wales,2014,males,I033,total,1698.829
+england and wales,2014,males,I033,0-14,0.356
+england and wales,2014,males,I033,15-39,22.479999999999997
+england and wales,2014,males,I033,40-64,749.3469999999999
+england and wales,2014,males,I033,65 and above,7388.576
+england and wales,2014,females,I033,total,798.171
+england and wales,2014,females,I033,0-14,0.401
+england and wales,2014,females,I033,15-39,6.686
+england and wales,2014,females,I033,40-64,187.657
+england and wales,2014,females,I033,65 and above,3759.842
+england and wales,2014,total,I033,total,1188.932
+england and wales,2014,total,I033,0-14,0.378
+england and wales,2014,total,I033,15-39,14.525
+england and wales,2014,total,I033,40-64,464.535
+england and wales,2014,total,I033,65 and above,5275.64
+england and wales,2015,males,I033,total,1681.008
+england and wales,2015,males,I033,0-14,0
+england and wales,2015,males,I033,15-39,24.443
+england and wales,2015,males,I033,40-64,745.4319999999999
+england and wales,2015,males,I033,65 and above,7301.08
+england and wales,2015,females,I033,total,784.711
+england and wales,2015,females,I033,0-14,0.191
+england and wales,2015,females,I033,15-39,5.488
+england and wales,2015,females,I033,40-64,193.966
+england and wales,2015,females,I033,65 and above,3682.052
+england and wales,2015,total,I033,total,1174.403
+england and wales,2015,total,I033,0-14,0.093
+england and wales,2015,total,I033,15-39,14.882
+england and wales,2015,total,I033,40-64,465.7929999999999
+england and wales,2015,total,I033,65 and above,5198.635
+england and wales,2016,males,I033,total,1573.452
+england and wales,2016,males,I033,0-14,0.182
+england and wales,2016,males,I033,15-39,27.177000000000003
+england and wales,2016,males,I033,40-64,722.308
+england and wales,2016,males,I033,65 and above,6784.744
+england and wales,2016,females,I033,total,721.058
+england and wales,2016,females,I033,0-14,0.192
+england and wales,2016,females,I033,15-39,5.259
+england and wales,2016,females,I033,40-64,194.415
+england and wales,2016,females,I033,65 and above,3355.219
+england and wales,2016,total,I033,total,1096.305
+england and wales,2016,total,I033,0-14,0.186
+england and wales,2016,total,I033,15-39,16.084
+england and wales,2016,total,I033,40-64,454.634
+england and wales,2016,total,I033,65 and above,4815.317
+england and wales,2017,males,I033,total,1560.35
+england and wales,2017,males,I033,0-14,0
+england and wales,2017,males,I033,15-39,26.433
+england and wales,2017,males,I033,40-64,729.8259999999999
+england and wales,2017,males,I033,65 and above,6705.967
+england and wales,2017,females,I033,total,701.1
+england and wales,2017,females,I033,0-14,0.196
+england and wales,2017,females,I033,15-39,5.051
+england and wales,2017,females,I033,40-64,182.475
+england and wales,2017,females,I033,65 and above,3273.713
+england and wales,2017,total,I033,total,1077.802
+england and wales,2017,total,I033,0-14,0.096
+england and wales,2017,total,I033,15-39,15.562
+england and wales,2017,total,I033,40-64,452.241
+england and wales,2017,total,I033,65 and above,4725.446999999999
+england and wales,2018,males,I033,total,1501.802
+england and wales,2018,males,I033,0-14,0
+england and wales,2018,males,I033,15-39,22.477
+england and wales,2018,males,I033,40-64,732.1419999999999
+england and wales,2018,males,I033,65 and above,6408.034
+england and wales,2018,females,I033,total,650.255
+england and wales,2018,females,I033,0-14,0.401
+england and wales,2018,females,I033,15-39,4.059
+england and wales,2018,females,I033,40-64,186.611
+england and wales,2018,females,I033,65 and above,3007.274
+england and wales,2018,total,I033,total,1026.6899999999998
+england and wales,2018,total,I033,0-14,0.196
+england and wales,2018,total,I033,15-39,13.094
+england and wales,2018,total,I033,40-64,455.42
+england and wales,2018,total,I033,65 and above,4461.712
+england and wales,2019,males,I033,total,1444.129
+england and wales,2019,males,I033,0-14,0
+england and wales,2019,males,I033,15-39,23.241999999999997
+england and wales,2019,males,I033,40-64,694.9209999999999
+england and wales,2019,males,I033,65 and above,6175.002
+england and wales,2019,females,I033,total,629.9069999999999
+england and wales,2019,females,I033,0-14,0
+england and wales,2019,females,I033,15-39,5.729
+england and wales,2019,females,I033,40-64,183.853
+england and wales,2019,females,I033,65 and above,2905.336
+england and wales,2019,total,I033,total,991.486
+england and wales,2019,total,I033,0-14,0
+england and wales,2019,total,I033,15-39,14.279
+england and wales,2019,total,I033,40-64,435.555
+england and wales,2019,total,I033,65 and above,4313.583
+england and wales,2020,males,I033,total,1459.953
+england and wales,2020,males,I033,0-14,0
+england and wales,2020,males,I033,15-39,27.013
+england and wales,2020,males,I033,40-64,774.0730000000001
+england and wales,2020,males,I033,65 and above,6114.177
+england and wales,2020,females,I033,total,618.9319999999999
+england and wales,2020,females,I033,0-14,0.207
+england and wales,2020,females,I033,15-39,6.051
+england and wales,2020,females,I033,40-64,190.052
+england and wales,2020,females,I033,65 and above,2837.718
+england and wales,2020,total,I033,total,995.014
+england and wales,2020,total,I033,0-14,0.101
+england and wales,2020,total,I033,15-39,16.264
+england and wales,2020,total,I033,40-64,477.43499999999995
+england and wales,2020,total,I033,65 and above,4256.487999999999
+england and wales,2021,males,I033,total,1483.214
+england and wales,2021,males,I033,0-14,0.411
+england and wales,2021,males,I033,15-39,28.804
+england and wales,2021,males,I033,40-64,806.239
+england and wales,2021,males,I033,65 and above,6175.022000000001
+england and wales,2021,females,I033,total,614.081
+england and wales,2021,females,I033,0-14,0.211
+england and wales,2021,females,I033,15-39,5.335
+england and wales,2021,females,I033,40-64,210.445
+england and wales,2021,females,I033,65 and above,2778.945
+england and wales,2021,total,I033,total,1002.925
+england and wales,2021,total,I033,0-14,0.312
+england and wales,2021,total,I033,15-39,16.727999999999998
+england and wales,2021,total,I033,40-64,503.315
+england and wales,2021,total,I033,65 and above,4251.688
+england and wales,2022,males,I033,total,1523.021
+england and wales,2022,males,I033,0-14,0.209
+england and wales,2022,males,I033,15-39,30.487999999999996
+england and wales,2022,males,I033,40-64,803.232
+england and wales,2022,males,I033,65 and above,6381.812000000001
+england and wales,2022,females,I033,total,630.499
+england and wales,2022,females,I033,0-14,0.212
+england and wales,2022,females,I033,15-39,6.244
+england and wales,2022,females,I033,40-64,206.989
+england and wales,2022,females,I033,65 and above,2867.6310000000003
+england and wales,2022,total,I033,total,1029.739
+england and wales,2022,total,I033,0-14,0.211
+england and wales,2022,total,I033,15-39,17.988999999999997
+england and wales,2022,total,I033,40-64,499.772
+england and wales,2022,total,I033,65 and above,4393.362000000001
+japan,1981,males,I033,total,1850.797
+japan,1981,males,I033,0-14,0.224
+japan,1981,males,I033,15-39,27.635
+japan,1981,males,I033,40-64,625.4419999999999
+japan,1981,males,I033,65 and above,8372.672
+japan,1981,females,I033,total,1266.6899999999998
+japan,1981,females,I033,0-14,0.377
+japan,1981,females,I033,15-39,6.156999999999999
+japan,1981,females,I033,40-64,212.201
+japan,1981,females,I033,65 and above,6121.195000000001
+japan,1981,total,I033,total,1507.38
+japan,1981,total,I033,0-14,0.29900000000000004
+japan,1981,total,I033,15-39,16.929
+japan,1981,total,I033,40-64,402.562
+japan,1981,total,I033,65 and above,7011.4169999999995
+japan,1982,males,I033,total,1760.6519999999998
+japan,1982,males,I033,0-14,0.704
+japan,1982,males,I033,15-39,25.624
+japan,1982,males,I033,40-64,600.796
+japan,1982,males,I033,65 and above,7955.536
+japan,1982,females,I033,total,1183.9350000000002
+japan,1982,females,I033,0-14,0.775
+japan,1982,females,I033,15-39,6.541
+japan,1982,females,I033,40-64,193.235
+japan,1982,females,I033,65 and above,5728.459
+japan,1982,total,I033,total,1421.059
+japan,1982,total,I033,0-14,0.738
+japan,1982,total,I033,15-39,16.117000000000004
+japan,1982,total,I033,40-64,381.312
+japan,1982,total,I033,65 and above,6606.179
+japan,1983,males,I033,total,1753.037
+japan,1983,males,I033,0-14,0.261
+japan,1983,males,I033,15-39,26.221
+japan,1983,males,I033,40-64,587.216
+japan,1983,males,I033,65 and above,7939.226000000001
+japan,1983,females,I033,total,1191.5
+japan,1983,females,I033,0-14,0.212
+japan,1983,females,I033,15-39,7.501
+japan,1983,females,I033,40-64,188.562
+japan,1983,females,I033,65 and above,5774.217
+japan,1983,total,I033,total,1424.423
+japan,1983,total,I033,0-14,0.237
+japan,1983,total,I033,15-39,16.9
+japan,1983,total,I033,40-64,374.037
+japan,1983,total,I033,65 and above,6635.097
+japan,1984,males,I033,total,1710.055
+japan,1984,males,I033,0-14,0.378
+japan,1984,males,I033,15-39,23.359
+japan,1984,males,I033,40-64,573.4619999999999
+japan,1984,males,I033,65 and above,7746.892000000001
+japan,1984,females,I033,total,1134.03
+japan,1984,females,I033,0-14,0.271
+japan,1984,females,I033,15-39,6.4350000000000005
+japan,1984,females,I033,40-64,177.51
+japan,1984,females,I033,65 and above,5500.133
+japan,1984,total,I033,total,1369.953
+japan,1984,total,I033,0-14,0.326
+japan,1984,total,I033,15-39,14.945
+japan,1984,total,I033,40-64,362.188
+japan,1984,total,I033,65 and above,6379.153
+japan,1985,males,I033,total,1672.096
+japan,1985,males,I033,0-14,0.59
+japan,1985,males,I033,15-39,22.41
+japan,1985,males,I033,40-64,545.975
+japan,1985,males,I033,65 and above,7600.782
+japan,1985,females,I033,total,1103.625
+japan,1985,females,I033,0-14,0.308
+japan,1985,females,I033,15-39,6.113999999999999
+japan,1985,females,I033,40-64,164.142
+japan,1985,females,I033,65 and above,5367.656000000001
+japan,1985,total,I033,total,1335.852
+japan,1985,total,I033,0-14,0.453
+japan,1985,total,I033,15-39,14.318
+japan,1985,total,I033,40-64,343.832
+japan,1985,total,I033,65 and above,6236.706
+japan,1986,males,I033,total,1578.51
+japan,1986,males,I033,0-14,0.409
+japan,1986,males,I033,15-39,22.451
+japan,1986,males,I033,40-64,501.963
+japan,1986,males,I033,65 and above,7196.55
+japan,1986,females,I033,total,1060.577
+japan,1986,females,I033,0-14,0.366
+japan,1986,females,I033,15-39,5.896
+japan,1986,females,I033,40-64,152.874
+japan,1986,females,I033,65 and above,5166.552000000001
+japan,1986,total,I033,total,1272.263
+japan,1986,total,I033,0-14,0.388
+japan,1986,total,I033,15-39,14.230999999999998
+japan,1986,total,I033,40-64,319.073
+japan,1986,total,I033,65 and above,5953.33
+japan,1987,males,I033,total,1506.3629999999998
+japan,1987,males,I033,0-14,0.135
+japan,1987,males,I033,15-39,20.903
+japan,1987,males,I033,40-64,493.135
+japan,1987,males,I033,65 and above,6844.419
+japan,1987,females,I033,total,1006.509
+japan,1987,females,I033,0-14,0.45
+japan,1987,females,I033,15-39,7.191999999999999
+japan,1987,females,I033,40-64,143.05
+japan,1987,females,I033,65 and above,4904.029
+japan,1987,total,I033,total,1211.578
+japan,1987,total,I033,0-14,0.28800000000000003
+japan,1987,total,I033,15-39,14.091
+japan,1987,total,I033,40-64,311.287
+japan,1987,total,I033,65 and above,5655.805
+japan,1988,males,I033,total,1542.102
+japan,1988,males,I033,0-14,0.044
+japan,1988,males,I033,15-39,20.433
+japan,1988,males,I033,40-64,493.23599999999993
+japan,1988,males,I033,65 and above,7028.341
+japan,1988,females,I033,total,1032.051
+japan,1988,females,I033,0-14,0.304
+japan,1988,females,I033,15-39,5.493
+japan,1988,females,I033,40-64,143
+japan,1988,females,I033,65 and above,5037.923
+japan,1988,total,I033,total,1241.196
+japan,1988,total,I033,0-14,0.171
+japan,1988,total,I033,15-39,13.014
+japan,1988,total,I033,40-64,312.548
+japan,1988,total,I033,65 and above,5807.338
+japan,1989,males,I033,total,1437.72
+japan,1989,males,I033,0-14,0.404
+japan,1989,males,I033,15-39,20.977
+japan,1989,males,I033,40-64,461.872
+japan,1989,males,I033,65 and above,6545.772
+japan,1989,females,I033,total,961.132
+japan,1989,females,I033,0-14,0.415
+japan,1989,females,I033,15-39,5.002
+japan,1989,females,I033,40-64,136.597
+japan,1989,females,I033,65 and above,4685.921
+japan,1989,total,I033,total,1156.729
+japan,1989,total,I033,0-14,0.41
+japan,1989,total,I033,15-39,13.053
+japan,1989,total,I033,40-64,294.914
+japan,1989,total,I033,65 and above,5404.211
+japan,1990,males,I033,total,1472.196
+japan,1990,males,I033,0-14,0.356
+japan,1990,males,I033,15-39,19.854000000000003
+japan,1990,males,I033,40-64,478.9959999999999
+japan,1990,males,I033,65 and above,6694.976999999999
+japan,1990,females,I033,total,964.75
+japan,1990,females,I033,0-14,0.378
+japan,1990,females,I033,15-39,5.616999999999999
+japan,1990,females,I033,40-64,135.478
+japan,1990,females,I033,65 and above,4705.4529999999995
+japan,1990,total,I033,total,1171.429
+japan,1990,total,I033,0-14,0.366
+japan,1990,total,I033,15-39,12.796
+japan,1990,total,I033,40-64,303.082
+japan,1990,total,I033,65 and above,5466.004
+japan,1991,males,I033,total,1415.527
+japan,1991,males,I033,0-14,0.14800000000000002
+japan,1991,males,I033,15-39,21.692
+japan,1991,males,I033,40-64,469.162
+japan,1991,males,I033,65 and above,6418.511
+japan,1991,females,I033,total,923.496
+japan,1991,females,I033,0-14,0.529
+japan,1991,females,I033,15-39,5.213
+japan,1991,females,I033,40-64,128.88200000000003
+japan,1991,females,I033,65 and above,4505.745
+japan,1991,total,I033,total,1124.311
+japan,1991,total,I033,0-14,0.33399999999999996
+japan,1991,total,I033,15-39,13.525
+japan,1991,total,I033,40-64,295.244
+japan,1991,total,I033,65 and above,5236.706999999999
+japan,1992,males,I033,total,1362.9070000000002
+japan,1992,males,I033,0-14,0.039
+japan,1992,males,I033,15-39,21.408
+japan,1992,males,I033,40-64,451.23
+japan,1992,males,I033,65 and above,6180.01
+japan,1992,females,I033,total,891.663
+japan,1992,females,I033,0-14,0.323
+japan,1992,females,I033,15-39,6.611
+japan,1992,females,I033,40-64,120.67799999999998
+japan,1992,females,I033,65 and above,4354.54
+japan,1992,total,I033,total,1085.627
+japan,1992,total,I033,0-14,0.17700000000000002
+japan,1992,total,I033,15-39,14.08
+japan,1992,total,I033,40-64,282.506
+japan,1992,total,I033,65 and above,5059.46
+japan,1993,males,I033,total,1344.368
+japan,1993,males,I033,0-14,0.61
+japan,1993,males,I033,15-39,20.037000000000003
+japan,1993,males,I033,40-64,451.722
+japan,1993,males,I033,65 and above,6085.808
+japan,1993,females,I033,total,863.9399999999999
+japan,1993,females,I033,0-14,0.162
+japan,1993,females,I033,15-39,5.185
+japan,1993,females,I033,40-64,119.137
+japan,1993,females,I033,65 and above,4217.416
+japan,1993,total,I033,total,1059.464
+japan,1993,total,I033,0-14,0.391
+japan,1993,total,I033,15-39,12.687
+japan,1993,total,I033,40-64,282.046
+japan,1993,total,I033,65 and above,4928.119000000001
+japan,1994,males,I033,total,1228.034
+japan,1994,males,I033,0-14,0.21700000000000003
+japan,1994,males,I033,15-39,19.885
+japan,1994,males,I033,40-64,418.518
+japan,1994,males,I033,65 and above,5546.826000000001
+japan,1994,females,I033,total,772.625
+japan,1994,females,I033,0-14,0.259
+japan,1994,females,I033,15-39,5.002
+japan,1994,females,I033,40-64,111.343
+japan,1994,females,I033,65 and above,3762.734
+japan,1994,total,I033,total,957.513
+japan,1994,total,I033,0-14,0.237
+japan,1994,total,I033,15-39,12.53
+japan,1994,total,I033,40-64,261.919
+japan,1994,total,I033,65 and above,4440.245
+japan,1995,males,I033,total,1259.716
+japan,1995,males,I033,0-14,0.28300000000000003
+japan,1995,males,I033,15-39,24.864
+japan,1995,males,I033,40-64,437.124
+japan,1995,males,I033,65 and above,5669.365000000001
+japan,1995,females,I033,total,771.9
+japan,1995,females,I033,0-14,0.404
+japan,1995,females,I033,15-39,6.326999999999999
+japan,1995,females,I033,40-64,124.822
+japan,1995,females,I033,65 and above,3733.635
+japan,1995,total,I033,total,967.359
+japan,1995,total,I033,0-14,0.34199999999999997
+japan,1995,total,I033,15-39,15.704
+japan,1995,total,I033,40-64,278.058
+japan,1995,total,I033,65 and above,4457.88
+japan,1996,males,I033,total,1144.846
+japan,1996,males,I033,0-14,0.196
+japan,1996,males,I033,15-39,24.438
+japan,1996,males,I033,40-64,422.668
+japan,1996,males,I033,65 and above,5105.875
+japan,1996,females,I033,total,691.769
+japan,1996,females,I033,0-14,0.109
+japan,1996,females,I033,15-39,5.696999999999999
+japan,1996,females,I033,40-64,114.727
+japan,1996,females,I033,65 and above,3341.292
+japan,1996,total,I033,total,875.0519999999999
+japan,1996,total,I033,0-14,0.15400000000000005
+japan,1996,total,I033,15-39,15.187
+japan,1996,total,I033,40-64,266.027
+japan,1996,total,I033,65 and above,4006.155
+japan,1997,males,I033,total,1101.637
+japan,1997,males,I033,0-14,0.488
+japan,1997,males,I033,15-39,24.602
+japan,1997,males,I033,40-64,421.131
+japan,1997,males,I033,65 and above,4886.429999999999
+japan,1997,females,I033,total,653.8589999999999
+japan,1997,females,I033,0-14,0.424
+japan,1997,females,I033,15-39,5.341
+japan,1997,females,I033,40-64,109.052
+japan,1997,females,I033,65 and above,3156.9390000000003
+japan,1997,total,I033,total,835.049
+japan,1997,total,I033,0-14,0.457
+japan,1997,total,I033,15-39,15.093
+japan,1997,total,I033,40-64,262.429
+japan,1997,total,I033,65 and above,3807.095
+japan,1998,males,I033,total,1056.379
+japan,1998,males,I033,0-14,0.61
+japan,1998,males,I033,15-39,24.732
+japan,1998,males,I033,40-64,410.457
+japan,1998,males,I033,65 and above,4672.368
+japan,1998,females,I033,total,616.081
+japan,1998,females,I033,0-14,0.102
+japan,1998,females,I033,15-39,5.217
+japan,1998,females,I033,40-64,103.975
+japan,1998,females,I033,65 and above,2972.388
+japan,1998,total,I033,total,794.987
+japan,1998,total,I033,0-14,0.363
+japan,1998,total,I033,15-39,15.102
+japan,1998,total,I033,40-64,254.807
+japan,1998,total,I033,65 and above,3614.805
+japan,1999,males,I033,total,1039.676
+japan,1999,males,I033,0-14,0.635
+japan,1999,males,I033,15-39,27.384
+japan,1999,males,I033,40-64,420.369
+japan,1999,males,I033,65 and above,4565.4439999999995
+japan,1999,females,I033,total,610.5
+japan,1999,females,I033,0-14,0.21900000000000003
+japan,1999,females,I033,15-39,5.246
+japan,1999,females,I033,40-64,107.063
+japan,1999,females,I033,65 and above,2938.322
+japan,1999,total,I033,total,785.999
+japan,1999,total,I033,0-14,0.4330000000000001
+japan,1999,total,I033,15-39,16.461
+japan,1999,total,I033,40-64,261.284
+japan,1999,total,I033,65 and above,3555.366
+japan,2000,males,I033,total,953.231
+japan,2000,males,I033,0-14,0.633
+japan,2000,males,I033,15-39,26.51
+japan,2000,males,I033,40-64,402.843
+japan,2000,males,I033,65 and above,4153.637
+japan,2000,females,I033,total,544.762
+japan,2000,females,I033,0-14,0.225
+japan,2000,females,I033,15-39,6.079000000000001
+japan,2000,females,I033,40-64,96.052
+japan,2000,females,I033,65 and above,2618.789
+japan,2000,total,I033,total,712.9830000000001
+japan,2000,total,I033,0-14,0.43400000000000005
+japan,2000,total,I033,15-39,16.435
+japan,2000,total,I033,40-64,247.138
+japan,2000,total,I033,65 and above,3205.271
+japan,2001,males,I033,total,925.884
+japan,2001,males,I033,0-14,0.636
+japan,2001,males,I033,15-39,26.695
+japan,2001,males,I033,40-64,409.681
+japan,2001,males,I033,65 and above,4001.354
+japan,2001,females,I033,total,520.395
+japan,2001,females,I033,0-14,0.231
+japan,2001,females,I033,15-39,6.095
+japan,2001,females,I033,40-64,100.476
+japan,2001,females,I033,65 and above,2486.2039999999997
+japan,2001,total,I033,total,688.4639999999999
+japan,2001,total,I033,0-14,0.43900000000000006
+japan,2001,total,I033,15-39,16.536
+japan,2001,total,I033,40-64,252.82800000000003
+japan,2001,total,I033,65 and above,3069.5950000000003
+japan,2002,males,I033,total,907.164
+japan,2002,males,I033,0-14,0.329
+japan,2002,males,I033,15-39,27.478
+japan,2002,males,I033,40-64,407.392
+japan,2002,males,I033,65 and above,3908.294
+japan,2002,females,I033,total,493.404
+japan,2002,females,I033,0-14,0
+japan,2002,females,I033,15-39,6.418
+japan,2002,females,I033,40-64,97.579
+japan,2002,females,I033,65 and above,2352.438
+japan,2002,total,I033,total,664.395
+japan,2002,total,I033,0-14,0.168
+japan,2002,total,I033,15-39,17.093
+japan,2002,total,I033,40-64,250.489
+japan,2002,total,I033,65 and above,2949.5150000000003
+japan,2003,males,I033,total,899.303
+japan,2003,males,I033,0-14,0.443
+japan,2003,males,I033,15-39,26.962999999999997
+japan,2003,males,I033,40-64,404.135
+japan,2003,males,I033,65 and above,3874.298
+japan,2003,females,I033,total,483.663
+japan,2003,females,I033,0-14,0.58
+japan,2003,females,I033,15-39,5.502
+japan,2003,females,I033,40-64,94.241
+japan,2003,females,I033,65 and above,2309.201
+japan,2003,total,I033,total,655.1780000000001
+japan,2003,total,I033,0-14,0.51
+japan,2003,total,I033,15-39,16.379
+japan,2003,total,I033,40-64,247.314
+japan,2003,total,I033,65 and above,2908.556
+japan,2004,males,I033,total,842.033
+japan,2004,males,I033,0-14,0.22
+japan,2004,males,I033,15-39,28.507
+japan,2004,males,I033,40-64,386.853
+japan,2004,males,I033,65 and above,3608.024
+japan,2004,females,I033,total,448.59599999999995
+japan,2004,females,I033,0-14,0.12
+japan,2004,females,I033,15-39,5.736000000000001
+japan,2004,females,I033,40-64,90.928
+japan,2004,females,I033,65 and above,2135.064
+japan,2004,total,I033,total,612.448
+japan,2004,total,I033,0-14,0.171
+japan,2004,total,I033,15-39,17.284
+japan,2004,total,I033,40-64,237.123
+japan,2004,total,I033,65 and above,2705.774
+japan,2005,males,I033,total,879.3489999999999
+japan,2005,males,I033,0-14,0.35
+japan,2005,males,I033,15-39,26.904
+japan,2005,males,I033,40-64,411.397
+japan,2005,males,I033,65 and above,3759.664
+japan,2005,females,I033,total,459.602
+japan,2005,females,I033,0-14,0.239
+japan,2005,females,I033,15-39,6.254
+japan,2005,females,I033,40-64,90.455
+japan,2005,females,I033,65 and above,2191.3950000000004
+japan,2005,total,I033,total,633.401
+japan,2005,total,I033,0-14,0.29600000000000004
+japan,2005,total,I033,15-39,16.724999999999998
+japan,2005,total,I033,40-64,249.079
+japan,2005,total,I033,65 and above,2793.4770000000003
+japan,2006,males,I033,total,836.824
+japan,2006,males,I033,0-14,0.345
+japan,2006,males,I033,15-39,24.568
+japan,2006,males,I033,40-64,405.22
+japan,2006,males,I033,65 and above,3555.9190000000003
+japan,2006,females,I033,total,435.674
+japan,2006,females,I033,0-14,0.24700000000000005
+japan,2006,females,I033,15-39,6.21
+japan,2006,females,I033,40-64,93.725
+japan,2006,females,I033,65 and above,2063.135
+japan,2006,total,I033,total,602.477
+japan,2006,total,I033,0-14,0.29800000000000004
+japan,2006,total,I033,15-39,15.522
+japan,2006,total,I033,40-64,247.742
+japan,2006,total,I033,65 and above,2639.097
+japan,2007,males,I033,total,806.2730000000001
+japan,2007,males,I033,0-14,0.588
+japan,2007,males,I033,15-39,23.918
+japan,2007,males,I033,40-64,385.912
+japan,2007,males,I033,65 and above,3433.2479999999996
+japan,2007,females,I033,total,418.185
+japan,2007,females,I033,0-14,0.246
+japan,2007,females,I033,15-39,6.98
+japan,2007,females,I033,40-64,87.902
+japan,2007,females,I033,65 and above,1982.23
+japan,2007,total,I033,total,580.0840000000001
+japan,2007,total,I033,0-14,0.422
+japan,2007,total,I033,15-39,15.585
+japan,2007,total,I033,40-64,235.421
+japan,2007,total,I033,65 and above,2545.2239999999997
+japan,2008,males,I033,total,807.081
+japan,2008,males,I033,0-14,0.465
+japan,2008,males,I033,15-39,23.895
+japan,2008,males,I033,40-64,391.64900000000006
+japan,2008,males,I033,65 and above,3427.676
+japan,2008,females,I033,total,407.374
+japan,2008,females,I033,0-14,0.245
+japan,2008,females,I033,15-39,5.721
+japan,2008,females,I033,40-64,83.99400000000001
+japan,2008,females,I033,65 and above,1935.503
+japan,2008,total,I033,total,572.8549999999999
+japan,2008,total,I033,0-14,0.358
+japan,2008,total,I033,15-39,14.957
+japan,2008,total,I033,40-64,236.436
+japan,2008,total,I033,65 and above,2507.464
+japan,2009,males,I033,total,773.8569999999999
+japan,2009,males,I033,0-14,0.242
+japan,2009,males,I033,15-39,21.816000000000003
+japan,2009,males,I033,40-64,384.883
+japan,2009,males,I033,65 and above,3272.407
+japan,2009,females,I033,total,384.52
+japan,2009,females,I033,0-14,0.123
+japan,2009,females,I033,15-39,5.181
+japan,2009,females,I033,40-64,81.124
+japan,2009,females,I033,65 and above,1824.193
+japan,2009,total,I033,total,547.7330000000001
+japan,2009,total,I033,0-14,0.184
+japan,2009,total,I033,15-39,13.645
+japan,2009,total,I033,40-64,231.847
+japan,2009,total,I033,65 and above,2388.7439999999997
+japan,2010,males,I033,total,769.064
+japan,2010,males,I033,0-14,0.366
+japan,2010,males,I033,15-39,22.27
+japan,2010,males,I033,40-64,380.251
+japan,2010,males,I033,65 and above,3254.96
+japan,2010,females,I033,total,380.819
+japan,2010,females,I033,0-14,0.252
+japan,2010,females,I033,15-39,5.861999999999999
+japan,2010,females,I033,40-64,82.012
+japan,2010,females,I033,65 and above,1802.498
+japan,2010,total,I033,total,543.7700000000001
+japan,2010,total,I033,0-14,0.31
+japan,2010,total,I033,15-39,14.21
+japan,2010,total,I033,40-64,230.1
+japan,2010,total,I033,65 and above,2370.418
+japan,2011,males,I033,total,765.256
+japan,2011,males,I033,0-14,0.473
+japan,2011,males,I033,15-39,23.879
+japan,2011,males,I033,40-64,388.29099999999994
+japan,2011,males,I033,65 and above,3218.974
+japan,2011,females,I033,total,366.858
+japan,2011,females,I033,0-14,0.252
+japan,2011,females,I033,15-39,4.5360000000000005
+japan,2011,females,I033,40-64,81.23400000000001
+japan,2011,females,I033,65 and above,1734.347
+japan,2011,total,I033,total,533.668
+japan,2011,total,I033,0-14,0.365
+japan,2011,total,I033,15-39,14.381
+japan,2011,total,I033,40-64,233.829
+japan,2011,total,I033,65 and above,2311.8930000000005
+japan,2012,males,I033,total,744.9569999999999
+japan,2012,males,I033,0-14,0.8600000000000001
+japan,2012,males,I033,15-39,22.592
+japan,2012,males,I033,40-64,379.826
+japan,2012,males,I033,65 and above,3131.147
+japan,2012,females,I033,total,355.71
+japan,2012,females,I033,0-14,0.391
+japan,2012,females,I033,15-39,4.4750000000000005
+japan,2012,females,I033,40-64,77.282
+japan,2012,females,I033,65 and above,1683.95
+japan,2012,total,I033,total,519.196
+japan,2012,total,I033,0-14,0.631
+japan,2012,total,I033,15-39,13.694
+japan,2012,total,I033,40-64,227.724
+japan,2012,total,I033,65 and above,2249.038
+japan,2013,males,I033,total,700.4649999999999
+japan,2013,males,I033,0-14,0.643
+japan,2013,males,I033,15-39,22.361
+japan,2013,males,I033,40-64,367.002
+japan,2013,males,I033,65 and above,2925.558
+japan,2013,females,I033,total,334.097
+japan,2013,females,I033,0-14,0.256
+japan,2013,females,I033,15-39,5.46
+japan,2013,females,I033,40-64,75.024
+japan,2013,females,I033,65 and above,1575.544
+japan,2013,total,I033,total,489.7159999999999
+japan,2013,total,I033,0-14,0.454
+japan,2013,total,I033,15-39,14.063
+japan,2013,total,I033,40-64,220.319
+japan,2013,total,I033,65 and above,2110.138
+japan,2014,males,I033,total,681.995
+japan,2014,males,I033,0-14,0.134
+japan,2014,males,I033,15-39,19.803
+japan,2014,males,I033,40-64,358.629
+japan,2014,males,I033,65 and above,2849.711
+japan,2014,females,I033,total,318.96999999999997
+japan,2014,females,I033,0-14,0.506
+japan,2014,females,I033,15-39,4.611999999999999
+japan,2014,females,I033,40-64,73.94000000000001
+japan,2014,females,I033,65 and above,1500.973
+japan,2014,total,I033,total,473.045
+japan,2014,total,I033,0-14,0.316
+japan,2014,total,I033,15-39,12.341
+japan,2014,total,I033,40-64,215.732
+japan,2014,total,I033,65 and above,2035.38
+japan,2015,males,I033,total,652.7040000000001
+japan,2015,males,I033,0-14,0.514
+japan,2015,males,I033,15-39,17.455
+japan,2015,males,I033,40-64,345.409
+japan,2015,males,I033,65 and above,2725.636
+japan,2015,females,I033,total,297.30400000000003
+japan,2015,females,I033,0-14,0.128
+japan,2015,females,I033,15-39,3.922
+japan,2015,females,I033,40-64,66.287
+japan,2015,females,I033,65 and above,1404.418
+japan,2015,total,I033,total,448.939
+japan,2015,total,I033,0-14,0.325
+japan,2015,total,I033,15-39,10.805
+japan,2015,total,I033,40-64,205.429
+japan,2015,total,I033,65 and above,1931.891
+japan,2016,males,I033,total,628.611
+japan,2016,males,I033,0-14,0.123
+japan,2016,males,I033,15-39,16.518
+japan,2016,males,I033,40-64,338.341
+japan,2016,males,I033,65 and above,2616.034
+japan,2016,females,I033,total,285.30400000000003
+japan,2016,females,I033,0-14,0.544
+japan,2016,females,I033,15-39,4.678
+japan,2016,females,I033,40-64,63.976
+japan,2016,females,I033,65 and above,1345.306
+japan,2016,total,I033,total,432.779
+japan,2016,total,I033,0-14,0.329
+japan,2016,total,I033,15-39,10.7
+japan,2016,total,I033,40-64,200.878
+japan,2016,total,I033,65 and above,1857.002
+japan,2017,males,I033,total,614.05
+japan,2017,males,I033,0-14,0.14900000000000002
+japan,2017,males,I033,15-39,15.045
+japan,2017,males,I033,40-64,328.577
+japan,2017,males,I033,65 and above,2560.4550000000004
+japan,2017,females,I033,total,271.47799999999995
+japan,2017,females,I033,0-14,0
+japan,2017,females,I033,15-39,3.383
+japan,2017,females,I033,40-64,59.275000000000006
+japan,2017,females,I033,65 and above,1284.984
+japan,2017,total,I033,total,418.907
+japan,2017,total,I033,0-14,0.07700000000000001
+japan,2017,total,I033,15-39,9.318
+japan,2017,total,I033,40-64,193.803
+japan,2017,total,I033,65 and above,1800.4250000000002
+japan,2018,males,I033,total,606.829
+japan,2018,males,I033,0-14,0.28
+japan,2018,males,I033,15-39,13.027
+japan,2018,males,I033,40-64,321.97799999999995
+japan,2018,males,I033,65 and above,2537.865
+japan,2018,females,I033,total,265.03099999999995
+japan,2018,females,I033,0-14,0.43900000000000006
+japan,2018,females,I033,15-39,3.653
+japan,2018,females,I033,40-64,61.107
+japan,2018,females,I033,65 and above,1247.985
+japan,2018,total,I033,total,412.42
+japan,2018,total,I033,0-14,0.357
+japan,2018,total,I033,15-39,8.423
+japan,2018,total,I033,40-64,191.474
+japan,2018,total,I033,65 and above,1772.35
+japan,2019,males,I033,total,577.148
+japan,2019,males,I033,0-14,0.73
+japan,2019,males,I033,15-39,13.297999999999998
+japan,2019,males,I033,40-64,322.58299999999997
+japan,2019,males,I033,65 and above,2383.8100000000004
+japan,2019,females,I033,total,247.71899999999997
+japan,2019,females,I033,0-14,0.29100000000000004
+japan,2019,females,I033,15-39,2.8899999999999997
+japan,2019,females,I033,40-64,60.956
+japan,2019,females,I033,65 and above,1160.805
+japan,2019,total,I033,total,391.514
+japan,2019,total,I033,0-14,0.516
+japan,2019,total,I033,15-39,8.187
+japan,2019,total,I033,40-64,191.807
+japan,2019,total,I033,65 and above,1664.811
+japan,2020,males,I033,total,577.5269999999999
+japan,2020,males,I033,0-14,0.553
+japan,2020,males,I033,15-39,13.243999999999998
+japan,2020,males,I033,40-64,329.316
+japan,2020,males,I033,65 and above,2374.418
+japan,2020,females,I033,total,239.041
+japan,2020,females,I033,0-14,0.14700000000000002
+japan,2020,females,I033,15-39,3.405
+japan,2020,females,I033,40-64,56.531
+japan,2020,females,I033,65 and above,1123.2
+japan,2020,total,I033,total,387.224
+japan,2020,total,I033,0-14,0.355
+japan,2020,total,I033,15-39,8.414
+japan,2020,total,I033,40-64,193.121
+japan,2020,total,I033,65 and above,1640.326
+japan,2021,males,I033,total,577.155
+japan,2021,males,I033,0-14,0.7959999999999999
+japan,2021,males,I033,15-39,13.047
+japan,2021,males,I033,40-64,331.092
+japan,2021,males,I033,65 and above,2369.578
+japan,2021,females,I033,total,235.918
+japan,2021,females,I033,0-14,0
+japan,2021,females,I033,15-39,2.4789999999999996
+japan,2021,females,I033,40-64,55.114
+japan,2021,females,I033,65 and above,1111.213
+japan,2021,total,I033,total,385.758
+japan,2021,total,I033,0-14,0.408
+japan,2021,total,I033,15-39,7.859
+japan,2021,total,I033,40-64,193.337
+japan,2021,total,I033,65 and above,1633.273
+united states,1979,males,I033,total,7058.357
+united states,1979,males,I033,0-14,1.801
+united states,1979,males,I033,15-39,100.504
+united states,1979,males,I033,40-64,3673.262
+united states,1979,males,I033,65 and above,29724.976
+united states,1979,females,I033,total,4027.802
+united states,1979,females,I033,0-14,1.315
+united states,1979,females,I033,15-39,23.65
+united states,1979,females,I033,40-64,1075.502
+united states,1979,females,I033,65 and above,18769.06
+united states,1979,total,I033,total,5264.965
+united states,1979,total,I033,0-14,1.563
+united states,1979,total,I033,15-39,61.474
+united states,1979,total,I033,40-64,2303.456
+united states,1979,total,I033,65 and above,22943.588000000003
+united states,1980,males,I033,total,7080.173
+united states,1980,males,I033,0-14,1.849
+united states,1980,males,I033,15-39,94.167
+united states,1980,males,I033,40-64,3552.042
+united states,1980,males,I033,65 and above,30055.136
+united states,1980,females,I033,total,4093.278
+united states,1980,females,I033,0-14,1.6760000000000002
+united states,1980,females,I033,15-39,20.401999999999997
+united states,1980,females,I033,40-64,1075.06
+united states,1980,females,I033,65 and above,19110.463000000003
+united states,1980,total,I033,total,5305.07
+united states,1980,total,I033,0-14,1.764
+united states,1980,total,I033,15-39,56.731
+united states,1980,total,I033,40-64,2246.19
+united states,1980,total,I033,65 and above,23255.014
+united states,1981,males,I033,total,6805.129000000001
+united states,1981,males,I033,0-14,2.633
+united states,1981,males,I033,15-39,94.908
+united states,1981,males,I033,40-64,3422.047
+united states,1981,males,I033,65 and above,28866.157
+united states,1981,females,I033,total,3911.247
+united states,1981,females,I033,0-14,1.549
+united states,1981,females,I033,15-39,21.913
+united states,1981,females,I033,40-64,1047.169
+united states,1981,females,I033,65 and above,18222.589
+united states,1981,total,I033,total,5083.026000000001
+united states,1981,total,I033,0-14,2.104
+united states,1981,total,I033,15-39,57.876
+united states,1981,total,I033,40-64,2170.8900000000003
+united states,1981,total,I033,65 and above,22243.588000000003
+united states,1982,males,I033,total,6596.574
+united states,1982,males,I033,0-14,2.506
+united states,1982,males,I033,15-39,91.308
+united states,1982,males,I033,40-64,3291.5530000000003
+united states,1982,males,I033,65 and above,28026.651
+united states,1982,females,I033,total,3805.286
+united states,1982,females,I033,0-14,2.3339999999999996
+united states,1982,females,I033,15-39,20.373
+united states,1982,females,I033,40-64,1010.864
+united states,1982,females,I033,65 and above,17743.373
+united states,1982,total,I033,total,4934.876
+united states,1982,total,I033,0-14,2.4219999999999997
+united states,1982,total,I033,15-39,55.366
+united states,1982,total,I033,40-64,2090.679
+united states,1982,total,I033,65 and above,21625.37
+united states,1983,males,I033,total,6509.539
+united states,1983,males,I033,0-14,2.5309999999999997
+united states,1983,males,I033,15-39,85.52499999999999
+united states,1983,males,I033,40-64,3181.489
+united states,1983,males,I033,65 and above,27778.578
+united states,1983,females,I033,total,3768.686
+united states,1983,females,I033,0-14,2.117
+united states,1983,females,I033,15-39,18.617000000000004
+united states,1983,females,I033,40-64,999.277
+united states,1983,females,I033,65 and above,17578.554
+united states,1983,total,I033,total,4872.798
+united states,1983,total,I033,0-14,2.3289999999999997
+united states,1983,total,I033,15-39,51.633
+united states,1983,total,I033,40-64,2033.221
+united states,1983,total,I033,65 and above,21411.745000000003
+united states,1984,males,I033,total,6256.14
+united states,1984,males,I033,0-14,2.526
+united states,1984,males,I033,15-39,82.48100000000001
+united states,1984,males,I033,40-64,3051.922
+united states,1984,males,I033,65 and above,26706.527
+united states,1984,females,I033,total,3630.488
+united states,1984,females,I033,0-14,1.664
+united states,1984,females,I033,15-39,19.078
+united states,1984,females,I033,40-64,959.321
+united states,1984,females,I033,65 and above,16938.128999999997
+united states,1984,total,I033,total,4684.349
+united states,1984,total,I033,0-14,2.105
+united states,1984,total,I033,15-39,50.391
+united states,1984,total,I033,40-64,1951.388
+united states,1984,total,I033,65 and above,20588.085000000003
+united states,1985,males,I033,total,6109.211
+united states,1985,males,I033,0-14,1.517
+united states,1985,males,I033,15-39,81.365
+united states,1985,males,I033,40-64,2941.233
+united states,1985,males,I033,65 and above,26145.806
+united states,1985,females,I033,total,3528.771
+united states,1985,females,I033,0-14,1.124
+united states,1985,females,I033,15-39,19.228
+united states,1985,females,I033,40-64,922.924
+united states,1985,females,I033,65 and above,16479.233
+united states,1985,total,I033,total,4562.6630000000005
+united states,1985,total,I033,0-14,1.325
+united states,1985,total,I033,15-39,49.945
+united states,1985,total,I033,40-64,1880.436
+united states,1985,total,I033,65 and above,20087.291
+united states,1986,males,I033,total,5799.8910000000005
+united states,1986,males,I033,0-14,1.596
+united states,1986,males,I033,15-39,80.27199999999999
+united states,1986,males,I033,40-64,2782.8370000000004
+united states,1986,males,I033,65 and above,24833.337
+united states,1986,females,I033,total,3397.653
+united states,1986,females,I033,0-14,1.035
+united states,1986,females,I033,15-39,19.069
+united states,1986,females,I033,40-64,886.9169999999999
+united states,1986,females,I033,65 and above,15869.02
+united states,1986,total,I033,total,4363.571
+united states,1986,total,I033,0-14,1.322
+united states,1986,total,I033,15-39,49.35699999999999
+united states,1986,total,I033,40-64,1786.754
+united states,1986,total,I033,65 and above,19228.188
+united states,1987,males,I033,total,5602.9220000000005
+united states,1987,males,I033,0-14,1.392
+united states,1987,males,I033,15-39,74.94400000000002
+united states,1987,males,I033,40-64,2647.3710000000005
+united states,1987,males,I033,65 and above,24064.601
+united states,1987,females,I033,total,3293.9370000000004
+united states,1987,females,I033,0-14,1.386
+united states,1987,females,I033,15-39,18.648
+united states,1987,females,I033,40-64,862.858
+united states,1987,females,I033,65 and above,15378.854
+united states,1987,total,I033,total,4219.631
+united states,1987,total,I033,0-14,1.389
+united states,1987,total,I033,15-39,46.54
+united states,1987,total,I033,40-64,1710.523
+united states,1987,total,I033,65 and above,18625.415
+united states,1988,males,I033,total,5486.249
+united states,1988,males,I033,0-14,1.521
+united states,1988,males,I033,15-39,71.035
+united states,1988,males,I033,40-64,2511.598
+united states,1988,males,I033,65 and above,23705.638999999996
+united states,1988,females,I033,total,3231.586
+united states,1988,females,I033,0-14,1.38
+united states,1988,females,I033,15-39,17.499
+united states,1988,females,I033,40-64,836.287
+united states,1988,females,I033,65 and above,15106.586
+united states,1988,total,I033,total,4131.894
+united states,1988,total,I033,0-14,1.452
+united states,1988,total,I033,15-39,44.048
+united states,1988,total,I033,40-64,1632.732
+united states,1988,total,I033,65 and above,18313.033
+united states,1989,males,I033,total,5240.875
+united states,1989,males,I033,0-14,1.396
+united states,1989,males,I033,15-39,65.553
+united states,1989,males,I033,40-64,2420.349
+united states,1989,males,I033,65 and above,22612.886
+united states,1989,females,I033,total,3090.3920000000003
+united states,1989,females,I033,0-14,1.148
+united states,1989,females,I033,15-39,16.669
+united states,1989,females,I033,40-64,792.626
+united states,1989,females,I033,65 and above,14459.032
+united states,1989,total,I033,total,3951.744
+united states,1989,total,I033,0-14,1.275
+united states,1989,total,I033,15-39,40.929
+united states,1989,total,I033,40-64,1567.6829999999998
+united states,1989,total,I033,65 and above,17506.04
+united states,1990,males,I033,total,5047.368
+united states,1990,males,I033,0-14,1.377
+united states,1990,males,I033,15-39,61.667
+united states,1990,males,I033,40-64,2312.025
+united states,1990,males,I033,65 and above,21812.833
+united states,1990,females,I033,total,2959.018
+united states,1990,females,I033,0-14,1.279
+united states,1990,females,I033,15-39,16.706
+united states,1990,females,I033,40-64,764.625
+united states,1990,females,I033,65 and above,13833.259
+united states,1990,total,I033,total,3792.936
+united states,1990,total,I033,0-14,1.329
+united states,1990,total,I033,15-39,39.045
+united states,1990,total,I033,40-64,1502.589
+united states,1990,total,I033,65 and above,16806.422000000002
+united states,1991,males,I033,total,4905.396000000001
+united states,1991,males,I033,0-14,1.362
+united states,1991,males,I033,15-39,62.388
+united states,1991,males,I033,40-64,2232.8340000000003
+united states,1991,males,I033,65 and above,21219.684
+united states,1991,females,I033,total,2878.082
+united states,1991,females,I033,0-14,1.142
+united states,1991,females,I033,15-39,18.204
+united states,1991,females,I033,40-64,747.543
+united states,1991,females,I033,65 and above,13445.279
+united states,1991,total,I033,total,3688.441
+united states,1991,total,I033,0-14,1.254
+united states,1991,total,I033,15-39,40.187
+united states,1991,total,I033,40-64,1457.233
+united states,1991,total,I033,65 and above,16346.715
+united states,1992,males,I033,total,4753.415
+united states,1992,males,I033,0-14,1.278
+united states,1992,males,I033,15-39,61.114
+united states,1992,males,I033,40-64,2160.386
+united states,1992,males,I033,65 and above,20566.85
+united states,1992,females,I033,total,2780.738
+united states,1992,females,I033,0-14,0.995
+united states,1992,females,I033,15-39,17.875
+united states,1992,females,I033,40-64,725.03
+united states,1992,females,I033,65 and above,12985.398
+united states,1992,total,I033,total,3569.0330000000004
+united states,1992,total,I033,0-14,1.14
+united states,1992,total,I033,15-39,39.409
+united states,1992,total,I033,40-64,1412.079
+united states,1992,total,I033,65 and above,15813.266
+united states,1993,males,I033,total,4763.878
+united states,1993,males,I033,0-14,1.378
+united states,1993,males,I033,15-39,60.479
+united states,1993,males,I033,40-64,2134.983
+united states,1993,males,I033,65 and above,20665.074
+united states,1993,females,I033,total,2804.235
+united states,1993,females,I033,0-14,1.064
+united states,1993,females,I033,15-39,18.947999999999997
+united states,1993,females,I033,40-64,721.711
+united states,1993,females,I033,65 and above,13109.836
+united states,1993,total,I033,total,3589.396
+united states,1993,total,I033,0-14,1.225
+united states,1993,total,I033,15-39,39.661
+united states,1993,total,I033,40-64,1399.15
+united states,1993,total,I033,65 and above,15939.438
+united states,1994,males,I033,total,4594.893
+united states,1994,males,I033,0-14,1.179
+united states,1994,males,I033,15-39,60.743
+united states,1994,males,I033,40-64,2060.187
+united states,1994,males,I033,65 and above,19926.726
+united states,1994,females,I033,total,2706.677
+united states,1994,females,I033,0-14,1.137
+united states,1994,females,I033,15-39,19.516
+united states,1994,females,I033,40-64,702.829
+united states,1994,females,I033,65 and above,12641.014
+united states,1994,total,I033,total,3462.985
+united states,1994,total,I033,0-14,1.159
+united states,1994,total,I033,15-39,40.08
+united states,1994,total,I033,40-64,1354.1989999999998
+united states,1994,total,I033,65 and above,15367.784
+united states,1995,males,I033,total,4494.348
+united states,1995,males,I033,0-14,1.088
+united states,1995,males,I033,15-39,60.571
+united states,1995,males,I033,40-64,2007.161
+united states,1995,males,I033,65 and above,19502.555
+united states,1995,females,I033,total,2663.3930000000005
+united states,1995,females,I033,0-14,0.996
+united states,1995,females,I033,15-39,19.802
+united states,1995,females,I033,40-64,684.072
+united states,1995,females,I033,65 and above,12450.925
+united states,1995,total,I033,total,3400.7679999999996
+united states,1995,total,I033,0-14,1.043
+united states,1995,total,I033,15-39,40.157
+united states,1995,total,I033,40-64,1319.8539999999998
+united states,1995,total,I033,65 and above,15107.701
+united states,1996,males,I033,total,4364.451
+united states,1996,males,I033,0-14,1.009
+united states,1996,males,I033,15-39,59.785
+united states,1996,males,I033,40-64,1942.789
+united states,1996,males,I033,65 and above,18948.315
+united states,1996,females,I033,total,2577.028
+united states,1996,females,I033,0-14,1.207
+united states,1996,females,I033,15-39,18.886
+united states,1996,females,I033,40-64,676.0409999999999
+united states,1996,females,I033,65 and above,12023.111
+united states,1996,total,I033,total,3294.733
+united states,1996,total,I033,0-14,1.105
+united states,1996,total,I033,15-39,39.318
+united states,1996,total,I033,40-64,1285.196
+united states,1996,total,I033,65 and above,14624.755
+united states,1997,males,I033,total,4205.929
+united states,1997,males,I033,0-14,1.1780000000000002
+united states,1997,males,I033,15-39,56.005
+united states,1997,males,I033,40-64,1843.427
+united states,1997,males,I033,65 and above,18311.953
+united states,1997,females,I033,total,2479.0170000000003
+united states,1997,females,I033,0-14,0.946
+united states,1997,females,I033,15-39,18.478
+united states,1997,females,I033,40-64,639.415
+united states,1997,females,I033,65 and above,11584.272
+united states,1997,total,I033,total,3173.278
+united states,1997,total,I033,0-14,1.065
+united states,1997,total,I033,15-39,37.232000000000006
+united states,1997,total,I033,40-64,1219.3819999999998
+united states,1997,total,I033,65 and above,14118.322
+united states,1998,males,I033,total,4071.098
+united states,1998,males,I033,0-14,1.254
+united states,1998,males,I033,15-39,55.61
+united states,1998,males,I033,40-64,1739.8539999999998
+united states,1998,males,I033,65 and above,17799.014
+united states,1998,females,I033,total,2413.842
+united states,1998,females,I033,0-14,0.8670000000000001
+united states,1998,females,I033,15-39,18.461999999999996
+united states,1998,females,I033,40-64,609.3409999999999
+united states,1998,females,I033,65 and above,11301.801
+united states,1998,total,I033,total,3081.231
+united states,1998,total,I033,0-14,1.065
+united states,1998,total,I033,15-39,37.029
+united states,1998,total,I033,40-64,1154.6519999999998
+united states,1998,total,I033,65 and above,13757.81
+united states,1999,males,I033,total,4026.482
+united states,1999,males,I033,0-14,1.1
+united states,1999,males,I033,15-39,53.666
+united states,1999,males,I033,40-64,1687.776
+united states,1999,males,I033,65 and above,17662.896
+united states,1999,females,I033,total,2407.047
+united states,1999,females,I033,0-14,0.732
+united states,1999,females,I033,15-39,18.509
+united states,1999,females,I033,40-64,596.292
+united states,1999,females,I033,65 and above,11289.409
+united states,1999,total,I033,total,3060.365
+united states,1999,total,I033,0-14,0.921
+united states,1999,total,I033,15-39,36.089
+united states,1999,total,I033,40-64,1123.379
+united states,1999,total,I033,65 and above,13706.142000000002
+united states,2000,males,I033,total,3864.003
+united states,2000,males,I033,0-14,1.094
+united states,2000,males,I033,15-39,50.938
+united states,2000,males,I033,40-64,1631.897
+united states,2000,males,I033,65 and above,16930.01
+united states,2000,females,I033,total,2309.8450000000003
+united states,2000,females,I033,0-14,0.7989999999999999
+united states,2000,females,I033,15-39,17.479999999999997
+united states,2000,females,I033,40-64,571.7700000000001
+united states,2000,females,I033,65 and above,10834.641
+united states,2000,total,I033,total,2937.936
+united states,2000,total,I033,0-14,0.95
+united states,2000,total,I033,15-39,34.22200000000001
+united states,2000,total,I033,40-64,1084.198
+united states,2000,total,I033,65 and above,13148.557
+united states,2001,males,I033,total,3691.119
+united states,2001,males,I033,0-14,1.08
+united states,2001,males,I033,15-39,54.982
+united states,2001,males,I033,40-64,1555.704
+united states,2001,males,I033,65 and above,16167.902
+united states,2001,females,I033,total,2220.961
+united states,2001,females,I033,0-14,0.758
+united states,2001,females,I033,15-39,18.478
+united states,2001,females,I033,40-64,550.496
+united states,2001,females,I033,65 and above,10413.823
+united states,2001,total,I033,total,2817.697
+united states,2001,total,I033,0-14,0.923
+united states,2001,total,I033,15-39,36.759
+united states,2001,total,I033,40-64,1036.6839999999995
+united states,2001,total,I033,65 and above,12609.565
+united states,2002,males,I033,total,3599.3920000000003
+united states,2002,males,I033,0-14,1.038
+united states,2002,males,I033,15-39,53.06
+united states,2002,males,I033,40-64,1519.958
+united states,2002,males,I033,65 and above,15762.008
+united states,2002,females,I033,total,2133.275
+united states,2002,females,I033,0-14,0.617
+united states,2002,females,I033,15-39,17.735
+united states,2002,females,I033,40-64,530.763
+united states,2002,females,I033,65 and above,9999.35
+united states,2002,total,I033,total,2726.154
+united states,2002,total,I033,0-14,0.8320000000000001
+united states,2002,total,I033,15-39,35.410999999999994
+united states,2002,total,I033,40-64,1009.602
+united states,2002,total,I033,65 and above,12188.854
+united states,2003,males,I033,total,3429.19
+united states,2003,males,I033,0-14,0.948
+united states,2003,males,I033,15-39,54.898
+united states,2003,males,I033,40-64,1461.515
+united states,2003,males,I033,65 and above,14986.732000000002
+united states,2003,females,I033,total,2037.66
+united states,2003,females,I033,0-14,1.008
+united states,2003,females,I033,15-39,18.15
+united states,2003,females,I033,40-64,508.511
+united states,2003,females,I033,65 and above,9546.262
+united states,2003,total,I033,total,2603.681
+united states,2003,total,I033,0-14,0.977
+united states,2003,total,I033,15-39,36.536
+united states,2003,total,I033,40-64,970.133
+united states,2003,total,I033,65 and above,11626.686
+united states,2004,males,I033,total,3174.3190000000004
+united states,2004,males,I033,0-14,0.588
+united states,2004,males,I033,15-39,51.574
+united states,2004,males,I033,40-64,1371.255
+united states,2004,males,I033,65 and above,13840.343
+united states,2004,females,I033,total,1872.845
+united states,2004,females,I033,0-14,0.752
+united states,2004,females,I033,15-39,17.578
+united states,2004,females,I033,40-64,477.602
+united states,2004,females,I033,65 and above,8755.273000000001
+united states,2004,total,I033,total,2401.956
+united states,2004,total,I033,0-14,0.6679999999999999
+united states,2004,total,I033,15-39,34.597
+united states,2004,total,I033,40-64,910.681
+united states,2004,total,I033,65 and above,10697.67
+united states,2005,males,I033,total,3088.57
+united states,2005,males,I033,0-14,0.657
+united states,2005,males,I033,15-39,50.782
+united states,2005,males,I033,40-64,1346.543
+united states,2005,males,I033,65 and above,13444.26
+united states,2005,females,I033,total,1807.165
+united states,2005,females,I033,0-14,0.481
+united states,2005,females,I033,15-39,16.43
+united states,2005,females,I033,40-64,466.92099999999994
+united states,2005,females,I033,65 and above,8438.851999999999
+united states,2005,total,I033,total,2327.2839999999997
+united states,2005,total,I033,0-14,0.5710000000000001
+united states,2005,total,I033,15-39,33.634
+united states,2005,total,I033,40-64,893.4219999999999
+united states,2005,total,I033,65 and above,10345.997
+united states,2006,males,I033,total,2898.585
+united states,2006,males,I033,0-14,0.8680000000000001
+united states,2006,males,I033,15-39,50.806
+united states,2006,males,I033,40-64,1295.287
+united states,2006,males,I033,65 and above,12557.821
+united states,2006,females,I033,total,1671.962
+united states,2006,females,I033,0-14,0.505
+united states,2006,females,I033,15-39,15.639
+united states,2006,females,I033,40-64,446.403
+united states,2006,females,I033,65 and above,7781.989
+united states,2006,total,I033,total,2173.167
+united states,2006,total,I033,0-14,0.69
+united states,2006,total,I033,15-39,33.243
+united states,2006,total,I033,40-64,858.234
+united states,2006,total,I033,65 and above,9616.629
+united states,2007,males,I033,total,2708.802
+united states,2007,males,I033,0-14,0.8420000000000001
+united states,2007,males,I033,15-39,48.575
+united states,2007,males,I033,40-64,1235.565
+united states,2007,males,I033,65 and above,11690.744000000002
+united states,2007,females,I033,total,1554.963
+united states,2007,females,I033,0-14,0.907
+united states,2007,females,I033,15-39,15.746
+united states,2007,females,I033,40-64,416.023
+united states,2007,females,I033,65 and above,7233.688
+united states,2007,total,I033,total,2029.329
+united states,2007,total,I033,0-14,0.8740000000000001
+united states,2007,total,I033,15-39,32.172000000000004
+united states,2007,total,I033,40-64,813.828
+united states,2007,total,I033,65 and above,8956.838
+united states,2008,males,I033,total,2648.349
+united states,2008,males,I033,0-14,0.749
+united states,2008,males,I033,15-39,46.885
+united states,2008,males,I033,40-64,1201.944
+united states,2008,males,I033,65 and above,11441.249000000002
+united states,2008,females,I033,total,1519.515
+united states,2008,females,I033,0-14,0.485
+united states,2008,females,I033,15-39,16.247
+united states,2008,females,I033,40-64,417.9779999999999
+united states,2008,females,I033,65 and above,7048.092000000001
+united states,2008,total,I033,total,1984.813
+united states,2008,total,I033,0-14,0.62
+united states,2008,total,I033,15-39,31.573
+united states,2008,total,I033,40-64,798.604
+united states,2008,total,I033,65 and above,8755.864999999998
+united states,2009,males,I033,total,2498.336
+united states,2009,males,I033,0-14,0.75
+united states,2009,males,I033,15-39,45.471
+united states,2009,males,I033,40-64,1147.929
+united states,2009,males,I033,65 and above,10766.996
+united states,2009,females,I033,total,1391.835
+united states,2009,females,I033,0-14,0.479
+united states,2009,females,I033,15-39,14.883
+united states,2009,females,I033,40-64,387.089
+united states,2009,females,I033,65 and above,6448.564
+united states,2009,total,I033,total,1847.863
+united states,2009,total,I033,0-14,0.617
+united states,2009,total,I033,15-39,30.171000000000003
+united states,2009,total,I033,40-64,756.587
+united states,2009,total,I033,65 and above,8127.972999999999
+united states,2010,males,I033,total,2399.366
+united states,2010,males,I033,0-14,0.716
+united states,2010,males,I033,15-39,46.261
+united states,2010,males,I033,40-64,1109.992
+united states,2010,males,I033,65 and above,10323.403
+united states,2010,females,I033,total,1328.572
+united states,2010,females,I033,0-14,0.407
+united states,2010,females,I033,15-39,14.115
+united states,2010,females,I033,40-64,375.777
+united states,2010,females,I033,65 and above,6144.851000000001
+united states,2010,total,I033,total,1771.8829999999998
+united states,2010,total,I033,0-14,0.5650000000000001
+united states,2010,total,I033,15-39,30.173
+united states,2010,total,I033,40-64,732.381
+united states,2010,total,I033,65 and above,7779.956999999999
+united states,2011,males,I033,total,2320.698
+united states,2011,males,I033,0-14,0.619
+united states,2011,males,I033,15-39,45.491
+united states,2011,males,I033,40-64,1088.762
+united states,2011,males,I033,65 and above,9957.75
+united states,2011,females,I033,total,1276.938
+united states,2011,females,I033,0-14,0.444
+united states,2011,females,I033,15-39,14.343
+united states,2011,females,I033,40-64,371.057
+united states,2011,females,I033,65 and above,5887.776
+united states,2011,total,I033,total,1712.219
+united states,2011,total,I033,0-14,0.534
+united states,2011,total,I033,15-39,29.91
+united states,2011,total,I033,40-64,719.624
+united states,2011,total,I033,65 and above,7496.345
+united states,2012,males,I033,total,2250.506
+united states,2012,males,I033,0-14,0.886
+united states,2012,males,I033,15-39,45.014
+united states,2012,males,I033,40-64,1077.451
+united states,2012,males,I033,65 and above,9617.763
+united states,2012,females,I033,total,1225.29
+united states,2012,females,I033,0-14,0.481
+united states,2012,females,I033,15-39,15.353000000000002
+united states,2012,females,I033,40-64,371.555
+united states,2012,females,I033,65 and above,5620.424
+united states,2012,total,I033,total,1653.526
+united states,2012,total,I033,0-14,0.688
+united states,2012,total,I033,15-39,30.182
+united states,2012,total,I033,40-64,714.1669999999999
+united states,2012,total,I033,65 and above,7204.171
+united states,2013,males,I033,total,2202.152
+united states,2013,males,I033,0-14,0.232
+united states,2013,males,I033,15-39,41.922
+united states,2013,males,I033,40-64,1062.657
+united states,2013,males,I033,65 and above,9400.66
+united states,2013,females,I033,total,1177.3719999999998
+united states,2013,females,I033,0-14,0.48
+united states,2013,females,I033,15-39,14.111
+united states,2013,females,I033,40-64,357.241
+united states,2013,females,I033,65 and above,5401.256
+united states,2013,total,I033,total,1607.6139999999998
+united states,2013,total,I033,0-14,0.353
+united states,2013,total,I033,15-39,28.026
+united states,2013,total,I033,40-64,699.531
+united states,2013,total,I033,65 and above,6997.57
+united states,2014,males,I033,total,2122.2279999999996
+united states,2014,males,I033,0-14,0.493
+united states,2014,males,I033,15-39,40.442
+united states,2014,males,I033,40-64,1044.765
+united states,2014,males,I033,65 and above,9023.67
+united states,2014,females,I033,total,1118.676
+united states,2014,females,I033,0-14,0.449
+united states,2014,females,I033,15-39,14.689
+united states,2014,females,I033,40-64,361.434
+united states,2014,females,I033,65 and above,5092.154
+united states,2014,total,I033,total,1541.156
+united states,2014,total,I033,0-14,0.471
+united states,2014,total,I033,15-39,27.6
+united states,2014,total,I033,40-64,692.9659999999999
+united states,2014,total,I033,65 and above,6668.620000000001
+united states,2015,males,I033,total,2084.868
+united states,2015,males,I033,0-14,0.461
+united states,2015,males,I033,15-39,41.224
+united states,2015,males,I033,40-64,1026.45
+united states,2015,males,I033,65 and above,8862.326
+united states,2015,females,I033,total,1098.965
+united states,2015,females,I033,0-14,0.552
+united states,2015,females,I033,15-39,15.087
+united states,2015,females,I033,40-64,363.67
+united states,2015,females,I033,65 and above,4986.5160000000005
+united states,2015,total,I033,total,1514.8839999999998
+united states,2015,total,I033,0-14,0.506
+united states,2015,total,I033,15-39,28.193
+united states,2015,total,I033,40-64,685.297
+united states,2015,total,I033,65 and above,6546.094
+united states,2016,males,I033,total,2029
+united states,2016,males,I033,0-14,0.464
+united states,2016,males,I033,15-39,39.485
+united states,2016,males,I033,40-64,1022.093
+united states,2016,males,I033,65 and above,8586.074999999999
+united states,2016,females,I033,total,1049.155
+united states,2016,females,I033,0-14,0.484
+united states,2016,females,I033,15-39,13.811
+united states,2016,females,I033,40-64,358.089
+united states,2016,females,I033,65 and above,4742.752
+united states,2016,total,I033,total,1464.868
+united states,2016,total,I033,0-14,0.473
+united states,2016,total,I033,15-39,26.694000000000003
+united states,2016,total,I033,40-64,680.43
+united states,2016,total,I033,65 and above,6300.371
+united states,2017,males,I033,total,2000.848
+united states,2017,males,I033,0-14,0.8650000000000001
+united states,2017,males,I033,15-39,39.159
+united states,2017,males,I033,40-64,1007.758
+united states,2017,males,I033,65 and above,8466.521
+united states,2017,females,I033,total,1022.201
+united states,2017,females,I033,0-14,0.523
+united states,2017,females,I033,15-39,13.706
+united states,2017,females,I033,40-64,351.765
+united states,2017,females,I033,65 and above,4615.526000000001
+united states,2017,total,I033,total,1439.6239999999998
+united states,2017,total,I033,0-14,0.698
+united states,2017,total,I033,15-39,26.491
+united states,2017,total,I033,40-64,670.241
+united states,2017,total,I033,65 and above,6188.562000000001
+united states,2018,males,I033,total,1957.648
+united states,2018,males,I033,0-14,0.366
+united states,2018,males,I033,15-39,39.062000000000005
+united states,2018,males,I033,40-64,1002.749
+united states,2018,males,I033,65 and above,8254.15
+united states,2018,females,I033,total,990.409
+united states,2018,females,I033,0-14,0.528
+united states,2018,females,I033,15-39,13.23
+united states,2018,females,I033,40-64,342.64900000000006
+united states,2018,females,I033,65 and above,4468.899
+united states,2018,total,I033,total,1405.1839999999995
+united states,2018,total,I033,0-14,0.445
+united states,2018,total,I033,15-39,26.217
+united states,2018,total,I033,40-64,663.259
+united states,2018,total,I033,65 and above,6024.583
+united states,2019,males,I033,total,1897.188
+united states,2019,males,I033,0-14,0.402
+united states,2019,males,I033,15-39,36.197
+united states,2019,males,I033,40-64,962.323
+united states,2019,males,I033,65 and above,8018.074
+united states,2019,females,I033,total,954.462
+united states,2019,females,I033,0-14,0.461
+united states,2019,females,I033,15-39,12.911
+united states,2019,females,I033,40-64,331.60400000000004
+united states,2019,females,I033,65 and above,4304.095
+united states,2019,total,I033,total,1359.719
+united states,2019,total,I033,0-14,0.4310000000000001
+united states,2019,total,I033,15-39,24.638
+united states,2019,total,I033,40-64,639.176
+united states,2019,total,I033,65 and above,5835.326000000001
+united states,2020,males,I033,total,1970.066
+united states,2020,males,I033,0-14,0.6799999999999999
+united states,2020,males,I033,15-39,40.753
+united states,2020,males,I033,40-64,1034.773
+united states,2020,males,I033,65 and above,8259.872
+united states,2020,females,I033,total,994.602
+united states,2020,females,I033,0-14,0.138
+united states,2020,females,I033,15-39,13.36
+united states,2020,females,I033,40-64,361.548
+united states,2020,females,I033,65 and above,4458.048
+united states,2020,total,I033,total,1418.14
+united states,2020,total,I033,0-14,0.415
+united states,2020,total,I033,15-39,27.195
+united states,2020,total,I033,40-64,692.095
+united states,2020,total,I033,65 and above,6039.956
+united states,2021,males,I033,total,1915.259
+united states,2021,males,I033,0-14,0.736
+united states,2021,males,I033,15-39,40.118
+united states,2021,males,I033,40-64,1030.329
+united states,2021,males,I033,65 and above,7987.409
+united states,2021,females,I033,total,951.645
+united states,2021,females,I033,0-14,0.46
+united states,2021,females,I033,15-39,14.461
+united states,2021,females,I033,40-64,363.322
+united states,2021,females,I033,65 and above,4232.697
+united states,2021,total,I033,total,1371.8339999999998
+united states,2021,total,I033,0-14,0.601
+united states,2021,total,I033,15-39,27.433
+united states,2021,total,I033,40-64,691.8919999999999
+united states,2021,total,I033,65 and above,5802.309
+united states,2022,males,I033,total,1855.723
+united states,2022,males,I033,0-14,0.48
+united states,2022,males,I033,15-39,38.741
+united states,2022,males,I033,40-64,969.895
+united states,2022,males,I033,65 and above,7788.315
+united states,2022,females,I033,total,924.722
+united states,2022,females,I033,0-14,0.361
+united states,2022,females,I033,15-39,12.706
+united states,2022,females,I033,40-64,347.883
+united states,2022,females,I033,65 and above,4124.023
+united states,2022,total,I033,total,1331.919
+united states,2022,total,I033,0-14,0.422
+united states,2022,total,I033,15-39,25.868
+united states,2022,total,I033,40-64,654.2790000000001
+united states,2022,total,I033,65 and above,5664.8640000000005
+united states,2023,males,I033,total,1711.018
+united states,2023,males,I033,0-14,0.698
+united states,2023,males,I033,15-39,35.478
+united states,2023,males,I033,40-64,904.351
+united states,2023,males,I033,65 and above,7163.849
+united states,2023,females,I033,total,842.4689999999999
+united states,2023,females,I033,0-14,0.362
+united states,2023,females,I033,15-39,11.295
+united states,2023,females,I033,40-64,320.327
+united states,2023,females,I033,65 and above,3751.793
+united states,2023,total,I033,total,1223.369
+united states,2023,total,I033,0-14,0.533
+united states,2023,total,I033,15-39,23.52
+united states,2023,total,I033,40-64,608.004
+united states,2023,total,I033,65 and above,5191.341

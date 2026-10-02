@@ -1,6 +1,6 @@
 # Data Analytics & Engineering Portfolio
 
-**SQL Server · Python · SSIS · Power BI · DAX · Statistical Analysis**
+**SQL Server · Python · R · SSIS · Power BI · DAX · Statistical Analysis**
 
 Projects demonstrating how raw data becomes validated, interpretable reporting through data pipelines, quality checks, statistical analysis, visual explanations and Power BI dashboards.
 
@@ -13,6 +13,7 @@ Each project includes source code, reproduction instructions, validation evidenc
 | [Serious Occurrence Reporting](Serious_Occurrence_Report_Analysis/README.md) | Internship-derived SSIS pipeline, data quality and operational reporting | Transactional Silver refresh; 19 SQL tests and 5 SSIS checks passed; four-page Power BI report |
 | [Spotify Analytics](Spotify_Audio_Features_Analysis/README.md) | Python/SQL pipeline, audio-feature analysis and catalog reporting | 114,000 records processed into 89,741 unique tracks; PCA and complementary diagnostics; three-page Power BI report |
 | [NBA Player Role Map](NBA_player_Role_Map/README.md) | Python statistical analysis, standardized PCA and player-role visualization | 421 players and 18 features; two components explain 73.82% of variance; reproducible notebook and multivariate diagnostics |
+| [IHD Mortality Analysis](IHD_Mortality_Analysis/README.md) | R visualization, cross-country mortality comparison and data storytelling | Four countries over 2001–2021; overall standardized rates declined 44.0–60.5%; five figures and an executed R Markdown report |
 
 ## 1. Serious Occurrence Reporting
 
@@ -76,6 +77,26 @@ The role map is descriptive. Player positions are not ability rankings, causal e
 
 ![NBA Player Role Map](NBA_player_Role_Map/figures/Fig3_scores_PC1_PC2_labeled.png)
 
+## 4. IHD Mortality Analysis
+
+**R · ggplot2 · dplyr · R Markdown · Data Storytelling**
+
+A collaborative analysis of ischaemic heart disease mortality in Canada, England and Wales, Japan and the United States, comparing age-standardized rates, male–female gaps and age-band patterns from 2001 to 2021.
+
+### Key Features
+
+- **Data preparation:** validates a complete **1,260-record analysis grid** drawn from a frozen 1,965-record course extract, with no missing, duplicate or invalid rates.
+- **Cross-country comparison:** overall standardized death rates fell **44.0–60.5%** between 2001 and 2021 across the four populations, measured per million.
+- **Sex-specific analysis:** male rates exceeded female rates, absolute gaps narrowed in every population, and women had larger proportional reductions.
+- **Visual communication:** five figures use trend lines, ribbon small multiples, a sex-gap series, endpoint comparisons and age-band bars to explain different aspects of mortality change.
+- **Reproducibility:** includes the source extract, R Markdown analysis, executed HTML report, rendering scripts and independent checks of endpoint values and percentage changes.
+
+This national observational comparison describes mortality patterns rather than intervention effects. Standardized rates are not death counts or shares of deaths; the analysis documents source-metadata uncertainties and interpretation limits. The original project was completed jointly by Bryan Hao Yang Chen and Zhuoyang Li.
+
+[Project Documentation](IHD_Mortality_Analysis/README.md) · [Analysis Source](IHD_Mortality_Analysis/Code_public.Rmd) · [Executed Report](IHD_Mortality_Analysis/Report_public.html)
+
+![IHD Mortality Trends Across Four Countries](IHD_Mortality_Analysis/figures/overall-trend.png)
+
 ## Skills Demonstrated
 
 | Area | Implementation Examples |
@@ -83,16 +104,17 @@ The role map is descriptive. Player positions are not ability rankings, causal e
 | Data Engineering | Python and SSIS ingestion, layered SQL transformations, transactional snapshot loading |
 | Data Quality | Key constraints, validation rules, source fingerprints, reconciliation and failure tests |
 | Data Modeling | Separate event/category and track/genre grains; explicit relationships and aggregation rules |
-| Data Analysis | Exploratory analysis, PCA, FA, ICA, player-role interpretation and multivariate diagnostics |
+| Data Analysis | Exploratory analysis, PCA, FA, ICA, multivariate diagnostics and cross-country mortality comparisons |
 | Business Intelligence | Power BI data models, DAX measures, filtering and interactive report pages |
+| Data Visualization | ggplot2 trend charts, small multiples, endpoint comparisons and statistical role maps |
 | Reproducibility | Execution scripts, documented dependencies, test fixtures and validation evidence |
 
 ## Explore or Reproduce
 
 1. Open a project README for its objectives, architecture and results.
-2. View project previews and reports: Power BI dashboards for SOR and Spotify, or the role map, notebook and PDF for NBA.
+2. View project previews and reports: Power BI dashboards for SOR and Spotify, the role map and notebook for NBA, or the charts and executed HTML report for IHD mortality. Download the HTML and open it locally if GitHub displays its source.
 3. Follow the project-specific setup instructions to reproduce its pipeline or statistical analysis.
 
 For SOR and Spotify, the saved Power BI reports contain imported data. Refreshing them requires the corresponding SQL Server database and connection configuration.
 
-Pipeline and analysis execution are documented within each project. The NBA notebook was run from start to finish in a fresh kernel, with independent checks of feature scaling, PCA loadings and Mahalanobis distances. The project author has confirmed successful Power BI Desktop refresh and full interactive acceptance for both reports. Data provenance, usage conditions and project-specific limitations are described in the respective READMEs.
+Pipeline and analysis execution are documented within each project. The NBA notebook was run from start to finish in a fresh kernel, with independent checks of feature scaling, PCA loadings and Mahalanobis distances. The IHD public R Markdown report was rendered in a clean R process; its endpoint values and percentage changes were checked against an independent data audit. The project author has confirmed successful Power BI Desktop refresh and full interactive acceptance for both reports. Data provenance, usage conditions and project-specific limitations are described in the respective READMEs.
