@@ -36,13 +36,14 @@ The analysis validates observation keys, selects supplied total rates rather tha
 ## Repository structure
 
 ```text
-ihd-mortality-four-country-analysis/
+IHD_Mortality_Analysis/
 |-- README.md                         # Project overview, findings and run instructions
 |-- Code_public.Rmd                   # R Markdown analysis entry point
 |-- Report_public.html                # Executed report; download and open in a browser
 |-- hcd_sdr_filtered.csv              # Included frozen analysis dataset
 |-- DATA_PROVENANCE.md                # Data definitions, sources and reuse conditions
 |-- validation_results.json           # Independent data and arithmetic checks
+|-- R_RENDER_VALIDATION.txt           # Successful render, plot checks and artifact fingerprints
 |-- endpoint_summary.csv              # Country/sex endpoint rates and percentage changes
 |-- .gitignore                        # Excludes local dependencies and temporary outputs
 |-- figures/
@@ -81,7 +82,7 @@ python scripts/validate_data.py
 python scripts/validate_data.py path/to/hcd_sdr.csv
 ```
 
-See [validation results](validation_results.json) and [endpoint values](endpoint_summary.csv) for the reproducible data and arithmetic checks. Rendering also checks all 368 plotted observations against the CSV.
+See [validation results](validation_results.json) and [endpoint values](endpoint_summary.csv) for the reproducible data and arithmetic checks. Rendering also checks all 368 plotted observations against the CSV. The checked-in [R rendering validation record](R_RENDER_VALIDATION.txt) records the successful execution time, input and output fingerprints, endpoint checks, plotted-value checks, and R/Pandoc environment. The runner removes any previous success record before starting and writes a new one only after all checks pass. It is a validation summary, not a full console transcript.
 
 ## Limitations
 

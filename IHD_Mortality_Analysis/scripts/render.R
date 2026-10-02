@@ -1,4 +1,11 @@
 # Run from project root: Rscript --vanilla scripts/render.R
+# Invalidate the previous success record before starting a new render/check cycle.
+# A failed execution must not leave an older PASS record appearing current.
+validation_log <- "R_RENDER_VALIDATION.txt"
+if (file.exists(validation_log) && !file.remove(validation_log)) {
+  stop("Cannot clear the previous validation record")
+}
+started_utc <- format(Sys.time(), tz="UTC", format="%Y-%m-%dT%H:%M:%SZ")
 args <- commandArgs(trailingOnly=TRUE)
 if (length(args)) stop("This project renders HTML only; no arguments are needed")
 if (dir.exists(".local-r-library")) .libPaths(c(normalizePath(".local-r-library"), .libPaths()))
@@ -59,9 +66,27 @@ age_actual$age_group <- names(analysis$age_labels)[match(age_actual$age_bin, unn
 check_table(age_actual, age_source, c("country","year","age_group"))
 sex_labels <- dplyr::transmute(analysis$rng, country, sex=sex_lab, rate_2001=y0, rate_2021=y1, percent_change=pct*100)
 check_table(sex_labels, dplyr::filter(reference, sex!="total"), c("country","sex"), "percent_change", 0.0001)
-writeLines(c("HTML render succeeded in a clean R process.",
+# Publish evidence only after rendering and all numerical assertions succeed.
+# Relative artifact names keep this public record free of personal filesystem paths.
+artifacts <- c("Code_public.Rmd", "scripts/render.R", "scripts/validate_data.py",
+               "hcd_sdr_filtered.csv", "validation_results.json", "endpoint_summary.csv",
+               "Report_public.html", "figures/overall-trend.png", "figures/sex-trends.png",
+               "figures/sex-gap.png", "figures/endpoint-comparison.png", "figures/age-band-rates.png")
+stopifnot(all(file.exists(artifacts)))
+fingerprints <- tools::md5sum(artifacts)
+writeLines(c("IHD Mortality Analysis: successful rendering and validation",
+             paste("Started UTC:", started_utc),
+             paste("Completed UTC:", format(Sys.time(), tz="UTC", format="%Y-%m-%dT%H:%M:%SZ")),
+             "Command: Rscript --vanilla scripts/render.R",
+             "HTML render succeeded in a clean R process.",
              "All 12 plotted endpoint pairs and percentage changes agree with the independent audit (tolerance 0.0001).",
              "All 84 overall, 168 sex-specific, 84 sex-gap and 32 age-band plotted observations match the source CSV (tolerance 1e-8).",
              "All eight sex-trend percentage annotations match the independent audit (tolerance 0.0001).",
              paste("Pandoc:", as.character(rmarkdown::pandoc_version())),
-             capture.output(sessionInfo())), "R_RENDER_VALIDATION.txt")
+             "",
+             "Artifact MD5 fingerprints (file identity, not a security signature):",
+             paste(names(fingerprints), unname(fingerprints), sep="  "),
+             "",
+             "R session:",
+             capture.output(sessionInfo())), validation_log)
+message("PASS: public validation record saved to ", validation_log)
