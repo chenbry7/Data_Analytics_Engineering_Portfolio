@@ -36,6 +36,9 @@ def main():
     destination.mkdir(exist_ok=True)
     project = destination / 'ihd-mortality-four-country-analysis'
     project.mkdir(exist_ok=True)
+    extras = {p.relative_to(project).as_posix() for p in project.rglob('*') if p.is_file()} - set(PUBLIC_FILES)
+    if extras:
+        raise ValueError(f'Review unexpected files in the export folder before rebuilding: {sorted(extras)}')
     for name in PUBLIC_FILES:
         target = project / name
         target.parent.mkdir(parents=True, exist_ok=True)

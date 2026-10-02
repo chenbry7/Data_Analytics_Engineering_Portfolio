@@ -1,5 +1,7 @@
 HTML render succeeded in a clean R process.
 All 12 plotted endpoint pairs and percentage changes agree with the independent audit (tolerance 0.0001).
+All 84 overall, 168 sex-specific, 84 sex-gap and 32 age-band plotted observations match the source CSV (tolerance 1e-8).
+All eight sex-trend percentage annotations match the independent audit (tolerance 0.0001).
 Pandoc: 3.8.3
 R version 4.6.1 (2026-06-24 ucrt)
 Platform: x86_64-w64-mingw32/x64

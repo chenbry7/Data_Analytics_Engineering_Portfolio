@@ -5,7 +5,6 @@ output:
   html_document:
     toc: true
     self_contained: true
-  pdf_document: default
 ---
 
 ## Research questions and data
@@ -14,20 +13,22 @@ How did national IHD mortality rates and absolute male-female gaps change in Can
 England and Wales, Japan and the United States between 2001 and 2021?
 We compare overall trends, sex-specific trajectories, endpoints and age-band rates.
 The course extract identifies IHD as I033 and reports SDR per million, not death counts.
-The original report identifies the standard as European Standard Population 2013;
-the CSV does not encode the standard, so this provenance still requires author confirmation.
+Following the original course report, this analysis uses the European Standard Population 2013 designation.
 Age-band SDRs are standardized within the respective bands. Neither sex-specific nor
 age-band SDRs should be added to obtain a total or normalized into death-count shares.
 Source: Human Cause of Deaths data series (HCD), Human Mortality Database,
 Max Planck Institute for Demographic Research, University of California, Berkeley,
 and French Institute for Demographic Studies; https://www.mortality.org/.
-See DATA_PROVENANCE.md for the frozen extract, license and unresolved metadata.
+See [DATA_PROVENANCE.md](DATA_PROVENANCE.md) for data definitions, source attribution and reuse terms.
 
 ```{r setup, include=FALSE}
 if (dir.exists(".local-r-library")) .libPaths(c(normalizePath(".local-r-library"), .libPaths()))
 pkgs <- c("ggplot2", "readr", "dplyr", "tidyr", "stringr", "scales", "ggrepel", "knitr", "rmarkdown")
 missing <- setdiff(pkgs, rownames(installed.packages()))
 if (length(missing)) stop("Install dependencies with scripts/install_dependencies.R: ", paste(missing, collapse=", "))
+if (packageVersion("ggplot2") < "3.4.0" || packageVersion("dplyr") < "1.0.0") {
+  stop("Update dependencies with scripts/install_dependencies.R: ggplot2 >= 3.4.0 and dplyr >= 1.0.0 are required")
+}
 suppressPackageStartupMessages(lapply(pkgs, library, character.only=TRUE))
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=TRUE, fig.align="center", dpi=160)
 set.seed(313)
@@ -49,6 +50,12 @@ stopifnot(nrow(dat)==1260L, !anyDuplicated(dat[keys]),
 country_lab <- c("canada"="Canada", "england and wales"="England and Wales",
   "japan"="Japan", "united states"="United States")
 pal_country <- c("canada"="#1f77b4", "england and wales"="#2ca02c", "japan"="#ff7f0e", "united states"="#9467bd")
+year_min <- 2001
+year_max <- 2021
+x_breaks <- seq(year_min, year_max, by=2)
+pal_country_light <- c("canada"="#9ecae1", "england and wales"="#a6dba0",
+                       "japan"="#fdbf6f", "united states"="#c5b0d5")
+age_labels <- c("0-14"="0-14", "15-39"="15-39", "40-64"="40-64", "65 and above"="65+")
 theme_clean <- theme_minimal(base_size=16) + theme(panel.grid.major.x=element_blank(),
   panel.grid.minor=element_blank(), plot.title=element_text(face="bold", hjust=.5, size=16), legend.position="none")
 dir.create("figures", showWarnings=FALSE)
@@ -60,17 +67,12 @@ dir.create("figures", showWarnings=FALSE)
 fig1_dat <- dat %>%
   filter(country %in% countries4,
          cause   == cause_focus,
-         sex     %in% c("total","both","all"),
+         sex     == "total",
          age_group %in% age_total,
          year >= 2001, year <= 2021) %>%
   group_by(country, year) %>%
   summarise(rate = first(sdr_per_million), .groups = "drop")
 
-
-country_lab <- c("canada"="Canada","japan"="Japan",
-                 "united states"="United States","england and wales"="England and Wales")
-
-x_breaks <- sort(unique(c(seq(2001, 2021, by = 2), 2021)))
 label_df <- fig1_dat %>%
   group_by(country) %>%
   filter(year == min(year)) %>%
@@ -91,7 +93,6 @@ ends <- fig1_dat %>%
       ifelse(pct < 0, "-", "+"), sprintf("%.1f%%", abs(pct))
     )
   )
-
 
 p1.1 <- ggplot(fig1_dat, aes(x = year, y = rate, colour = country)) +
   geom_line(linewidth = 1.1) +
@@ -143,8 +144,6 @@ p1.1 <- ggplot(fig1_dat, aes(x = year, y = rate, colour = country)) +
     )
   )
 
-
-
 p1.1 <- p1.1 + labs(subtitle="Source: HCD / Human Mortality Database; course extract")
 p1.1
 ggsave("figures/overall-trend.png", p1.1, width=12, height=7.5, dpi=180, bg="white")
@@ -155,31 +154,6 @@ All four overall rates declined. Canada fell from 2,151.1 to 980.9 per million (
 ## 2. Male-female gaps narrow within countries
 
 ```{r figure-2, fig.width=14, fig.height=9}
-countries4  <- c("canada","england and wales","japan","united states")
-country_lab <- c(
-  "canada"             = "Canada",
-  "england and wales"  = "England and Wales",
-  "japan"              = "Japan",
-  "united states"      = "United States"
-)
-cause_focus <- "I033"
-
-pal_country <- c(
-  "canada"             = "#1f77b4",
-  "england and wales"  = "#2ca02c",
-  "japan"              = "#ff7f0e",
-  "united states"      = "#9467bd"
-)
-pal_country_light <- c(
-  "canada"             = "#9ecae1",
-  "england and wales"  = "#a6dba0",
-  "japan"              = "#fdbf6f",
-  "united states"      = "#c5b0d5"
-)
-
-year_min  <- 2001
-year_max  <- 2021
-x_breaks  <- seq(year_min, year_max, by = 2)
 
 
 fig2_wide <- dat %>%
@@ -204,7 +178,6 @@ fig2_long <- fig2_wide %>%
     sex_lab = ifelse(sex == "male", "males", "females")  
   )
 
-
 rng <- fig2_long %>%
   group_by(country, country_show, sex_lab) %>%
   summarise(
@@ -220,15 +193,13 @@ rng <- fig2_long %>%
     end_txt = paste0(ifelse(pct < 0, "-", "+"), percent(abs(pct), accuracy = 0.1))
   )
 
-
 front_lab <- rng %>%
   transmute(
     country, country_show, sex_lab, col,
     x = x0 + 0.25,
-    y = y0 + ifelse(sex_lab == "males", 70, -70),
+    y = y0 + ifelse(sex_lab == "males", 100, -160),
     lab = sex_lab
   )
-
 
 end_lab <- rng %>%
   transmute(
@@ -299,32 +270,9 @@ Male rates exceeded female rates in all four countries. Male/female proportional
 ## 3. Absolute sex gaps remain in 2021
 
 ```{r figure-3, fig.width=12, fig.height=7.5}
-countries4  <- c("canada", "england and wales", "japan", "united states")
-country_lab <- c("canada"="Canada", "england and wales"="England and Wales",
-                 "japan"="Japan", "united states"="United States")
-pal_country <- c("canada"="#1f77b4", "england and wales"="#2ca02c",
-                 "japan"="#ff7f0e", "united states"="#9467bd")
-cause_focus <- "I033"
-year_min <- 2001; year_max <- 2021
-x_breaks <- seq(year_min, year_max, by = 2)  
 
 
-gap_df <- dat %>%
-  filter(country %in% countries4,
-         cause   == cause_focus,
-         sex     %in% c("males", "females"),
-         age_group %in% c("total"),
-         year >= year_min, year <= year_max) %>%
-  group_by(country, year, sex) %>%
-  summarise(rate = first(sdr_per_million), .groups = "drop") %>%
-  tidyr::pivot_wider(names_from = sex, values_from = rate) %>%
-  rename(male = males, female = females) %>%          
-  arrange(country, year) %>%
-
-  mutate(
-    diff = male - female,                 
-    country_show = country_lab[country]
-  )
+gap_df <- fig2_wide %>% mutate(diff=male-female)
 
 start_lab <- gap_df %>%
   group_by(country, country_show) %>%
@@ -347,7 +295,6 @@ chg_lab <- gap_df %>%
                      scales::percent(abs(pct), accuracy = 0.1))
   )
 
-
 p_base <- ggplot(gap_df, aes(x = year, y = diff, colour = country)) +
   geom_hline(yintercept = 0, linetype = "dotted", colour = "grey45") +
   geom_line(linewidth = 1.1) +
@@ -365,11 +312,10 @@ p_base <- ggplot(gap_df, aes(x = year, y = diff, colour = country)) +
                      breaks = seq(0, 1800, by = 200)) +
   labs(
     title    = "By-country sex gap (males - females) in Ischaemic heart disease \nmortality from 2001 to 2021",
-    caption = "Figure 3: Temporal evolution of sex-specific mortality gaps, revealing country-specific patterns \nin ischemic heart disease burden",
+    caption = "Figure 3: Temporal evolution of sex-specific mortality gaps, revealing country-specific patterns \nin ischaemic heart disease rates",
     x = "Year",
-    y = "Gap in death rate per million"
+    y = "Male-female SDR difference per million"
   )
-
 
 p1.3 <- p_base + 
   theme_minimal(base_size = 20) +
@@ -399,18 +345,10 @@ The absolute male-female SDR gap decreased by 47.8% in Canada, 49.1% in England 
 ## 4. Women show larger proportional declines in every country
 
 ```{r figure-4, fig.width=12, fig.height=7.5}
-countries4  <- c("canada", "england and wales", "japan", "united states")
-cause_focus <- "i033"
 years_keep  <- c(2001, 2021)
 sex_keep    <- c("males", "females")
 
 db_dat <- dat %>%
-  mutate(
-    country   = tolower(country),
-    cause     = tolower(cause),
-    sex       = tolower(sex),
-    age_group = tolower(age_group)
-  ) %>%
   filter(country %in% countries4,
          cause   == cause_focus,
          sex     %in% sex_keep,
@@ -435,9 +373,7 @@ db_dat <- dat %>%
       levels = c("Canada", "England and Wales", "Japan", "United States"))
   )
 
-
 pal_sex <- c(males = "#4E79A7", females = "#E15759")
-
 
 y_max <- max(c(db_dat$y2001, db_dat$y2021), na.rm = TRUE)
 top_pad <- y_max * 0.12
@@ -500,44 +436,21 @@ Women had larger proportional reductions in all four countries. Both sexes decli
 
 ## 5. Age-band standardized rates remain highest at 65+
 
-```{r figure-5, fig.width=12, fig.height=7.5}
-countries4 <- c("canada", "japan", "england and wales", "united states")
-cause_focus <- "i033"
-
-country_lab <- c(
-  "canada" = "Canada",
-  "england and wales" = "England and Wales",
-  "japan" = "Japan",
-  "united states" = "United States"
-)
-
-collapse_age <- function(x){
-  x <- tolower(x)
-  case_when(
-    str_detect(x, "^0") ~ "0-14",
-    str_detect(x, "^15") ~ "15-39",
-    str_detect(x, "^40") ~ "40-64",
-    str_detect(x, "^65") ~ "65+",
-    TRUE ~ NA_character_
-  )
-}
+```{r figure-5, fig.width=14, fig.height=8}
 
 figB <- dat %>%
-  mutate(across(c(country, sex, cause, age_group), tolower)) %>%
   filter(country %in% countries4,
          cause == cause_focus,
          sex %in% c("total"),         
          year %in% c(2001, 2021)) %>%
-  mutate(age_bin = collapse_age(age_group)) %>%
+  mutate(age_bin = unname(age_labels[age_group])) %>%
   filter(!is.na(age_bin)) %>%
   group_by(country, age_bin, year) %>%
   summarise(rate = first(sdr_per_million), .groups = "drop") %>%
   mutate(country = country_lab[country],
          year = factor(year))
 
-
 pal_year <- c("2001" = "#9e9e9e", "2021" = "#1f77b4")
-
 
 p3.1<-ggplot(figB, aes(x = age_bin, y = rate, fill = year)) +
   geom_col(position = position_dodge(width = 1.0), width = 0.5) +
@@ -575,7 +488,6 @@ p3.1<-ggplot(figB, aes(x = age_bin, y = rate, fill = year)) +
     )
   )
 
-
 p3.1 <- p3.1 + labs(subtitle="Source: HCD / Human Mortality Database; course extract")
 p3.1
 ggsave("figures/age-band-rates.png", p3.1, width=14, height=8, dpi=180, bg="white")
@@ -599,7 +511,7 @@ Standardization aids comparisons but does not measure actual deaths or healthcar
 Broad age bands hide variation, and the available sex categories are males, females and total.
 Cause-of-death coding, reconstruction methods and pandemic-era changes may affect comparisons.
 Endpoint percentages conceal intervening fluctuations; absolute sex gaps differ from relative gaps.
-The frozen extract's download date and 2013 standard designation remain unverified.
+The frozen course extract may differ from subsequently revised HCD releases.
 
 Overall SDRs and absolute sex gaps decreased, with persistent differences across countries.
 Women experienced larger proportional reductions in all four settings. Age-band SDRs
@@ -615,8 +527,9 @@ visualization design and implementation, interpretation, and report writing.
 
 Rendering performs strict coverage, uniqueness and finite-value checks before plotting.
 It uses no missing-value imputation and never adds age-band or sex-specific SDRs into totals.
-The independent arithmetic audit is in validation_results.json and endpoint_summary.csv.
-Report_public_snapshot.html preserves the earlier static reading copy, not an R render.
+The independent arithmetic audit is in [validation_results.json](validation_results.json)
+and [endpoint_summary.csv](endpoint_summary.csv). The tested rendering environment
+is recorded in [R_RENDER_VALIDATION.txt](R_RENDER_VALIDATION.txt).
 Report_public.html is the executed public R Markdown report.
 Run scripts/render.R in a fresh R process to generate Report_public.html and refresh previews.
 

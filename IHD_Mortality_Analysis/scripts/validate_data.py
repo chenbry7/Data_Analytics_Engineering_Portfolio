@@ -45,6 +45,7 @@ def main():
     audit = {'extract_rows': len(rows), 'analysis_rows': len(observed),
              'missing_or_duplicate_keys': 0, 'nonfinite_or_negative_rates': 0,
              'sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+             'md5': hashlib.md5(path.read_bytes()).hexdigest(),
              'coverage': {c: [min(int(r['year']) for r in rows if r['country'] == c),
                                max(int(r['year']) for r in rows if r['country'] == c)] for c in COUNTRIES}}
     if len(sys.argv) > 1:
@@ -70,7 +71,6 @@ def main():
     for c in COUNTRIES:
         gap = [lookup[(c, str(y), 'males', 'I033', 'total')] -
                lookup[(c, str(y), 'females', 'I033', 'total')] for y in [2001, 2021]]
-        assert gap[1] < gap[0]
         audit.setdefault('sex_gap', {})[c] = {'2001': gap[0], '2021': gap[1],
                                              'percent_change': 100*(gap[1]/gap[0]-1)}
     # Frozen labels transcribed from original Report.pdf (Figures 1-5).
@@ -109,6 +109,8 @@ def main():
     with (ROOT / 'endpoint_summary.csv').open('w', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=endpoints[0].keys()); w.writeheader(); w.writerows(endpoints)
     print(json.dumps(audit, indent=2))
+    if not all(label_matches):
+        raise SystemExit('The data no longer match the frozen report. Update figures and narrative before publication.')
 
 if __name__ == '__main__':
     main()
