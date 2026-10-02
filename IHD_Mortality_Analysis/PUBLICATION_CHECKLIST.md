@@ -11,7 +11,7 @@ Review date: 1 October 2026. Scope: this project directory only. No push, reposi
 - `figures/overall-trend.png`, `figures/sex-trends.png`, `figures/endpoint-comparison.png`, `figures/sex-gap.png`, `figures/age-band-rates.png`
 - `scripts/install_dependencies.R`, `scripts/render.R`, `scripts/prepare_data.R`, `scripts/validate_data.py`, `scripts/export_public.py`
 - `validation_results.json`, `endpoint_summary.csv`, `R_RENDER_VALIDATION.txt`
-- Optional after TeX execution and visual review: `Report_public.pdf`.
+
 
 Exclude from a new standalone public repository: archival `Code.Rmd`, archival `Report.pdf`, earlier `Report_public_snapshot.html`, `.local-r-library/`, raw source downloads, course drafts, teacher templates, local logs, inspection intermediates and personal metadata. Files on this exclusion list remain locally preserved. This checklist is a packaging instruction, not an automatic removal from existing Git history.
 
@@ -52,7 +52,7 @@ Independent validation and initial PDF preview extraction used the bundled Pytho
 
 - [x] Fresh R execution: Windows R registry identified an existing non-default R installation. The final public Rmd executed successfully under R 4.6.1 using `Rscript --vanilla`. R was present but absent from PATH; the earlier default-location check was incomplete.
 - [x] Render `Code_public.Rmd` using RStudio-bundled Pandoc. Final render completed without chunk warnings; actual session is recorded in `R_RENDER_VALIDATION.txt`. All five figures were visually reviewed. All 12 plotted endpoint pairs and percentage changes matched the independent Python audit within 0.0001.
-- [ ] Optional public PDF render and visual review require an existing TeX setup. No public PDF was generated and none is claimed verified.
+- [x] Keep HTML as the delivered report format, as requested by the author. The temporary PDF and browser-PDF helper were removed from the public package.
 - [x] Update README and checklist to point to the actual R-rendered report. No numerical changes were required. The old static snapshot remains explicitly labeled and is not presented as the final report.
 - [ ] The optional data-preparation helper has been statically reviewed but not executed against a new official download; confirm source metadata before obtaining/replacing data.
 

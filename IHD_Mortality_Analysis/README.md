@@ -4,7 +4,7 @@
 
 A collaborative R, ggplot2 and R Markdown project comparing national age-standardized mortality in Canada, England and Wales, Japan and the United States. It asks how overall rates, male-female gaps and age-band rates changed over two decades.
 
-**Read the [executed public report](Report_public.html)** or browse the figures below. The public Rmd was successfully rendered in a clean R 4.6.1 process on 1 October 2026. Its 12 plotted endpoint pairs and percentage changes agree with the independent data audit. Download the HTML and open it locally if GitHub displays its source.
+**Read the [HTML report](Report_public.html)** or browse the figures below. Download the HTML and open it in a browser to view the complete report; GitHub displays its source rather than rendering it as a webpage. The public Rmd was successfully rendered in a clean R 4.6.1 process on 1 October 2026. Its 12 plotted endpoint pairs and percentage changes agree with the independent data audit.
 
 ## Main findings
 
@@ -33,13 +33,36 @@ Data source: Human Cause of Deaths data series (HCD), Human Mortality Database, 
 
 The public analysis validates observation keys, selects supplied total rates rather than summing strata, computes endpoint percentage changes and male-minus-female differences, and uses country-colored trends, ribbon small multiples, a difference series, dumbbells and age-band bars. It performs no missing-value filling. The original sixth chart normalized age-band SDRs into alleged death shares; it is excluded from the public analysis because its interpretation was invalid. The original course code and report remain preserved in the course repository and are excluded from the standalone showcase package.
 
-## Project files
+## Repository structure
 
-- [Code_public.Rmd](Code_public.Rmd): reproducible R Markdown analysis.
-- [Report_public.html](Report_public.html): executed report with all five figures.
-- [hcd_sdr_filtered.csv](hcd_sdr_filtered.csv): the dataset used in the report.
-- `figures/`: five exported charts; three previews appear above.
-- `scripts/`: dependency installation, report rendering, data preparation, validation and packaging helpers.
+```text
+ihd-mortality-four-country-analysis/
+|-- README.md                         # Project overview, findings and run instructions
+|-- Code_public.Rmd                   # R Markdown analysis entry point
+|-- Report_public.html                # Executed report; download and open in a browser
+|-- hcd_sdr_filtered.csv              # Included frozen analysis dataset
+|-- DATA_PROVENANCE.md                # Data definitions, sources and reuse conditions
+|-- PUBLICATION_CHECKLIST.md          # Validation record and remaining provenance questions
+|-- GITHUB_SETUP.md                   # GitHub upload and presentation instructions
+|-- R_RENDER_VALIDATION.txt           # Tested R environment and render validation
+|-- validation_results.json           # Independent data and arithmetic checks
+|-- endpoint_summary.csv              # Country/sex endpoint rates and percentage changes
+|-- .gitignore                        # Excludes local dependencies and generated packages
+|-- figures/
+|   |-- overall-trend.png             # Cross-country overall mortality trends
+|   |-- sex-trends.png                # Male/female trajectories by country
+|   |-- sex-gap.png                   # Absolute male-female rate differences
+|   |-- endpoint-comparison.png       # 2001 versus 2021 comparison by sex
+|   `-- age-band-rates.png            # Age-band standardized rate comparison
+`-- scripts/
+    |-- install_dependencies.R        # One-time R dependency installation
+    |-- render.R                      # Render HTML, export figures and check endpoints
+    |-- prepare_data.R                # Prepare an alternative combined data extract
+    |-- validate_data.py              # Independent CSV and report-number validation
+    `-- export_public.py              # Build the standalone folder and optional ZIP
+```
+
+Start with `Report_public.html` for the full analysis or `Code_public.Rmd` to inspect the code. The CSV and five chart images are included; no external data download is needed to reproduce this snapshot.
 
 ## Run from a clean R session
 
@@ -50,11 +73,9 @@ Use an existing R installation supporting `dplyr::across` and ggplot2 `linewidth
 ```sh
 Rscript --vanilla scripts/install_dependencies.R
 Rscript --vanilla scripts/render.R
-# Optional, only with a working TeX installation:
-Rscript --vanilla scripts/render.R --pdf
 ```
 
-The R Markdown HTML output requires Pandoc (normally supplied with RStudio). The optional PDF also requires an existing TeX environment; no TeX installation is performed by the project. Output is `Report_public.html`, optionally `Report_public.pdf`. The Rmd records `sessionInfo()` and exports five PNG figures. Dependencies are ggplot2, readr, dplyr, tidyr, stringr, scales, ggrepel, knitr and rmarkdown; analysis does not install packages. The tested environment uses R 4.6.1, ggplot2 4.0.3, readr 2.2.0, dplyr 1.2.1, tidyr 1.3.2, stringr 1.6.0, scales 1.4.0, ggrepel 0.9.8, knitr 1.51 and rmarkdown 2.31. See [R_RENDER_VALIDATION.txt](R_RENDER_VALIDATION.txt) for the actual session and Pandoc version. The project also recognizes an optional `.local-r-library` folder, excluded from publication. If Pandoc is not detected from a command-line R session, set `RSTUDIO_PANDOC` to the folder containing your RStudio-bundled `pandoc.exe`, or render from RStudio. A UTF-8 locale may be needed if your R startup warns about locale settings.
+The R Markdown HTML output requires Pandoc (normally supplied with RStudio). Rendering updates `Report_public.html` and the five exported charts. The Rmd records `sessionInfo()` and exports five PNG figures. Dependencies are ggplot2, readr, dplyr, tidyr, stringr, scales, ggrepel, knitr and rmarkdown; analysis does not install packages. The tested environment uses R 4.6.1, ggplot2 4.0.3, readr 2.2.0, dplyr 1.2.1, tidyr 1.3.2, stringr 1.6.0, scales 1.4.0, ggrepel 0.9.8, knitr 1.51 and rmarkdown 2.31. See [R_RENDER_VALIDATION.txt](R_RENDER_VALIDATION.txt) for the actual session and Pandoc version. The project also recognizes an optional `.local-r-library` folder, excluded from publication. If Pandoc is not detected from a command-line R session, set `RSTUDIO_PANDOC` to the folder containing your RStudio-bundled `pandoc.exe`, or render from RStudio. A UTF-8 locale may be needed if your R startup warns about locale settings.
 
 The supplied CSV matches the verified course extract. [Data provenance and preparation instructions](DATA_PROVENANCE.md) document its source, remaining metadata uncertainties, and how to prepare an alternative or updated extract. Independent checks of the included file use Python 3 with only its standard library:
 

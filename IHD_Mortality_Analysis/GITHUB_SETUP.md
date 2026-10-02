@@ -17,10 +17,10 @@ originals, local R library and earlier snapshot.
 1. Use the prepared `ihd-mortality-four-country-analysis` folder; an optional ZIP contains the same files.
 2. Create a repository with the suggested name in your GitHub account. For a new empty repository, leave the automatic README, .gitignore and license choices unchecked: the package already supplies a README and .gitignore; rights in collaborative materials and source data are separate.
 3. Upload or move the prepared project files and folders into the repository root. Upload the contents, not the ZIP itself. Confirm that `README.md`, `Code_public.Rmd`, `Report_public.html`, `figures/` and `scripts/` are at the top level. The dotfile `.gitignore` may need to be selected separately if your file browser hides it.
-4. Add the description and topics in the repository's About section. The README presents three preview charts directly on GitHub. Readers can download `Report_public.html` for the complete executed report.
+4. Add the description and topics in the repository's About section. The README presents three preview charts directly on GitHub. Readers can download `Report_public.html` and open it in a browser for the complete report.
 5. Before setting visibility to public, review [data provenance](DATA_PROVENANCE.md) and the [publication checklist](PUBLICATION_CHECKLIST.md). The packaged analysis includes `hcd_sdr_filtered.csv` and can be rerun after installing the R dependencies. Original download date, standard and codebook confirmation remain documented uncertainties.
 
-This repository presentation does not require a separate website. Optional PDF generation requires an existing TeX environment; the executed HTML is the delivered report.
+This repository presentation does not require a separate website. The report remains in HTML format; no PDF or TeX installation is required.
 
 ## Rebuild the package after changes
 

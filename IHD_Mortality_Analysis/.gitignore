@@ -5,3 +5,5 @@
 *.utf8.md
 scripts/__pycache__/
 github-release/
+tmp/
+node_modules/
