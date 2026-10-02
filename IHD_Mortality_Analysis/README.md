@@ -94,5 +94,3 @@ This is an observational national comparison, not evidence of intervention effec
 ## Collaboration and attribution
 
 Original analysis and report: **Bryan Hao Yang Chen and Zhuoyang Li**. Both authors jointly completed all steps of the original project: research-question development, data preparation, exploratory analysis, visualization design and implementation, interpretation, and report writing. This public edition preserves the original five valid chart designs and documents subsequent reproducibility and interpretation corrections.
-
-For GitHub presentation, follow the [upload guide](GITHUB_SETUP.md) and the explicit [public file list](PUBLICATION_CHECKLIST.md). Student identifiers and personal contact/path details were not found in the public files reviewed. Original files remain locally preserved and excluded from that standalone package.
