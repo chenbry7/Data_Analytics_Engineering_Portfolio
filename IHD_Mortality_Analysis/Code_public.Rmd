@@ -513,7 +513,7 @@ were highest at 65+, without establishing how deaths were distributed across age
 
 Bryan Hao Yang Chen and Zhuoyang Li jointly completed all steps of the original
 project: research-question development, data preparation, exploratory analysis,
-visualization design and implementation, interpretation, and report writing.
+visualization design and implementation, interpretation, and report writing. Both authors have agreed to joint public presentation and modification of this project.
 
 ## Reproducibility
 
@@ -521,9 +521,9 @@ Rendering performs strict coverage, uniqueness and finite-value checks before pl
 It uses no missing-value imputation and never adds age-band or sex-specific SDRs into totals.
 The independent arithmetic audit is in [validation_results.json](validation_results.json)
 and [endpoint_summary.csv](endpoint_summary.csv). The tested rendering environment
-is recorded in the session information below.
+is recorded in the HTML session information and [rendering validation record](R_RENDER_VALIDATION.txt).
 Report_public.html contains the executed analysis.
-Run scripts/render.R in a fresh R process to generate Report_public.html and refresh previews.
+Run scripts/render.R in a fresh R process to generate Report_public.html, Report_public.md and refresh previews.
 
 ```{r session-info}
 sessionInfo()

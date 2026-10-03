@@ -4,7 +4,7 @@
 
 A collaborative R, ggplot2 and R Markdown project comparing national age-standardized mortality in Canada, England and Wales, Japan and the United States. It asks how overall rates, male-female gaps and age-band rates changed over two decades.
 
-**Read the [HTML report](Report_public.html)** or browse the figures below. Download the HTML and open it in a browser to view the complete report; GitHub displays its source rather than rendering it as a webpage.
+**Read the [full report directly on GitHub](Report_public.md)** or browse the figures below. The [self-contained HTML report](Report_public.html) remains available for download and offline viewing. Both versions share the same R Markdown narrative and validated figures.
 
 ## Main findings
 
@@ -39,6 +39,7 @@ The analysis validates observation keys, selects supplied total rates rather tha
 IHD_Mortality_Analysis/
 |-- README.md                         # Project overview, findings and run instructions
 |-- Code_public.Rmd                   # R Markdown analysis entry point
+|-- Report_public.md                  # Full report readable directly on GitHub
 |-- Report_public.html                # Executed report; download and open in a browser
 |-- hcd_sdr_filtered.csv              # Included frozen analysis dataset
 |-- DATA_PROVENANCE.md                # Data definitions, sources and reuse conditions
@@ -59,7 +60,7 @@ IHD_Mortality_Analysis/
     `-- validate_data.py              # Independent CSV and report-number validation
 ```
 
-Start with `Report_public.html` for the full analysis or `Code_public.Rmd` to inspect the code. The CSV and five chart images are included; no external data download is needed to reproduce this snapshot.
+Start with `Report_public.md` for the full analysis or `Code_public.Rmd` to inspect the code. The CSV and five chart images are included; no external data download is needed to reproduce this snapshot.
 
 ## Run from a clean R session
 
@@ -72,7 +73,7 @@ Rscript --vanilla scripts/install_dependencies.R
 Rscript --vanilla scripts/render.R
 ```
 
-The R Markdown HTML output requires Pandoc (normally supplied with RStudio). Rendering updates `Report_public.html` and the five exported charts. The Rmd records `sessionInfo()` and exports five PNG figures. Dependencies are ggplot2, readr, dplyr, tidyr, stringr, scales, ggrepel, knitr and rmarkdown; analysis does not install packages. The tested environment uses R 4.6.1, ggplot2 4.0.3, readr 2.2.0, dplyr 1.2.1, tidyr 1.3.2, stringr 1.6.0, scales 1.4.0, ggrepel 0.9.8, knitr 1.51 and rmarkdown 2.31. The report includes the R session details. The project loads its `.local-r-library` folder when present; that generated library is ignored by Git. If Pandoc is not detected from a command-line R session, set `RSTUDIO_PANDOC` to the folder containing your RStudio-bundled `pandoc.exe`, or render from RStudio. A UTF-8 locale may be needed if your R startup warns about locale settings.
+The R Markdown HTML output requires Pandoc (normally supplied with RStudio). Rendering updates `Report_public.html`, exports the same narrative and five validated charts to `Report_public.md`, and refreshes the chart files. The Rmd records `sessionInfo()` and exports five PNG figures. Dependencies are ggplot2, readr, dplyr, tidyr, stringr, scales, ggrepel, knitr and rmarkdown; analysis does not install packages. The tested environment uses R 4.6.1, ggplot2 4.0.3, readr 2.2.0, dplyr 1.2.1, tidyr 1.3.2, stringr 1.6.0, scales 1.4.0, ggrepel 0.9.8, knitr 1.51 and rmarkdown 2.31. The report includes the R session details. The project loads its `.local-r-library` folder when present; that generated library is ignored by Git. If Pandoc is not detected from a command-line R session, set `RSTUDIO_PANDOC` to the folder containing your RStudio-bundled `pandoc.exe`, or render from RStudio. A UTF-8 locale may be needed if your R startup warns about locale settings.
 
 The supplied CSV matches the verified course extract. [Data provenance and preparation instructions](DATA_PROVENANCE.md) document its source, metadata notes, and how to prepare an alternative or updated extract. Independent checks of the included file use Python 3 with only its standard library. The supplied audit is already current. If you change or re-prepare the CSV, run this audit **before** rendering; the render script checks the data checksum and refuses a stale audit. A changed dataset that no longer matches the frozen report also causes validation to stop until figures and narrative are reconciled:
 
@@ -90,5 +91,5 @@ This is an observational national comparison, not evidence of intervention effec
 
 ## Collaboration and attribution
 
-Original analysis and report: **Bryan Hao Yang Chen and Zhuoyang Li**. Both authors jointly completed all steps of the original project: research-question development, data preparation, exploratory analysis, visualization design and implementation, interpretation, and report writing.
+Original analysis and report: **Bryan Hao Yang Chen and Zhuoyang Li**. Both authors jointly completed all steps of the original project: research-question development, data preparation, exploratory analysis, visualization design and implementation, interpretation, and report writing. Both authors have agreed to joint public presentation and modification of this project.
 

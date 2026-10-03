@@ -1,21 +1,22 @@
 IHD Mortality Analysis: successful rendering and validation
-Started UTC: 2026-10-02T02:16:57Z
-Completed UTC: 2026-10-02T02:17:05Z
+Started UTC: 2026-10-03T18:32:48Z
+Completed UTC: 2026-10-03T18:33:09Z
 Command: Rscript --vanilla scripts/render.R
-HTML render succeeded in a clean R process.
+HTML render and Markdown export succeeded in a clean R process.
 All 12 plotted endpoint pairs and percentage changes agree with the independent audit (tolerance 0.0001).
 All 84 overall, 168 sex-specific, 84 sex-gap and 32 age-band plotted observations match the source CSV (tolerance 1e-8).
 All eight sex-trend percentage annotations match the independent audit (tolerance 0.0001).
 Pandoc: 3.8.3
 
 Artifact MD5 fingerprints (file identity, not a security signature):
-Code_public.Rmd  6c33563f3facbb180875135de3772a96
-scripts/render.R  b4fa080904bcd39bbef21eaebcda71e1
+Code_public.Rmd  413fee66e041382ade9c51a6cdf642d6
+scripts/render.R  ec10a8bbecd1a361f972239bdd7608f7
 scripts/validate_data.py  e82c7877c3a0029afad574d6424162b6
 hcd_sdr_filtered.csv  ad832e78e37e89c14a4044d8d2641c10
 validation_results.json  037be09c9a6dceca8c6e938fe9ecc86d
 endpoint_summary.csv  c9298bc62ac55e10f9782b3d97f17a0b
-Report_public.html  37c77f5a561274c8e2261772311ec7fb
+Report_public.html  e38264b362553d16e2aa61a01dbb6c5e
+Report_public.md  296bb2dd90dfc97a6afd1cf5b79aae00
 figures/overall-trend.png  547558dc10e13f6c788450918b96274e
 figures/sex-trends.png  45507ae0aa19aebe4f620598faa95b84
 figures/sex-gap.png  fbca08fcd6d11b1a9baef118138ba962

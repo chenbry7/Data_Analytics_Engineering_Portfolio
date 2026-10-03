@@ -18,7 +18,7 @@ A local batch analytics project demonstrating a complete data engineering workfl
 - [Quick start](#quick-start)
 - [Repository structure](#repository-structure)
 - [Power BI report](#power-bi-report)
-- [Limitations and next steps](#limitations-and-next-steps)
+- [Limitations](#limitations)
 - [Data and provenance](#data-and-provenance)
 
 ## Project objectives
@@ -29,6 +29,19 @@ A local batch analytics project demonstrating a complete data engineering workfl
 4. Support the pipeline with documented quality rules, source fingerprints and row-level traceability.
 
 The primary focus is **data engineering and data analysis**. Governance concepts are applied through quality and provenance controls; this is not an enterprise governance-platform implementation.
+
+## Analytical questions and scope
+
+The original course project emphasized implementing and evaluating PCA. This portfolio extends that statistical work into a reproducible SQL pipeline and an exploratory report; it does not claim a commissioned commercial use case.
+
+| Question | Implemented evidence |
+|---|---|
+| How do audio-feature profiles differ across the supplied genres? | Catalog Overview: energy/danceability comparison and genre feature matrix |
+| How can individual songs be explored by their measured sound characteristics? | Genre & Song Explorer: filters, track details and feature scatterplots |
+| How much of nine standardized features can a compact representation retain? | PCA: three components explain 61.88% of variance; keyed scores support exploration |
+| Are counts and comparisons trustworthy when genres overlap or records conflict? | Distinct-track measures, membership modeling, quality rules and lineage |
+
+Genre labels come from the source. PCA summarizes continuous variation; the project does not train or validate a genre classifier, discover validated song clusters, or evaluate recommendation quality. Comparisons describe this supplied catalog rather than genre popularity or Spotify-wide listening behavior.
 
 ## Results
 
@@ -162,12 +175,12 @@ Full-snapshot counts, six warning rules, source metadata and statistical limitat
 
 Previews show the report state supplied on 19 September 2026. Opening the saved report and refreshing its data are separate operations: refresh requires the SQL Server database and Gold views. See [validation scope](reports/VALIDATION.md) for completed checks and the author-confirmed refresh and interactive acceptance.
 
-## Limitations and next steps
+## Limitations
 
 - Report configuration and screenshot review are complete; Power BI Desktop refresh and full interactive acceptance have also passed, as confirmed by the project author.
-- Preserve FA boundary/bootstrap caveats in report captions and interpretation.
-- Do not infer time trends, market share or user recommendation outcomes from this catalog snapshot.
-- Treat source load timestamps as pipeline events, not Spotify observation dates.
+- FA boundary solutions and bootstrap uncertainty limit factor interpretation.
+- This catalog snapshot does not establish time trends, market share or recommendation outcomes.
+- Source load timestamps record pipeline events, not Spotify observation dates.
 
 ## Data and provenance
 

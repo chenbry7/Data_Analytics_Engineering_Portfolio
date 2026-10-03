@@ -21,7 +21,7 @@ Each project includes source code, reproduction instructions, validation evidenc
 
 An internship-derived project that transforms event-status and category exports through Bronze, Silver and Gold layers for reporting.
 
-The original workflow was implemented and deployed during the internship. This public version adds subsequent engineering enhancements and a reproducible synthetic dataset.
+Bryan independently delivered requirements discussions, database/reporting-model design, SSIS, SQL transformations, Power BI and deployment for a new report within the existing organizational environment. BA and QA users use it to review occurrence trends and follow-up status. This public version adds subsequent engineering enhancements and a reproducible synthetic dataset.
 
 ### Key Features
 
@@ -47,7 +47,7 @@ A batch analytics project combining a Bronze–Silver–Gold data pipeline with 
 
 - **Data processing:** transforms **114,000 source records into 89,741 unique tracks**, retaining track–genre relationships across 114 genres.
 - **Quality and traceability:** identifies **450 redundant records** and **720 tracks with conflicting popularity observations**, preserving evidence and source lineage.
-- **Statistical analysis:** applies PCA to nine audio features; the first three components explain **61.88% of variance**. Factor analysis, ICA and bootstrap diagnostics provide complementary checks.
+- **Statistical analysis:** applies PCA to nine standardized audio features; the first three components explain **61.88% of variance**. Factor analysis, ICA and bootstrap diagnostics provide complementary checks.
 - **Model integration:** writes analytical scores back to SQL Server with track identifiers and sample reconciliation.
 - **Power BI reporting:** three pages explore the catalog, genres and songs, and data quality; DAX measures account for overlapping genre memberships.
 
@@ -73,7 +73,7 @@ A statistical analysis of 2023–24 NBA per-game player profiles that uses stand
 
 The role map is descriptive. Player positions are not ability rankings, causal effects or performance predictions; the documentation explains selection, percentage encoding and diagnostic limitations.
 
-[Project Documentation](NBA_player_Role_Map/README.md) · [Analysis Notebook](NBA_player_Role_Map/NBA_code.ipynb) · [Written Report](NBA_player_Role_Map/NBA_report.pdf)
+[Project Documentation](NBA_player_Role_Map/README.md) · [Analysis Notebook](NBA_player_Role_Map/NBA_code.ipynb) · [Updated Analysis Report](NBA_player_Role_Map/ANALYSIS_REPORT.md)
 
 ![NBA Player Role Map](NBA_player_Role_Map/figures/Fig3_scores_PC1_PC2_labeled.png)
 
@@ -93,7 +93,7 @@ A collaborative analysis of ischaemic heart disease mortality in Canada, England
 
 This national observational comparison describes mortality patterns rather than intervention effects. Standardized rates are not death counts or shares of deaths; the analysis documents source-metadata uncertainties and interpretation limits. The original project was completed jointly by Bryan Hao Yang Chen and Zhuoyang Li.
 
-[Project Documentation](IHD_Mortality_Analysis/README.md) · [Analysis Source](IHD_Mortality_Analysis/Code_public.Rmd) · [Executed Report](IHD_Mortality_Analysis/Report_public.html)
+[Project Documentation](IHD_Mortality_Analysis/README.md) · [Analysis Source](IHD_Mortality_Analysis/Code_public.Rmd) · [Read Report on GitHub](IHD_Mortality_Analysis/Report_public.md)
 
 ![IHD Mortality Trends Across Four Countries](IHD_Mortality_Analysis/figures/overall-trend.png)
 
@@ -112,7 +112,7 @@ This national observational comparison describes mortality patterns rather than 
 ## Explore or Reproduce
 
 1. Open a project README for its objectives, architecture and results.
-2. View project previews and reports: Power BI dashboards for SOR and Spotify, the role map and notebook for NBA, or the charts and executed HTML report for IHD mortality. Download the HTML and open it locally if GitHub displays its source.
+2. View project previews and reports: Power BI dashboards for SOR and Spotify, the role map and notebook for NBA, or the GitHub-readable Markdown report for IHD mortality. A self-contained HTML version is also available for offline viewing.
 3. Follow the project-specific setup instructions to reproduce its pipeline or statistical analysis.
 
 For SOR and Spotify, the saved Power BI reports contain imported data. Refreshing them requires the corresponding SQL Server database and connection configuration.

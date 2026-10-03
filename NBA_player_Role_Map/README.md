@@ -4,7 +4,7 @@ An exploratory analysis of **2023–24 NBA player statistics** using Python and 
 
 **572 players in the source dataset · 421 players analyzed · 18 features · 73.82% variance explained by two components**
 
-[Analysis notebook](NBA_code.ipynb) · [Written report](NBA_report.pdf) · [Data provenance](DATA_SOURCE.md)
+[Analysis notebook](NBA_code.ipynb) · [Updated analysis report](ANALYSIS_REPORT.md) · [Data provenance](DATA_SOURCE.md)
 
 ## Project Overview
 
@@ -81,7 +81,7 @@ The multivariate diagnostics show strong departures from normality: approximate 
 NBA_player_Role_Map/
 ├── README.md                         # Project overview and results
 ├── NBA_code.ipynb                    # Executed analysis notebook
-├── NBA_report.pdf                    # Original written report
+├── ANALYSIS_REPORT.md                # Current report with corrected loadings
 ├── nba_2023_24_stats.csv              # Source data snapshot
 ├── verify_notebook.py                # Fresh-kernel execution runner
 ├── requirements.txt                  # Pinned direct dependencies
@@ -120,7 +120,7 @@ The included notebook was executed from start to finish in a fresh kernel on 202
 
 [validation.json](outputs/validation.json) records the input SHA-256, Python/package versions, sample size, eigenvalues, explained variance, diagnostic results, and successful checks of standardization, loading correlations, and independently calculated Mahalanobis distances.
 
-The original report is preserved. A finite-sample normalization correction reduces its quoted loadings by approximately **0.12%**; PCA scores, variance explained, and main interpretations are unchanged. Corrected loadings are in [loadings_PC1_PC2.csv](outputs/loadings_PC1_PC2.csv). See [REPORT_VERIFICATION.md](REPORT_VERIFICATION.md) for the comparison with the original report.
+The [analysis report](ANALYSIS_REPORT.md), notebook and [loading export](outputs/loadings_PC1_PC2.csv) use the same corrected feature-component correlations. The finite-sample normalization reconciles StandardScaler's population variance with PCA's sample-variance eigenvalues. See [numerical verification](REPORT_VERIFICATION.md) for the method and checks.
 
 ## Limitations
 

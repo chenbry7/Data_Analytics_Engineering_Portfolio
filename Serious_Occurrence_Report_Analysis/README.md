@@ -10,6 +10,14 @@ The original workflow was implemented and deployed during the internship. This p
 
 [Architecture](docs/ARCHITECTURE.md) · [Data contract](docs/DATA_CONTRACT.md) · [Validation](docs/VALIDATION.md) · [Power BI report](powerbi/README.md) · [Reproduce](#quick-start)
 
+## Internship ownership and reporting use
+
+Bryan Chen independently delivered a newly requested report within the organization's existing database and reporting environment. Responsibilities covered requirements discussions, field selection, database and reporting-model design, SSIS ingestion, SQL cleaning and views, Power BI development, and deployment. This was end-to-end ownership of the new reporting workflow, not the creation of the organization's entire data platform. Ongoing maintenance was outside the assigned responsibility.
+
+Business analysts and QA specialists use the report to examine occurrence trends and follow-up status, prepare reports, and support meetings about issues and potential improvements. The reviewing business analyst gave positive feedback on the delivered data processing and its alignment with organizational layout, color and readability requirements. No formal time-saving measurement or quantified operational impact was collected.
+
+The delivered workflow reuses its SQL transformations: replacing the raw-data exports and rerunning the automated processing refreshes the same reporting subject with new data. This describes repeatable refresh, not an unattended scheduling or real-time ingestion claim. The synthetic portfolio implementation and its later validation enhancements are distinguished below from the original internship delivery.
+
 ## Project objectives
 
 1. Automate a repeatable path from two source snapshots to reporting-ready SQL views.

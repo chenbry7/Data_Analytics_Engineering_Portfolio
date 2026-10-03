@@ -7,7 +7,7 @@ if (file.exists(validation_log) && !file.remove(validation_log)) {
 }
 started_utc <- format(Sys.time(), tz="UTC", format="%Y-%m-%dT%H:%M:%SZ")
 args <- commandArgs(trailingOnly=TRUE)
-if (length(args)) stop("This project renders HTML only; no arguments are needed")
+if (length(args)) stop("This project renders HTML and Markdown; no arguments are needed")
 if (dir.exists(".local-r-library")) .libPaths(c(normalizePath(".local-r-library"), .libPaths()))
 required <- c("Code_public.Rmd", "hcd_sdr_filtered.csv", "endpoint_summary.csv", "validation_results.json")
 if (!all(file.exists(required))) stop("Run from the project root; required analysis/audit files are missing")
@@ -66,11 +66,43 @@ age_actual$age_group <- names(analysis$age_labels)[match(age_actual$age_bin, unn
 check_table(age_actual, age_source, c("country","year","age_group"))
 sex_labels <- dplyr::transmute(analysis$rng, country, sex=sex_lab, rate_2001=y0, rate_2021=y1, percent_change=pct*100)
 check_table(sex_labels, dplyr::filter(reference, sex!="total"), c("country","sex"), "percent_change", 0.0001)
+# Export the source narrative with the five already-rendered, validated PNGs.
+# Fail on unfamiliar chunks or inline R rather than silently losing new content.
+rmd_lines <- readLines("Code_public.Rmd", warn=FALSE, encoding="UTF-8")
+yaml_end <- which(rmd_lines == "---")[2]
+body <- rmd_lines[seq.int(yaml_end + 1L, length(rmd_lines))]
+figure_files <- c("overall-trend.png", "sex-trends.png", "sex-gap.png",
+                  "endpoint-comparison.png", "age-band-rates.png")
+markdown <- c("# Ischaemic Heart Disease Mortality in Four Countries, 2001-2021",
+              "", "**Bryan Hao Yang Chen and Zhuoyang Li**", "",
+              "Generated from [Code_public.Rmd](Code_public.Rmd) after numerical validation.", "")
+in_chunk <- FALSE
+figure_count <- 0L
+for (line in body) {
+  if (startsWith(line, "```{r ")) {
+    chunk <- sub("^```\\{r ([^,}]+).*", "\\1", line)
+    stopifnot(chunk %in% c("setup", "session-info", paste0("figure-", 1:5)))
+    if (startsWith(chunk, "figure-")) {
+      index <- as.integer(sub("figure-", "", chunk, fixed=TRUE))
+      markdown <- c(markdown, paste0("![Figure ", index, "](figures/", figure_files[index], ")"))
+      figure_count <- figure_count + 1L
+    }
+    in_chunk <- TRUE
+  } else if (in_chunk && line == "```") {
+    in_chunk <- FALSE
+  } else if (!in_chunk) {
+    stopifnot(!grepl("`r ", line, fixed=TRUE))
+    markdown <- c(markdown, line)
+  }
+}
+stopifnot(!in_chunk, figure_count == 5L)
+writeLines(markdown, "Report_public.md", useBytes=TRUE)
+
 # Publish evidence only after rendering and all numerical assertions succeed.
 # Relative artifact names keep this public record free of personal filesystem paths.
 artifacts <- c("Code_public.Rmd", "scripts/render.R", "scripts/validate_data.py",
                "hcd_sdr_filtered.csv", "validation_results.json", "endpoint_summary.csv",
-               "Report_public.html", "figures/overall-trend.png", "figures/sex-trends.png",
+               "Report_public.html", "Report_public.md", "figures/overall-trend.png", "figures/sex-trends.png",
                "figures/sex-gap.png", "figures/endpoint-comparison.png", "figures/age-band-rates.png")
 stopifnot(all(file.exists(artifacts)))
 fingerprints <- tools::md5sum(artifacts)
@@ -78,7 +110,7 @@ writeLines(c("IHD Mortality Analysis: successful rendering and validation",
              paste("Started UTC:", started_utc),
              paste("Completed UTC:", format(Sys.time(), tz="UTC", format="%Y-%m-%dT%H:%M:%SZ")),
              "Command: Rscript --vanilla scripts/render.R",
-             "HTML render succeeded in a clean R process.",
+             "HTML render and Markdown export succeeded in a clean R process.",
              "All 12 plotted endpoint pairs and percentage changes agree with the independent audit (tolerance 0.0001).",
              "All 84 overall, 168 sex-specific, 84 sex-gap and 32 age-band plotted observations match the source CSV (tolerance 1e-8).",
              "All eight sex-trend percentage annotations match the independent audit (tolerance 0.0001).",
