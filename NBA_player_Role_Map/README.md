@@ -89,7 +89,8 @@ NBA_player_Role_Map/
 ├── figures/
 │   ├── Fig1_corr_heatmap_core18_annotated.png
 │   ├── Fig2_scree_plot_v3.png
-│   └── Fig3_scores_PC1_PC2_labeled.png
+│   ├── Fig3_scores_PC1_PC2_labeled.png
+│   └── Fig4_mahalanobis_D2_QQ.png
 ├── outputs/                          # Summary, loading, extreme-profile and diagnostic tables
 │   └── validation.json               # Input hash, versions and verification results
 ├── DATA_SOURCE.md                    # Provenance and data preparation
@@ -143,7 +144,7 @@ The [analysis report](ANALYSIS_REPORT.md), notebook and [loading export](outputs
 | `mardia_test_results.csv` | Approximate skewness and kurtosis diagnostics |
 | `validation.json` | Environment, input fingerprint and numerical checks |
 
-Additional corner, loading, biplot and diagnostic figures regenerate locally and are excluded from Git to keep the showcase compact.
+Additional corner, loading and biplot figures regenerate locally and are excluded from Git to keep the showcase compact.
 
 ## Author and Acknowledgments
 

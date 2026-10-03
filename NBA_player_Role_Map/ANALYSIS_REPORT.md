@@ -6,15 +6,85 @@
 
 Can correlated player statistics be summarized by a small number of interpretable dimensions? This exploratory analysis describes offensive involvement and interior-versus-perimeter profiles. It does not rank player ability, predict performance, or assign validated role classes.
 
+## Analysis sequence
+
+1. Load the season snapshot and verify player identifiers.
+2. Apply GP >= 10 and MIN >= 10; select 18 numerical features and check completeness.
+3. Summarize distributions and inspect Pearson correlation blocks.
+4. Standardize each feature, fit full-SVD PCA, and inspect the scree and cumulative-variance curves.
+5. Interpret corrected variable-score correlations and plot the PC1-PC2 player map.
+6. Assess multivariate normality with Mardia diagnostics and full-dimensional Mahalanobis distances.
+7. Retain unusual profiles, explain interpretation limits, and export results with independent numerical checks.
+
 ## Data and preparation
 
 The supplied NBA.com course snapshot contains 572 players and 67 columns. Requiring at least 10 games and 10 minutes per game leaves 421 players. The 18 selected per-game features cover playing time, scoring, shooting, rebounding, playmaking and defensive activity. No incomplete selected rows were removed. See [data provenance](DATA_SOURCE.md).
 
 Each feature is centered and scaled with StandardScaler before full-SVD PCA. Signs are anchored so points have a positive PC1 loading and offensive rebounds have a positive PC2 loading. Sign choices affect presentation, not explained variance.
 
+### Feature definitions
+
+| Feature | Plain-language meaning |
+|---|---|
+| MIN | Minutes played per game; on-court workload. |
+| PTS | Points scored per game. |
+| FGM | Field goals made per game, including two- and three-point shots. |
+| FGA | Field goals attempted per game. |
+| FG_PCT | Field-goal accuracy, stored as a proportion. |
+| FG3M | Three-point shots made per game. |
+| FG3A | Three-point shots attempted per game; three-point emphasis. |
+| FG3_PCT | Three-point accuracy, stored as a proportion. |
+| FTM | Free throws made per game. |
+| FTA | Free throws attempted per game. |
+| FT_PCT | Free-throw accuracy, stored as a proportion. |
+| OREB | Offensive rebounds per game. |
+| DREB | Defensive rebounds per game. |
+| REB | Total rebounds per game; rounded components need not add exactly. |
+| AST | Assists per game; passes credited with leading to made baskets. |
+| STL | Steals per game. |
+| BLK | Blocked shots per game. |
+| TOV | Turnovers per game. |
+
+### Descriptive context
+
+| Feature | Mean | Median | Minimum | Maximum |
+|---|---:|---:|---:|---:|
+| MIN | 22.63 | 22.30 | 10.00 | 37.80 |
+| PTS | 10.48 | 8.50 | 1.30 | 34.70 |
+| FG3A | 3.26 | 3.00 | 0.00 | 11.80 |
+| AST | 2.48 | 1.70 | 0.40 | 10.90 |
+
+These ranges indicate substantial variation in workload and statistical profiles. [Complete distribution summaries](outputs/summary_stats_core18.csv) cover all 18 variables. Percentage encodings are retained without imputation; zero-attempt caveats are discussed below.
+
+## Exploratory dependence structure
+
 ![Feature correlations](figures/Fig1_corr_heatmap_core18_annotated.png)
 
 PTS and FGM correlate at 0.991; PTS and FGA at 0.985. Such redundancy motivates dimension reduction but also gives related scoring statistics repeated representation in the feature set.
+
+### Correlation patterns
+
+| Feature pair | Pearson correlation |
+|---|---:|
+| MIN / FGA | 0.883 |
+| TOV / FGA | 0.853 |
+| FTM / FTA | 0.989 |
+| FG3M / FG3A | 0.986 |
+| DREB / REB | 0.972 |
+| OREB / REB | 0.842 |
+| FG3A / FG_PCT | -0.377 |
+| FG3_PCT / OREB | -0.412 |
+| OREB / FG_PCT | 0.619 |
+
+Minutes, scoring volume and turnovers form an involvement block. Free-throw makes and attempts, three-point makes and attempts, and rebounding measures form additional tight pairs. Negative associations between three-point emphasis and interior indicators suggest a style contrast. These are descriptive associations, not causal mechanisms or proof of discrete role groups.
+
+## Standardization and PCA method
+
+For each feature j, the analysis computes `z_ij = (x_ij - mean_j) / scale_j`, using the population standard deviation from StandardScaler. This prevents minutes, counts and shooting proportions from receiving different weights solely because of their units. The standardized columns have means approximately zero and population variances approximately one.
+
+Full SVD decomposes the standardized matrix. Component scores are projections of each player's standardized profile onto the component axes. The variance ratios and directions match correlation-based PCA; sample-covariance eigenvalues on population-scaled data carry the common factor n/(n-1). The loading formula below removes that factor when reporting exact feature-score correlations.
+
+The scree curve, cumulative explained variance and eigenvalue-above-one heuristic motivate a two-component display. No supervised target or held-out prediction task is used; the representation is fitted descriptively to all eligible players.
 
 ## Dimension reduction
 
@@ -69,6 +139,22 @@ The chi-square(18) 0.999 reference threshold is 42.312396 and flags 23 profiles.
 
 Per-game statistics reflect playing time and team context and are not possession-adjusted. Recorded rounded FG3A is zero for 26 players and FTA for one; associated percentages cannot automatically be interpreted as measured shooting accuracy. This single-season study does not establish stability across seasons or eligibility thresholds.
 
+### Mahalanobis distance and Q-Q assessment
+
+Distances use all 18 components, not just the two displayed in the role map. For player i, `D2_i = sum_j(score_ij**2 / eigenvalue_j)`; this is checked against an independent sample-covariance calculation. Ordered distances are compared with chi-square(18) quantiles at `(i - 0.5) / n`. The reference line is fitted to the middle 10%-90% of quantiles to reduce the influence of the most extreme tail points; it is not a robust covariance estimator.
+
+![Mahalanobis distance Q-Q diagnostic](figures/Fig4_mahalanobis_D2_QQ.png)
+
+The upper tail rises above the reference line, consistent with the normality diagnostics. This does not by itself identify a particular mixture distribution or establish valid categorical player roles. The dashed horizontal line is the exploratory 0.999 threshold; the three largest distances are highlighted.
+
+| Player | Squared Mahalanobis distance |
+|---|---:|
+| Giannis Antetokounmpo | 141.807 |
+| Luke Kornet | 104.893 |
+| Victor Wembanyama | 102.680 |
+
+The [complete distance table](outputs/mahalanobis_D2_all.csv), [23 flagged profiles](outputs/flagged_outliers_chi2_0p999.csv) and [Mardia results](outputs/mardia_test_results.csv) retain the diagnostic evidence. No flagged player is automatically removed, and no claim is made that removing them improves the model.
+
 ## Conclusion
 
 Two standardized components retain 73.82% of feature variance and provide an interpretable map of offensive involvement and interior/perimeter style. The result is a descriptive comparison tool, with important residual variation and diagnostic limitations. No classification accuracy, scouting impact or predictive performance is claimed.
@@ -78,3 +164,12 @@ Two standardized components retain 73.82% of feature variance and provide an int
 The [executed notebook](NBA_code.ipynb), [validation record](outputs/validation.json) and [corrected loading export](outputs/loadings_PC1_PC2.csv) are the numerical sources for this report. Run `verify_notebook.py` in the documented environment to reproduce the analysis; this written interpretation should be reviewed if the input snapshot changes.
 
 This is the current portfolio report. Its feature-component correlations use the corrected finite-sample normalization; see [numerical verification](REPORT_VERIFICATION.md). Authorship and assistance acknowledgments are recorded in the [project README](README.md#author-and-acknowledgments).
+
+
+## Authorship and methodological sources
+
+Bryan Chen completed the original STA437 project independently, including study design, methodological choices, execution and interpretation. ChatGPT assisted with code, captions and writing; this assistance is also acknowledged in the project README.
+
+- NBA.com (2024), NBA player statistics, 2023-24 season; supplied course snapshot. Source details and reuse notes are in [DATA_SOURCE.md](DATA_SOURCE.md).
+- J. S. Speagle (2026), *NBA player statistics dataset: Overview and feature descriptions*, University of Toronto course materials.
+- J. S. Speagle (2026), STA437 lecture notes: *Week 3.5: Foundations review*; *Week 3.7: Mathematical foundations: Eigendecomposition, SVD & multivariate normal*; *Week 4: PCA: Part I*; *Week 5: PCA: Part II*. These are the methodological course references from the original report and are not redistributed here.
