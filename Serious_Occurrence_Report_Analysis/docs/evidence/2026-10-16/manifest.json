@@ -1,0 +1,18 @@
+{
+  "review_date": "2026-10-16",
+  "sql_sha256": {
+    "sql/00_create_demo_database.sql": "fb0931fff305265634203daf123045023d7f771dc15b41017e5073e2fdbcd5f4",
+    "sql/01_create_layers.sql": "1e09917567b753e415f129727bb024977e6676245996b06a5d21636916465ff0",
+    "sql/02_load_silver.sql": "5eeb41107081b3d0ec7ec960c2295d83c6385a406cde6da1fd89c6e7e449e564",
+    "sql/03_gold_views.sql": "48f789d58bbfe22a4c6266b5dabc7318df091523e98c68da38d28601722e33c5",
+    "tests/01_synthetic_fixture.sql": "d56ed312ea6b66bb6460820424ca9c71a621f0e79f219b552a30686d4a585552",
+    "tests/02_acceptance.sql": "7caeee34edc1d5679c630752a3eb6db501665855f326bea2ff5bc89f4519b2e4"
+  },
+  "log_sha256": {
+    "sor-sql.txt": "d649010619679c12680a633b411afc3bbb9abdd613d4b6548a3f73fa837964d1",
+    "sor-ssis.txt": "e22e8907b486bffc2416c9aed2c5448094c6847e78818d835ba44f6f3e14f573",
+    "sor-showcase.txt": "100f5a906f9a5adc2148f7b24a2d65235d338552a59cb5cf829e57efb8b5b6a5"
+  },
+  "scope": "SQL formatting and comments; explicit aliases and default-space TRIM equivalence checked. SQL Server parse-only checks passed for all reviewed files.",
+  "power_bi_desktop_rerun": false
+}

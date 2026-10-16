@@ -1,5 +1,9 @@
 # Validation and Execution Evidence
 
+## SQL standardization verification — 16 October 2026
+
+[The captured SQL verification](evidence/2026-10-16/README.md) passed syntax, setup, rollback-only Silver reconstruction and final Gold checks. PCA scores and provenance were preserved. The evidence describes the pre-existing tempo-label encoding difference explicitly. Python fitting and Power BI Desktop were not rerun.
+
 Reviewed run: **14 September 2026**. The numerical pipeline is validated for the supplied snapshot. The included Power BI report received a separate configuration and screenshot review on 19–20 September 2026. A file-consistency audit, saved-model reconciliation and direct read-only SQL acceptance check were completed on 22 September 2026.
 
 ## Evidence sources
