@@ -9,7 +9,12 @@ explicit aliases and purpose comments. Business rules and output schemas were pr
   with CSV-derived expectations, including record multiplicity.
 - Power BI Desktop was not rerun; this review concerns SQL and the ingestion pipeline.
 
+The final readability pass changed only whitespace and comments. Executable token
+comparison passed, and the runtime checks above were repeated against the final files.
+
 ## Captured outputs
+
+- [SQL Server parse-only results](sql-parse.txt)
 
 - [sor-sql.txt](sor-sql.txt)
 - [sor-ssis.txt](sor-ssis.txt)

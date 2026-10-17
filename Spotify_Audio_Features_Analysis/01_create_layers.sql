@@ -19,11 +19,14 @@ IF DB_ID('Spotify') IS NULL
 GO
 USE Spotify;
 GO
-IF SCHEMA_ID('bronze') IS NULL EXEC (N'CREATE SCHEMA bronze AUTHORIZATION dbo');
+IF SCHEMA_ID('bronze') IS NULL
+    EXEC (N'CREATE SCHEMA bronze AUTHORIZATION dbo');
 GO
-IF SCHEMA_ID('silver') IS NULL EXEC (N'CREATE SCHEMA silver AUTHORIZATION dbo');
+IF SCHEMA_ID('silver') IS NULL
+    EXEC (N'CREATE SCHEMA silver AUTHORIZATION dbo');
 GO
-IF SCHEMA_ID('gold') IS NULL EXEC (N'CREATE SCHEMA gold AUTHORIZATION dbo');
+IF SCHEMA_ID('gold') IS NULL
+    EXEC (N'CREATE SCHEMA gold AUTHORIZATION dbo');
 GO
 
 -- ---------------------------------------------------------

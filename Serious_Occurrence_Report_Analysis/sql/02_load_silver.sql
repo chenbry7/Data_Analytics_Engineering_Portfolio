@@ -24,8 +24,13 @@ Implementation Notes:
 -- Post-internship enhancement. Run only in the isolated synthetic demonstration database.
 IF DB_NAME() <> N'SOR_Portfolio_Test'
     THROW 52000, 'This script requires SOR_Portfolio_Test.', 1;
-IF NOT EXISTS (SELECT 1 FROM sys.extended_properties
-               WHERE class = 0 AND name = N'SORPortfolioDemo' AND CONVERT(NVARCHAR(20), value) = N'1')
+IF NOT EXISTS (
+    SELECT 1
+    FROM sys.extended_properties
+    WHERE class = 0
+        AND name = N'SORPortfolioDemo'
+        AND CONVERT(NVARCHAR(20), value) = N'1'
+)
     THROW 52000, 'The database is not marked as this project demonstration.', 1;
 GO
 
@@ -44,167 +49,240 @@ BEGIN
         BEGIN TRANSACTION;
 
         -- Stabilize each Bronze snapshot during this load. One ingestion writer at a time is required.
-        SELECT * INTO #raw_status FROM bronze.SO_status WITH (TABLOCK, HOLDLOCK);
-        SELECT * INTO #raw_category FROM bronze.SO_category WITH (TABLOCK, HOLDLOCK);
+        SELECT *
+        INTO #raw_status
+        FROM bronze.SO_status WITH (TABLOCK, HOLDLOCK);
+        SELECT *
+        INTO #raw_category
+        FROM bronze.SO_category WITH (TABLOCK, HOLDLOCK);
 
         -- Require both source snapshots before rebuilding related tables.
         IF NOT EXISTS (SELECT 1 FROM #raw_status) OR NOT EXISTS (SELECT 1 FROM #raw_category)
             THROW 52002, 'Both source snapshots must be nonempty.', 1;
+
         -- Reject missing event identifiers in either source.
         IF EXISTS (SELECT 1 FROM #raw_status WHERE NULLIF(NULLIF(TRIM(sor_id), ''), 'n/a') IS NULL)
            OR EXISTS (SELECT 1 FROM #raw_category WHERE NULLIF(NULLIF(TRIM(sor_id), ''), 'n/a') IS NULL)
             THROW 52003, 'Event identifiers must be populated in both sources.', 1;
+
         -- Reject status identifiers that become duplicates after trimming.
-        IF EXISTS (SELECT TRIM(sor_id) FROM #raw_status GROUP BY TRIM(sor_id) HAVING COUNT(*) > 1)
+        IF EXISTS (
+            SELECT TRIM(sor_id)
+            FROM #raw_status
+            GROUP BY TRIM(sor_id)
+            HAVING COUNT(*) > 1
+        )
             THROW 52004, 'Status event identifiers must be unique after trimming.', 1;
+
         -- Require every category to reference an event in the status snapshot.
-        IF EXISTS (SELECT 1 FROM #raw_category AS c WHERE NOT EXISTS
-                   (SELECT 1 FROM #raw_status AS s WHERE TRIM(s.sor_id) = TRIM(c.sor_id)))
+        IF EXISTS (
+            SELECT 1
+            FROM #raw_category AS c
+            WHERE NOT EXISTS (
+                SELECT 1
+                FROM #raw_status AS s
+                WHERE TRIM(s.sor_id) = TRIM(c.sor_id)
+            )
+        )
             THROW 52005, 'Every category record must reference a status event.', 1;
 
-        -- Expectation: each populated status value has the exact documented format and range.
+        -- Require date_serious_occur to be an exact ISO date (YYYY-MM-DD) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_status
-            WHERE (NULLIF(NULLIF(TRIM([date_serious_occur]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([date_serious_occur]), ''), 'n/a'), 23) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([date_serious_occur]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([date_serious_occur]), ''), 'n/a'), 23) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([date_serious_occur]), ''), 'n/a')) <> 10
                     OR CONVERT(
                         CHAR(10),
                         TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([date_serious_occur]), ''), 'n/a'), 23),
                         23
-                    ) <> NULLIF(NULLIF(TRIM([date_serious_occur]), ''), 'n/a'))))
+                    ) <> NULLIF(NULLIF(TRIM([date_serious_occur]), ''), 'n/a')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_status.date_serious_occur: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated status value has the exact documented format and range.
+        -- Require date_report_submit to be an exact ISO date (YYYY-MM-DD) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_status
-            WHERE (NULLIF(NULLIF(TRIM([date_report_submit]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([date_report_submit]), ''), 'n/a'), 23) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([date_report_submit]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([date_report_submit]), ''), 'n/a'), 23) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([date_report_submit]), ''), 'n/a')) <> 10
                     OR CONVERT(
                         CHAR(10),
                         TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([date_report_submit]), ''), 'n/a'), 23),
                         23
-                    ) <> NULLIF(NULLIF(TRIM([date_report_submit]), ''), 'n/a'))))
+                    ) <> NULLIF(NULLIF(TRIM([date_report_submit]), ''), 'n/a')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_status.date_report_submit: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated status value has the exact documented format and range.
+        -- Require last_update_date to be an exact ISO date (YYYY-MM-DD) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_status
-            WHERE (NULLIF(NULLIF(TRIM([last_update_date]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([last_update_date]), ''), 'n/a'), 23) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([last_update_date]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([last_update_date]), ''), 'n/a'), 23) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([last_update_date]), ''), 'n/a')) <> 10
                     OR CONVERT(
                         CHAR(10),
                         TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([last_update_date]), ''), 'n/a'), 23),
                         23
-                    ) <> NULLIF(NULLIF(TRIM([last_update_date]), ''), 'n/a'))))
+                    ) <> NULLIF(NULLIF(TRIM([last_update_date]), ''), 'n/a')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_status.last_update_date: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated status value has the exact documented format and range.
+        -- Require update_due_date to be an exact ISO date (YYYY-MM-DD) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_status
-            WHERE (NULLIF(NULLIF(TRIM([update_due_date]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([update_due_date]), ''), 'n/a'), 23) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([update_due_date]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([update_due_date]), ''), 'n/a'), 23) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([update_due_date]), ''), 'n/a')) <> 10
                     OR CONVERT(
                         CHAR(10),
                         TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([update_due_date]), ''), 'n/a'), 23),
                         23
-                    ) <> NULLIF(NULLIF(TRIM([update_due_date]), ''), 'n/a'))))
+                    ) <> NULLIF(NULLIF(TRIM([update_due_date]), ''), 'n/a')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_status.update_due_date: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated status value has the exact documented format and range.
+        -- Require revision_due_date to be an exact ISO date (YYYY-MM-DD) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_status
-            WHERE (NULLIF(NULLIF(TRIM([revision_due_date]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([revision_due_date]), ''), 'n/a'), 23) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([revision_due_date]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([revision_due_date]), ''), 'n/a'), 23) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([revision_due_date]), ''), 'n/a')) <> 10
                     OR CONVERT(
                         CHAR(10),
                         TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([revision_due_date]), ''), 'n/a'), 23),
                         23
-                    ) <> NULLIF(NULLIF(TRIM([revision_due_date]), ''), 'n/a'))))
+                    ) <> NULLIF(NULLIF(TRIM([revision_due_date]), ''), 'n/a')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_status.revision_due_date: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated status value has the exact documented format and range.
+        -- Require time_serious_occur to be an exact time (HH:MM:SS) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_status
-            WHERE (NULLIF(NULLIF(TRIM([time_serious_occur]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(TIME(0), NULLIF(NULLIF(TRIM([time_serious_occur]), ''), 'n/a'), 108) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([time_serious_occur]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(TIME(0), NULLIF(NULLIF(TRIM([time_serious_occur]), ''), 'n/a'), 108) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([time_serious_occur]), ''), 'n/a')) <> 8
                     OR CONVERT(
                         CHAR(8),
                         TRY_CONVERT(TIME(0), NULLIF(NULLIF(TRIM([time_serious_occur]), ''), 'n/a'), 108),
                         108
-                    ) <> NULLIF(NULLIF(TRIM([time_serious_occur]), ''), 'n/a'))))
+                    ) <> NULLIF(NULLIF(TRIM([time_serious_occur]), ''), 'n/a')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_status.time_serious_occur: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated status value has the exact documented format and range.
+        -- Require time_report_submit to be an exact time (HH:MM:SS) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_status
-            WHERE (NULLIF(NULLIF(TRIM([time_report_submit]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(TIME(0), NULLIF(NULLIF(TRIM([time_report_submit]), ''), 'n/a'), 108) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([time_report_submit]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(TIME(0), NULLIF(NULLIF(TRIM([time_report_submit]), ''), 'n/a'), 108) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([time_report_submit]), ''), 'n/a')) <> 8
                     OR CONVERT(
                         CHAR(8),
                         TRY_CONVERT(TIME(0), NULLIF(NULLIF(TRIM([time_report_submit]), ''), 'n/a'), 108),
                         108
-                    ) <> NULLIF(NULLIF(TRIM([time_report_submit]), ''), 'n/a'))))
+                    ) <> NULLIF(NULLIF(TRIM([time_report_submit]), ''), 'n/a')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_status.time_report_submit: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated status value has the exact documented format and range.
+        -- Require last_update_time to be an exact time (HH:MM:SS) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_status
-            WHERE (NULLIF(NULLIF(TRIM([last_update_time]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(TIME(0), NULLIF(NULLIF(TRIM([last_update_time]), ''), 'n/a'), 108) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([last_update_time]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(TIME(0), NULLIF(NULLIF(TRIM([last_update_time]), ''), 'n/a'), 108) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([last_update_time]), ''), 'n/a')) <> 8
                     OR CONVERT(
                         CHAR(8),
                         TRY_CONVERT(TIME(0), NULLIF(NULLIF(TRIM([last_update_time]), ''), 'n/a'), 108),
                         108
-                    ) <> NULLIF(NULLIF(TRIM([last_update_time]), ''), 'n/a'))))
+                    ) <> NULLIF(NULLIF(TRIM([last_update_time]), ''), 'n/a')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_status.last_update_time: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated status value has the exact documented format and range.
+        -- Require num_individuals to be a nonnegative integer containing digits only when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_status
-            WHERE (NULLIF(NULLIF(TRIM([num_individuals]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([num_individuals]), ''), 'n/a')) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([num_individuals]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([num_individuals]), ''), 'n/a')) IS NULL
                     OR TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([num_individuals]), ''), 'n/a')) < 0
-                    OR NULLIF(NULLIF(TRIM([num_individuals]), ''), 'n/a') COLLATE Latin1_General_100_BIN2 LIKE '%[^0-9]%')))
+                    OR NULLIF(NULLIF(TRIM([num_individuals]), ''), 'n/a') COLLATE Latin1_General_100_BIN2 LIKE '%[^0-9]%'
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_status.num_individuals: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated status value has the exact documented format and range.
+        -- Require num_unique_individuals to be a nonnegative integer containing digits only when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_status
-            WHERE (NULLIF(NULLIF(TRIM([num_unique_individuals]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([num_unique_individuals]), ''), 'n/a')) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([num_unique_individuals]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([num_unique_individuals]), ''), 'n/a')) IS NULL
                     OR TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([num_unique_individuals]), ''), 'n/a')) < 0
-                    OR NULLIF(NULLIF(TRIM([num_unique_individuals]), ''), 'n/a') COLLATE Latin1_General_100_BIN2 LIKE '%[^0-9]%')))
+                    OR NULLIF(NULLIF(TRIM([num_unique_individuals]), ''), 'n/a') COLLATE Latin1_General_100_BIN2 LIKE '%[^0-9]%'
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_status.num_unique_individuals: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated status value has the exact documented format and range.
+        -- Require num_unique_categories to be a nonnegative integer containing digits only when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_status
-            WHERE (NULLIF(NULLIF(TRIM([num_unique_categories]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([num_unique_categories]), ''), 'n/a')) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([num_unique_categories]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([num_unique_categories]), ''), 'n/a')) IS NULL
                     OR TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([num_unique_categories]), ''), 'n/a')) < 0
-                    OR NULLIF(NULLIF(TRIM([num_unique_categories]), ''), 'n/a') COLLATE Latin1_General_100_BIN2 LIKE '%[^0-9]%')))
+                    OR NULLIF(NULLIF(TRIM([num_unique_categories]), ''), 'n/a') COLLATE Latin1_General_100_BIN2 LIKE '%[^0-9]%'
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_status.num_unique_categories: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Normalize fields and convert validated values into the typed staging table.
         -- Build typed staging rows without modifying the current Silver snapshot.
         SELECT
             NULLIF(NULLIF(TRIM([site_id]), ''), 'n/a') AS [site_id],
@@ -238,16 +316,18 @@ BEGIN
         INTO #clean_status
         FROM #raw_status;
 
-        -- Expectation: each populated category value has the exact documented format and range.
+        -- Require date_time_serious_occur to be an exact ISO timestamp (YYYY-MM-DD HH:MM:SS or YYYY-MM-DDTHH:MM:SS) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_category
-            WHERE (NULLIF(NULLIF(TRIM([date_time_serious_occur]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(
-                    DATETIME2(0),
-                    REPLACE(NULLIF(NULLIF(TRIM([date_time_serious_occur]), ''), 'n/a'), ' ', 'T'),
-                    126
-                ) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([date_time_serious_occur]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(
+                        DATETIME2(0),
+                        REPLACE(NULLIF(NULLIF(TRIM([date_time_serious_occur]), ''), 'n/a'), ' ', 'T'),
+                        126
+                    ) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([date_time_serious_occur]), ''), 'n/a')) <> 19
                     OR CONVERT(
                         CHAR(19),
@@ -257,19 +337,24 @@ BEGIN
                             126
                         ),
                         126
-                    ) <> REPLACE(NULLIF(NULLIF(TRIM([date_time_serious_occur]), ''), 'n/a'), ' ', 'T'))))
+                    ) <> REPLACE(NULLIF(NULLIF(TRIM([date_time_serious_occur]), ''), 'n/a'), ' ', 'T')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_category.date_time_serious_occur: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated category value has the exact documented format and range.
+        -- Require date_time_report_submit to be an exact ISO timestamp (YYYY-MM-DD HH:MM:SS or YYYY-MM-DDTHH:MM:SS) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_category
-            WHERE (NULLIF(NULLIF(TRIM([date_time_report_submit]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(
-                    DATETIME2(0),
-                    REPLACE(NULLIF(NULLIF(TRIM([date_time_report_submit]), ''), 'n/a'), ' ', 'T'),
-                    126
-                ) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([date_time_report_submit]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(
+                        DATETIME2(0),
+                        REPLACE(NULLIF(NULLIF(TRIM([date_time_report_submit]), ''), 'n/a'), ' ', 'T'),
+                        126
+                    ) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([date_time_report_submit]), ''), 'n/a')) <> 19
                     OR CONVERT(
                         CHAR(19),
@@ -279,19 +364,24 @@ BEGIN
                             126
                         ),
                         126
-                    ) <> REPLACE(NULLIF(NULLIF(TRIM([date_time_report_submit]), ''), 'n/a'), ' ', 'T'))))
+                    ) <> REPLACE(NULLIF(NULLIF(TRIM([date_time_report_submit]), ''), 'n/a'), ' ', 'T')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_category.date_time_report_submit: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated category value has the exact documented format and range.
+        -- Require last_update_date_time to be an exact ISO timestamp (YYYY-MM-DD HH:MM:SS or YYYY-MM-DDTHH:MM:SS) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_category
-            WHERE (NULLIF(NULLIF(TRIM([last_update_date_time]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(
-                    DATETIME2(0),
-                    REPLACE(NULLIF(NULLIF(TRIM([last_update_date_time]), ''), 'n/a'), ' ', 'T'),
-                    126
-                ) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([last_update_date_time]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(
+                        DATETIME2(0),
+                        REPLACE(NULLIF(NULLIF(TRIM([last_update_date_time]), ''), 'n/a'), ' ', 'T'),
+                        126
+                    ) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([last_update_date_time]), ''), 'n/a')) <> 19
                     OR CONVERT(
                         CHAR(19),
@@ -301,31 +391,44 @@ BEGIN
                             126
                         ),
                         126
-                    ) <> REPLACE(NULLIF(NULLIF(TRIM([last_update_date_time]), ''), 'n/a'), ' ', 'T'))))
+                    ) <> REPLACE(NULLIF(NULLIF(TRIM([last_update_date_time]), ''), 'n/a'), ' ', 'T')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_category.last_update_date_time: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated category value has the exact documented format and range.
+        -- Require client_DOB to be an exact ISO date (YYYY-MM-DD) when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_category
-            WHERE (NULLIF(NULLIF(TRIM([client_DOB]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([client_DOB]), ''), 'n/a'), 23) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([client_DOB]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([client_DOB]), ''), 'n/a'), 23) IS NULL
                     OR LEN(NULLIF(NULLIF(TRIM([client_DOB]), ''), 'n/a')) <> 10
                     OR CONVERT(
                         CHAR(10),
                         TRY_CONVERT(DATE, NULLIF(NULLIF(TRIM([client_DOB]), ''), 'n/a'), 23),
                         23
-                    ) <> NULLIF(NULLIF(TRIM([client_DOB]), ''), 'n/a'))))
+                    ) <> NULLIF(NULLIF(TRIM([client_DOB]), ''), 'n/a')
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_category.client_DOB: use the documented ISO or nonnegative integer format.', 1;
 
-        -- Expectation: each populated category value has the exact documented format and range.
+        -- Require client_age to be a nonnegative integer containing digits only when supplied.
         IF EXISTS (
             SELECT 1
             FROM #raw_category
-            WHERE (NULLIF(NULLIF(TRIM([client_age]), ''), 'n/a') IS NOT NULL
-                AND (TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([client_age]), ''), 'n/a')) IS NULL
+            WHERE (
+                NULLIF(NULLIF(TRIM([client_age]), ''), 'n/a') IS NOT NULL
+                AND (
+                    TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([client_age]), ''), 'n/a')) IS NULL
                     OR TRY_CONVERT(INT, NULLIF(NULLIF(TRIM([client_age]), ''), 'n/a')) < 0
-                    OR NULLIF(NULLIF(TRIM([client_age]), ''), 'n/a') COLLATE Latin1_General_100_BIN2 LIKE '%[^0-9]%')))
+                    OR NULLIF(NULLIF(TRIM([client_age]), ''), 'n/a') COLLATE Latin1_General_100_BIN2 LIKE '%[^0-9]%'
+                )
+            )
+        )
             THROW 52006, 'Invalid SO_category.client_age: use the documented ISO or nonnegative integer format.', 1;
 
         -- Build typed staging rows without modifying the current Silver snapshot.

@@ -1,7 +1,7 @@
-Changed database context to 'master'.
-Changed database context to 'Spotify'.
-next_step
----------
-STEP 1 complete: run 02_import_csv.py in VS Code
-
-(1 rows affected)
+Changed database context to 'master'.
+Changed database context to 'Spotify'.
+next_step
+---------
+STEP 1 complete: run 02_import_csv.py in VS Code
+
+(1 rows affected)

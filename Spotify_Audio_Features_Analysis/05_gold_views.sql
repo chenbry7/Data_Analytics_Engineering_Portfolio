@@ -75,7 +75,9 @@ JOIN bronze.source_info AS bi
     ON bi.source_sha256 = si.source_sha256
 JOIN gold.analysis_info AS ai
     ON ai.source_sha256 = si.source_sha256
-WHERE si.id = 1 AND bi.id = 1 AND ai.id = 1;
+WHERE si.id = 1
+    AND bi.id = 1
+    AND ai.id = 1;
 GO
 
 -- ---------------------------------------------------------
@@ -101,14 +103,10 @@ SELECT
     COUNT(*) AS catalog_track_count,
     SUM(include_primary) AS analysis_track_count,
     AVG(CASE WHEN include_primary = 1 THEN energy END) AS analysis_mean_energy,
-    AVG(CASE WHEN include_primary = 1 THEN danceability END)
-        AS analysis_mean_danceability,
-    AVG(CASE WHEN include_primary = 1 THEN acousticness END)
-        AS analysis_mean_acousticness,
-    AVG(CASE WHEN include_primary = 1 THEN valence END)
-        AS analysis_mean_valence,
-    AVG(CASE WHEN include_primary = 1 THEN duration_minutes END)
-        AS analysis_mean_duration_minutes,
+    AVG(CASE WHEN include_primary = 1 THEN danceability END) AS analysis_mean_danceability,
+    AVG(CASE WHEN include_primary = 1 THEN acousticness END) AS analysis_mean_acousticness,
+    AVG(CASE WHEN include_primary = 1 THEN valence END) AS analysis_mean_valence,
+    AVG(CASE WHEN include_primary = 1 THEN duration_minutes END) AS analysis_mean_duration_minutes,
     SUM(popularity_conflict) AS popularity_conflict_count,
     SUM(metadata_missing) AS metadata_missing_count,
     SUM(fractional_catalog_weight) AS fractional_catalog_equivalents
@@ -130,7 +128,8 @@ FROM silver.quality_results AS q
 CROSS JOIN silver.source_info AS si
 JOIN bronze.source_info AS bi
     ON bi.source_sha256 = si.source_sha256
-WHERE si.id = 1 AND bi.id = 1;
+WHERE si.id = 1
+    AND bi.id = 1;
 GO
 
 -- Expose one matching source/model snapshot with catalog counts and analysis metadata.
@@ -154,14 +153,18 @@ JOIN silver.source_info AS s
     ON s.source_sha256 = b.source_sha256
 JOIN gold.analysis_info AS a
     ON a.source_sha256 = b.source_sha256
-WHERE b.id = 1 AND s.id = 1 AND a.id = 1;
+WHERE b.id = 1
+    AND s.id = 1
+    AND a.id = 1;
 GO
 
 -- Preview the ready source/model snapshot.
-SELECT * FROM gold.SourceSummary;
+SELECT *
+FROM gold.SourceSummary;
 
 -- Preview ten genre aggregates before running final acceptance checks.
-SELECT TOP (10) * FROM gold.GenreSummary
+SELECT TOP (10) *
+FROM gold.GenreSummary
 ORDER BY track_genre;
 SELECT
     'STEP 5 complete: run 06_checks.sql, then connect Power BI to Gold views' AS next_step;

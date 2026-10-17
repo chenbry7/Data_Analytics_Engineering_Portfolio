@@ -2,17 +2,24 @@
   "review_date": "2026-10-16",
   "sql_sha256": {
     "sql/00_create_demo_database.sql": "fb0931fff305265634203daf123045023d7f771dc15b41017e5073e2fdbcd5f4",
-    "sql/01_create_layers.sql": "1e09917567b753e415f129727bb024977e6676245996b06a5d21636916465ff0",
-    "sql/02_load_silver.sql": "5eeb41107081b3d0ec7ec960c2295d83c6385a406cde6da1fd89c6e7e449e564",
-    "sql/03_gold_views.sql": "48f789d58bbfe22a4c6266b5dabc7318df091523e98c68da38d28601722e33c5",
-    "tests/01_synthetic_fixture.sql": "d56ed312ea6b66bb6460820424ca9c71a621f0e79f219b552a30686d4a585552",
-    "tests/02_acceptance.sql": "7caeee34edc1d5679c630752a3eb6db501665855f326bea2ff5bc89f4519b2e4"
+    "sql/01_create_layers.sql": "c54e66697dce9c83a075134f6c9e7e4c26ea52bffd9a284a65b7460782b4b8d0",
+    "sql/02_load_silver.sql": "498b0e02e50be1465cce4ae448a0f155ad681dcd5a5465d89fceb1a590535c4c",
+    "sql/03_gold_views.sql": "3451064e8afc539c6932e81424a5af118d4f18bbad825f5f2136b4398eaf218c",
+    "tests/01_synthetic_fixture.sql": "6557be1821ccf70fbb76768b31a918de7b06820fea3274f1d5c6717a585fd1cf",
+    "tests/02_acceptance.sql": "7767ca4e08831a64d1f34664bd1e569f323c6a24133de8deefe4d3e93e521157"
   },
   "log_sha256": {
-    "sor-sql.txt": "d649010619679c12680a633b411afc3bbb9abdd613d4b6548a3f73fa837964d1",
-    "sor-ssis.txt": "e22e8907b486bffc2416c9aed2c5448094c6847e78818d835ba44f6f3e14f573",
-    "sor-showcase.txt": "100f5a906f9a5adc2148f7b24a2d65235d338552a59cb5cf829e57efb8b5b6a5"
+    "sor-sql.txt": "fcc719c9da470b0be8beca9a344f7bb4e8eb3b21260a0797381b316e49e72850",
+    "sor-ssis.txt": "fb9369df736811526ea2994671c12a1f6f2a0fd42949543cbef0878a957d39b6",
+    "sor-showcase.txt": "1a63adbbf5d700cc78af5ceff83890bafde5f93eebb4f38238b38fd08371204f",
+    "sql-parse.txt": "0fffcc8ab00dbf345bb79cbd32a12f12c9086f56dad274c1dfcfac61f4e735ab"
   },
   "scope": "SQL formatting and comments; explicit aliases and default-space TRIM equivalence checked. SQL Server parse-only checks passed for all reviewed files.",
-  "power_bi_desktop_rerun": false
+  "power_bi_desktop_rerun": false,
+  "readability_review": {
+    "changes": "Whitespace and comments only in the final readability pass.",
+    "executable_token_comparison": "PASS: exact token types and values retained; whitespace inside compound keyword tokens normalized.",
+    "reviewed_sql_files": 6,
+    "runtime_checks": "Rerun after the final readability pass; see captured outputs."
+  }
 }

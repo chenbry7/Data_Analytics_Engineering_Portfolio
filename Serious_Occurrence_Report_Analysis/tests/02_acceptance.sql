@@ -22,11 +22,12 @@ Implementation Notes:
 IF DB_NAME() <> N'SOR_Portfolio_Test'
     THROW 52000, 'This script requires SOR_Portfolio_Test.', 1;
 IF NOT EXISTS (
-        SELECT 1 FROM sys.extended_properties
-        WHERE class = 0
-            AND name = N'SORPortfolioDemo'
-            AND CONVERT(NVARCHAR(20), value) = N'1'
-    )
+    SELECT 1
+    FROM sys.extended_properties
+    WHERE class = 0
+        AND name = N'SORPortfolioDemo'
+        AND CONVERT(NVARCHAR(20), value) = N'1'
+)
     THROW 52000, 'The database is not marked as this project demonstration.', 1;
 GO
 
@@ -41,66 +42,79 @@ IF (SELECT COUNT(*) FROM gold.fact_events) <> 3
     OR (SELECT COUNT(*) FROM gold.fact_categories) <> 4
     THROW 52900, 'Event/detail grains are wrong.', 1;
 IF (
-    SELECT COUNT(*) FROM silver.SO_category
+    SELECT COUNT(*)
+    FROM silver.SO_category
     WHERE client_id = 'DEMO-P001'
 ) <> 3
     THROW 52900, 'Repeated participants must be preserved.', 1;
 IF NOT EXISTS (
-        SELECT 1 FROM silver.SO_status
-        WHERE sor_id = 'DEMO-E001' AND site_name = 'Demo Site A'
-            AND non_funded_licensed_OPR = 'Yes'
-            AND update_due_date IS NULL
-            AND revision_due_date IS NULL
-    )
+    SELECT 1
+    FROM silver.SO_status
+    WHERE sor_id = 'DEMO-E001' AND site_name = 'Demo Site A'
+        AND non_funded_licensed_OPR = 'Yes'
+        AND update_due_date IS NULL
+        AND revision_due_date IS NULL
+)
     THROW 52900, 'Normalization or optional null handling failed.', 1;
 IF NOT EXISTS (
-        SELECT 1 FROM silver.SO_category
-        WHERE sor_id = 'DEMO-E001'
-            AND date_time_report_submit
-            = CONVERT(DATETIME2(0), '2026-06-02T10:00:00', 126)
-    )
+    SELECT 1
+    FROM silver.SO_category
+    WHERE sor_id = 'DEMO-E001'
+        AND date_time_report_submit = CONVERT(DATETIME2(0), '2026-06-02T10:00:00', 126)
+)
     THROW 52900, 'Timestamp precision was lost.', 1;
 IF NOT EXISTS (
-        SELECT 1 FROM silver.SO_category
-        WHERE client_id = 'DEMO-P002'
-            AND client_age IS NULL
-            AND client_DOB IS NULL
-    )
+    SELECT 1
+    FROM silver.SO_category
+    WHERE client_id = 'DEMO-P002'
+        AND client_age IS NULL
+        AND client_DOB IS NULL
+)
     THROW 52900, 'Optional typed fields should allow missing values.', 1;
 
 IF EXISTS (
-        SELECT 1 FROM gold.fact_categories
-        WHERE sor_id = 'DEMO-E003'
-    )
+    SELECT 1
+    FROM gold.fact_categories
+    WHERE sor_id = 'DEMO-E003'
+)
     THROW 52900, 'An event without categories must not create a category record.', 1;
 IF (
-        SELECT COUNT(*) FROM gold.fact_categories
-        WHERE age_group = 'Unknown' AND age_group_order = 6
-    ) <> 1
+    SELECT COUNT(*)
+    FROM gold.fact_categories
+    WHERE age_group = 'Unknown' AND age_group_order = 6
+) <> 1
     THROW 52900, 'Unknown age classification is wrong.', 1;
 IF (
-        SELECT COUNT(*) FROM gold.fact_categories
-        WHERE client_id = 'DEMO-P001'
-    ) <> 3
+    SELECT COUNT(*)
+    FROM gold.fact_categories
+    WHERE client_id = 'DEMO-P001'
+) <> 3
     THROW 52900, 'Repeated participant records must be retained.', 1;
 IF (SELECT SUM(report_delay_days) FROM gold.fact_events) <> 2
     THROW 52900, 'Event-level reporting delay is wrong.', 1;
 
 -- Preserve the valid Bronze inputs for independent rejection scenarios.
-SELECT * INTO #source_status FROM bronze.SO_status;
-SELECT * INTO #source_category FROM bronze.SO_category;
+SELECT *
+INTO #source_status
+FROM bronze.SO_status;
+SELECT *
+INTO #source_category
+FROM bronze.SO_category;
 
 -- ---------------------------------------------------------
 -- Create #expected.
 -- Capture every Silver field as JSON so rollback checks compare the complete snapshot.
 CREATE TABLE #expected (status_json NVARCHAR(MAX), category_json NVARCHAR(MAX));
-INSERT #expected SELECT
+INSERT #expected
+SELECT
     (
-        SELECT * FROM silver.SO_status
+        SELECT *
+        FROM silver.SO_status
         ORDER BY sor_id FOR JSON PATH, INCLUDE_NULL_VALUES
     ),
     (
-        SELECT * FROM silver.SO_category
+        SELECT *
+        FROM silver.SO_category
         ORDER BY sor_id, category, client_id, program FOR JSON PATH,
         INCLUDE_NULL_VALUES
     );
@@ -109,9 +123,11 @@ INSERT #expected SELECT
 -- Create #results.
 -- Collect named PASS results; unexpected errors stop the acceptance batch.
 CREATE TABLE #results (
-    test_name VARCHAR(120) NOT NULL, result VARCHAR(10) NOT NULL
+    test_name VARCHAR(120) NOT NULL,
+    result VARCHAR(10) NOT NULL
 );
-INSERT #results VALUES (
+INSERT #results
+VALUES (
     'Valid load, normalization, optional nulls and timestamp precision', 'PASS'
 ),
 ('Unique event grain and preserved repeated participants', 'PASS');
@@ -119,20 +135,24 @@ INSERT #results VALUES (
 -- Verify that repeating a complete load leaves the same Silver snapshot.
 EXEC silver.load_all;
 IF EXISTS (
-        SELECT 1 FROM #expected
-        WHERE status_json
-            <> (
-                SELECT * FROM silver.SO_status
-                ORDER BY sor_id FOR JSON PATH, INCLUDE_NULL_VALUES
-            )
-            OR category_json <> (
-                SELECT * FROM silver.SO_category
-                ORDER BY sor_id, category, client_id, program FOR JSON PATH,
-                INCLUDE_NULL_VALUES
-            )
-    )
+    SELECT 1
+    FROM #expected
+    WHERE status_json
+        <> (
+            SELECT *
+            FROM silver.SO_status
+            ORDER BY sor_id FOR JSON PATH, INCLUDE_NULL_VALUES
+        )
+        OR category_json <> (
+            SELECT *
+            FROM silver.SO_category
+            ORDER BY sor_id, category, client_id, program FOR JSON PATH,
+            INCLUDE_NULL_VALUES
+        )
+)
     THROW 52900, 'Repeat load changed results.', 1;
-INSERT #results VALUES (
+INSERT #results
+VALUES (
     'Repeated full refresh produces identical output', 'PASS'
 );
 GO
@@ -140,14 +160,20 @@ GO
 -- ---------------------------------------------------------
 -- Define #expect_rejection.
 CREATE OR ALTER PROCEDURE #expect_rejection
-    @name VARCHAR(120), @mutation NVARCHAR(MAX), @expected_error INT
+    @name VARCHAR(120),
+    @mutation NVARCHAR(MAX),
+    @expected_error INT
 AS
 BEGIN
     SET NOCOUNT ON;
     TRUNCATE TABLE bronze.SO_status;
     TRUNCATE TABLE bronze.SO_category;
-    INSERT bronze.SO_status SELECT * FROM #source_status;
-    INSERT bronze.SO_category SELECT * FROM #source_category;
+    INSERT bronze.SO_status
+    SELECT *
+    FROM #source_status;
+    INSERT bronze.SO_category
+    SELECT *
+    FROM #source_category;
     EXEC sys.sp_executesql @mutation;
     DECLARE @actual_error INT = NULL;
     BEGIN TRY
@@ -165,22 +191,27 @@ BEGIN
         );
         THROW 52901, @message, 1;
     END;
-    IF @@TRANCOUNT <> 0 THROW 52902, 'Loader leaked an open transaction.', 1;
+    IF @@TRANCOUNT <> 0
+        THROW 52902, 'Loader leaked an open transaction.', 1;
     IF EXISTS (
-            SELECT 1 FROM #expected
-            WHERE status_json
-                <> (
-                    SELECT * FROM silver.SO_status
-                    ORDER BY sor_id FOR JSON PATH, INCLUDE_NULL_VALUES
-                )
-                OR category_json <> (
-                    SELECT * FROM silver.SO_category
-                    ORDER BY sor_id, category, client_id, program FOR JSON PATH,
-                    INCLUDE_NULL_VALUES
-                )
-        )
+        SELECT 1
+        FROM #expected
+        WHERE status_json
+            <> (
+                SELECT *
+                FROM silver.SO_status
+                ORDER BY sor_id FOR JSON PATH, INCLUDE_NULL_VALUES
+            )
+            OR category_json <> (
+                SELECT *
+                FROM silver.SO_category
+                ORDER BY sor_id, category, client_id, program FOR JSON PATH,
+                INCLUDE_NULL_VALUES
+            )
+    )
         THROW 52903, 'A rejected load changed the previous Silver snapshot.', 1;
-    INSERT #results VALUES (@name, 'PASS');
+    INSERT #results
+    VALUES (@name, 'PASS');
 END;
 GO
 
@@ -279,15 +310,20 @@ END CATCH;
 -- Restore a valid, populated synthetic demonstration after the rejection tests.
 TRUNCATE TABLE bronze.SO_status;
 TRUNCATE TABLE bronze.SO_category;
-INSERT bronze.SO_status SELECT * FROM #source_status;
-INSERT bronze.SO_category SELECT * FROM #source_category;
+INSERT bronze.SO_status
+SELECT *
+FROM #source_status;
+INSERT bronze.SO_category
+SELECT *
+FROM #source_category;
 EXEC silver.load_all;
 SELECT
     test_name,
     result
 FROM #results
 ORDER BY test_name;
-SELECT COUNT(*) AS passed_tests FROM #results;
+SELECT COUNT(*) AS passed_tests
+FROM #results;
 SELECT
     (SELECT COUNT(*) FROM bronze.SO_status) AS bronze_events,
     (SELECT COUNT(*) FROM bronze.SO_category) AS bronze_category_rows,

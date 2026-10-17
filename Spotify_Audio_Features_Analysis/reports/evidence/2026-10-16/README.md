@@ -21,7 +21,12 @@ The first comparison exposed the historical label difference. The retained Silve
 the successful rerun with that single expected-text normalization. Logs are decoded from
 the SQL client output encoding into UTF-8 for publication.
 
+The final readability pass changed only whitespace and comments. Executable token
+comparison passed, and the runtime checks above were repeated against the final files.
+
 ## Captured outputs
+
+- [SQL Server parse-only results](sql-parse.txt)
 
 - [spotify-setup.txt](spotify-setup.txt)
 - [spotify-silver.txt](spotify-silver.txt)

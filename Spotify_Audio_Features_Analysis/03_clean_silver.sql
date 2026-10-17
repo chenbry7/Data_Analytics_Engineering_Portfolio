@@ -28,43 +28,38 @@ IF NOT EXISTS (SELECT 1 FROM bronze.source_info)
 
 -- Acceptance condition: Bronze source count mismatch.
 IF (
-        SELECT COUNT(*) FROM bronze.raw_track
-    )
-    <> (
-        SELECT row_count FROM bronze.source_info
-        WHERE id = 1
-    )
+    SELECT COUNT(*)
+    FROM bronze.raw_track
+) <> (
+    SELECT row_count
+    FROM bronze.source_info
+    WHERE id = 1
+)
     THROW 51000, 'Bronze source count mismatch', 1;
 
 -- Discard the previous session-local conversion stage before rebuilding it.
-IF OBJECT_ID('tempdb..#stage') IS NOT NULL DROP TABLE #stage;
+IF OBJECT_ID('tempdb..#stage') IS NOT NULL
+    DROP TABLE #stage;
 
 -- Discard the previous session-local rejected-record list.
-IF OBJECT_ID('tempdb..#invalid') IS NOT NULL DROP TABLE #invalid;
+IF OBJECT_ID('tempdb..#invalid') IS NOT NULL
+    DROP TABLE #invalid;
 
 -- Discard the previous session-local stable-attribute conflict list.
-IF OBJECT_ID('tempdb..#conflicts') IS NOT NULL DROP TABLE #conflicts;
+IF OBJECT_ID('tempdb..#conflicts') IS NOT NULL
+    DROP TABLE #conflicts;
 
 -- ---------------------------------------------------------
 -- Create #stage: convert raw text to typed values while retaining source record numbers.
 SELECT
     source_record_number,
-    TRY_CONVERT(
-        NVARCHAR(100), NULLIF([track_id], N'')
-    ) COLLATE Latin1_General_100_BIN2 AS [track_id],
-    CONVERT(
-        NVARCHAR(1000), NULLIF(TRIM([artists]), N'')
-    ) COLLATE Latin1_General_100_BIN2 AS [artists],
-    CONVERT(
-        NVARCHAR(1000), NULLIF(TRIM([album_name]), N'')
-    ) COLLATE Latin1_General_100_BIN2 AS [album_name],
-    CONVERT(
-        NVARCHAR(1000), NULLIF(TRIM([track_name]), N'')
-    ) COLLATE Latin1_General_100_BIN2 AS [track_name],
+    TRY_CONVERT(NVARCHAR(100), NULLIF([track_id], N'')) COLLATE Latin1_General_100_BIN2 AS [track_id],
+    CONVERT(NVARCHAR(1000), NULLIF(TRIM([artists]), N'')) COLLATE Latin1_General_100_BIN2 AS [artists],
+    CONVERT(NVARCHAR(1000), NULLIF(TRIM([album_name]), N'')) COLLATE Latin1_General_100_BIN2 AS [album_name],
+    CONVERT(NVARCHAR(1000), NULLIF(TRIM([track_name]), N'')) COLLATE Latin1_General_100_BIN2 AS [track_name],
     TRY_CONVERT(INT, NULLIF([popularity], N'')) AS [popularity],
     TRY_CONVERT(BIGINT, NULLIF([duration_ms], N'')) AS [duration_ms],
     CASE LOWER([explicit])
-
         WHEN N'true' THEN CONVERT(BIT, 1)
         WHEN N'false' THEN CONVERT(BIT, 0)
     END AS [explicit],
@@ -80,9 +75,7 @@ SELECT
     TRY_CONVERT(FLOAT, NULLIF([valence], N'')) AS [valence],
     TRY_CONVERT(FLOAT, NULLIF([tempo], N'')) AS [tempo],
     TRY_CONVERT(INT, NULLIF([time_signature], N'')) AS [time_signature],
-    TRY_CONVERT(
-        NVARCHAR(100), NULLIF([track_genre], N'')
-    ) COLLATE Latin1_General_100_BIN2 AS [track_genre]
+    TRY_CONVERT(NVARCHAR(100), NULLIF([track_genre], N'')) COLLATE Latin1_General_100_BIN2 AS [track_genre]
 INTO #stage
 FROM bronze.raw_track;
 
@@ -176,7 +169,8 @@ FROM #stage AS s
 JOIN #conflicts AS c
     ON c.track_id = s.track_id
 WHERE NOT EXISTS (
-        SELECT 1 FROM #invalid AS i
+        SELECT 1
+        FROM #invalid AS i
         WHERE i.source_record_number = s.source_record_number
     );
 
@@ -194,7 +188,9 @@ BEGIN
     DELETE FROM silver.quality_results;
 
     -- Populate silver.rejected_records: Preserve source record numbers and reasons for blocking validation errors.
-    INSERT silver.rejected_records SELECT * FROM #invalid;
+    INSERT silver.rejected_records
+    SELECT *
+    FROM #invalid;
 
     -- Record the blocking_source_errors quality rule and its affected-record count.
     INSERT silver.quality_results
@@ -206,13 +202,13 @@ BEGIN
         'Fix source data; no successful Silver rebuild'
     FROM #invalid;
 
-    -- Remove readiness marker so existing Gold views do not expose stale results.
-    -- Clear the previous silver.source_info snapshot.
+    -- Remove the readiness marker so Gold views cannot expose stale results.
     DELETE FROM silver.source_info;
 
     -- Commit all writes in this transaction together.
     COMMIT;
-    SELECT * FROM silver.rejected_records;
+    SELECT *
+    FROM silver.rejected_records;
     THROW 51000, 'Quality checks failed; inspect silver.rejected_records and corresponding Bronze rows', 1;
 END;
 BEGIN TRY
@@ -220,25 +216,25 @@ BEGIN TRY
     -- Keep the following snapshot replacement atomic.
     BEGIN TRAN;
 
-    -- Clear the previous gold.pca_scores snapshot.
+    -- Remove PCA scores because they belong to the previous Silver snapshot.
     DELETE FROM gold.pca_scores;
 
-    -- Clear the previous gold.analysis_info snapshot.
+    -- Invalidate model provenance until the analysis step succeeds again.
     DELETE FROM gold.analysis_info;
 
-    -- Clear the previous silver.source_mapping snapshot.
+    -- Remove source references before replacing the related track and genre rows.
     DELETE FROM silver.source_mapping;
 
-    -- Clear the previous silver.track_genre snapshot.
+    -- Remove memberships before deleting their parent entities.
     DELETE FROM silver.track_genre;
 
-    -- Clear the previous silver.popularity_summary snapshot.
+    -- Remove per-track popularity summaries before replacing tracks.
     DELETE FROM silver.popularity_summary;
 
-    -- Clear the previous silver.track snapshot.
+    -- Replace the unique-track catalog with the validated source snapshot.
     DELETE FROM silver.track;
 
-    -- Clear the previous silver.genre snapshot.
+    -- Rebuild the genre vocabulary from the current source.
     DELETE FROM silver.genre;
 
     -- Clear the previous silver.source_info snapshot.
@@ -295,10 +291,10 @@ BEGIN TRY
         [tempo],
         [time_signature],
         CASE
-            WHEN
-                artists IS NULL
+            WHEN artists IS NULL
                 OR album_name IS NULL
-                OR track_name IS NULL THEN 1
+                OR track_name IS NULL
+            THEN 1
             ELSE 0
         END,
         CASE
@@ -316,10 +312,13 @@ BEGIN TRY
     FROM #stage;
 
     -- Populate silver.genre: Store the distinct genre vocabulary without repeating song attributes.
-    INSERT silver.genre SELECT DISTINCT track_genre FROM #stage;
+    INSERT silver.genre
+    SELECT DISTINCT track_genre
+    FROM #stage;
 
     -- Populate silver.track_genre: Store one unique song/genre relationship; retain songs belonging to multiple genres.
-    INSERT silver.track_genre SELECT DISTINCT
+    INSERT silver.track_genre
+    SELECT DISTINCT
         track_id,
         track_genre
     FROM #stage;
@@ -328,9 +327,9 @@ BEGIN TRY
     ;WITH numbered AS (
         SELECT
             *,
-            MIN(source_record_number)
-                OVER (
-                    PARTITION BY [track_id],
+            MIN(source_record_number) OVER (
+                PARTITION BY
+                    [track_id],
                     [artists],
                     [album_name],
                     [track_name],
@@ -350,8 +349,7 @@ BEGIN TRY
                     [tempo],
                     [time_signature],
                     [track_genre]
-                )
-                AS canonical
+            ) AS canonical
         FROM #stage
     )
 
@@ -445,7 +443,8 @@ BEGIN TRY
     FROM silver.track;
 
     -- Record the required_values quality rule and its affected-record count.
-    INSERT silver.quality_results VALUES (
+    INSERT silver.quality_results
+    VALUES (
         'required_values',
         'PASS',
         0,
@@ -455,12 +454,13 @@ BEGIN TRY
 
     -- Acceptance condition: Source mapping count mismatch.
     IF (
-            SELECT COUNT(*) FROM silver.source_mapping
-        )
-        <> (
-            SELECT row_count FROM bronze.source_info
-            WHERE id = 1
-        )
+        SELECT COUNT(*)
+        FROM silver.source_mapping
+    ) <> (
+        SELECT row_count
+        FROM bronze.source_info
+        WHERE id = 1
+    )
         THROW 51000, 'Source mapping count mismatch', 1;
 
     -- Populate silver.source_info: Record the source fingerprint and timestamp of the successful Silver rebuild.
@@ -477,12 +477,14 @@ END TRY
 BEGIN CATCH
 
     -- Restore the previous committed state if the rebuild failed.
-    IF @@TRANCOUNT > 0 ROLLBACK;
+    IF @@TRANCOUNT > 0
+        ROLLBACK;
     THROW;
 END CATCH;
 
 -- Display the completed quality-rule results for review.
-SELECT * FROM silver.quality_results;
+SELECT *
+FROM silver.quality_results;
 
 -- Display catalog and eligible-analysis counts at the song grain.
 SELECT

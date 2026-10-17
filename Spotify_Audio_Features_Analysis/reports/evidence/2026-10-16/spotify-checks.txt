@@ -1,22 +1,22 @@
-Changed database context to 'Spotify'.
-result
-------
-PASS: source, quality, lineage, PCA and Gold checks
-source_filename source_sha256 source_record_count loaded_utc cleaned_utc analyzed_utc analysis_track_count explained_variance_first3 catalog_track_count track_genre_pair_count genre_count
---------------- ------------- ------------------- ---------- ----------- ------------ -------------------- ------------------------- ------------------- ---------------------- -----------
-spotify_data.csv b202fa49909b2d5cef71a04b1d21243cfeb36414535f2ca9272aa646721177bd 114000 2026-09-14 17:33:33.8534164 2026-09-14 17:34:45.6344825 2026-09-16 01:10:57.6857283 89740 0.61878998253745043 89741 113550 114
-rule_code severity affected_count grain description
---------- -------- -------------- ----- -----------
-excluded_duration WARN 1 track Zero duration excluded from primary audio analysis
-loudness_typical_range WARN 68 track Outside approximate -60 to 0 dB; warning only
-metadata_missing WARN 1 track Display metadata blank; source preserved in Bronze
-popularity_conflicts WARN 720 track Retain all observations; no latest value without timestamps
-redundant_records WARN 450 source_record Business duplicates retain canonical source references
-required_values PASS 0 source_record Required keys, conversions and hard ranges passed
-tempo_typical_range WARN 229 track Outside typical 50â€“250 BPM; warning only
-mean_energy mean_danceability mean_duration_minutes
------------ ----------------- ---------------------
-0.63445847176956083 0.56216635502562207 3.8190727
-unique_selected_songs mean_energy
---------------------- -----------
-1768 0.60656894796380156
+Changed database context to 'Spotify'.
+result
+------
+PASS: source, quality, lineage, PCA and Gold checks
+source_filename source_sha256 source_record_count loaded_utc cleaned_utc analyzed_utc analysis_track_count explained_variance_first3 catalog_track_count track_genre_pair_count genre_count
+--------------- ------------- ------------------- ---------- ----------- ------------ -------------------- ------------------------- ------------------- ---------------------- -----------
+spotify_data.csv b202fa49909b2d5cef71a04b1d21243cfeb36414535f2ca9272aa646721177bd 114000 2026-09-14 17:33:33.8534164 2026-09-14 17:34:45.6344825 2026-09-16 01:10:57.6857283 89740 0.61878998253745043 89741 113550 114
+rule_code severity affected_count grain description
+--------- -------- -------------- ----- -----------
+excluded_duration WARN 1 track Zero duration excluded from primary audio analysis
+loudness_typical_range WARN 68 track Outside approximate -60 to 0 dB; warning only
+metadata_missing WARN 1 track Display metadata blank; source preserved in Bronze
+popularity_conflicts WARN 720 track Retain all observations; no latest value without timestamps
+redundant_records WARN 450 source_record Business duplicates retain canonical source references
+required_values PASS 0 source_record Required keys, conversions and hard ranges passed
+tempo_typical_range WARN 229 track Outside typical 50â€“250 BPM; warning only
+mean_energy mean_danceability mean_duration_minutes
+----------- ----------------- ---------------------
+0.63445847176956083 0.56216635502562207 3.8190727
+unique_selected_songs mean_energy
+--------------------- -----------
+1768 0.60656894796380156

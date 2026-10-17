@@ -21,11 +21,12 @@ Implementation Notes:
 IF DB_NAME() <> N'SOR_Portfolio_Test'
     THROW 52000, 'This script requires SOR_Portfolio_Test.', 1;
 IF NOT EXISTS (
-        SELECT 1 FROM sys.extended_properties
-        WHERE class = 0
-            AND name = N'SORPortfolioDemo'
-            AND CONVERT(NVARCHAR(20), value) = N'1'
-    )
+    SELECT 1
+    FROM sys.extended_properties
+    WHERE class = 0
+        AND name = N'SORPortfolioDemo'
+        AND CONVERT(NVARCHAR(20), value) = N'1'
+)
     THROW 52000, 'The database is not marked as this project demonstration.', 1;
 GO
 

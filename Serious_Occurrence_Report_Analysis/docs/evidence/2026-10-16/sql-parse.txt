@@ -1,0 +1,6 @@
+PASS: Serious_Occurrence_Report_Analysis\sql\00_create_demo_database.sql
+PASS: Serious_Occurrence_Report_Analysis\sql\01_create_layers.sql
+PASS: Serious_Occurrence_Report_Analysis\sql\02_load_silver.sql
+PASS: Serious_Occurrence_Report_Analysis\sql\03_gold_views.sql
+PASS: Serious_Occurrence_Report_Analysis\tests\01_synthetic_fixture.sql
+PASS: Serious_Occurrence_Report_Analysis\tests\02_acceptance.sql

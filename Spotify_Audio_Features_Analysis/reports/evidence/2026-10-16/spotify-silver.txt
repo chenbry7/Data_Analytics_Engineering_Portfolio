@@ -1,20 +1,20 @@
-Changed database context to 'Spotify'.
-Changed database context to 'Spotify'.
-rule_code severity affected_count grain description
---------- -------- -------------- ----- -----------
-excluded_duration WARN 1 track Zero duration excluded from primary audio analysis
-loudness_typical_range WARN 68 track Outside approximate -60 to 0 dB; warning only
-metadata_missing WARN 1 track Display metadata blank; source preserved in Bronze
-popularity_conflicts WARN 720 track Retain all observations; no latest value without timestamps
-redundant_records WARN 450 source_record Business duplicates retain canonical source references
-required_values PASS 0 source_record Required keys, conversions and hard ranges passed
-tempo_typical_range WARN 229 track Outside typical 50-250 BPM; warning only
-unique_tracks analysis_tracks
-------------- ---------------
-89741 89740
-next_step
----------
-STEP 3 complete: run 04_audio_analysis.py in VS Code
-result
-------
-PASS: rebuilt Silver values match; rollback preserved PCA and provenance.
+Changed database context to 'Spotify'.
+Changed database context to 'Spotify'.
+rule_code severity affected_count grain description
+--------- -------- -------------- ----- -----------
+excluded_duration WARN 1 track Zero duration excluded from primary audio analysis
+loudness_typical_range WARN 68 track Outside approximate -60 to 0 dB; warning only
+metadata_missing WARN 1 track Display metadata blank; source preserved in Bronze
+popularity_conflicts WARN 720 track Retain all observations; no latest value without timestamps
+redundant_records WARN 450 source_record Business duplicates retain canonical source references
+required_values PASS 0 source_record Required keys, conversions and hard ranges passed
+tempo_typical_range WARN 229 track Outside typical 50-250 BPM; warning only
+unique_tracks analysis_tracks
+------------- ---------------
+89741 89740
+next_step
+---------
+STEP 3 complete: run 04_audio_analysis.py in VS Code
+result
+------
+PASS: rebuilt Silver values match; rollback preserved PCA and provenance.

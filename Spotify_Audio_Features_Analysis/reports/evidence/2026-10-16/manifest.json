@@ -1,17 +1,24 @@
 {
   "review_date": "2026-10-16",
   "sql_sha256": {
-    "01_create_layers.sql": "5646d4c0290c134ff9fd75850a168c0ab89c49feabdb39a792b4c37d9b4374be",
-    "03_clean_silver.sql": "850d7cdd04eee4aff81bb036aa1c0a4b5b005f95c53a4c934c79cb6856d39df1",
-    "05_gold_views.sql": "d485a6d5679d3626ffef30e7f2454db6f1d8d3ad08fe71a163c73f10e2a0a7be",
-    "06_checks.sql": "159f252a5ee4cf0ee76c34518fdc62a8edb28b99d0e24ef905a72aa1ca515e17"
+    "01_create_layers.sql": "7122f7a3a3d9b3702d8f1a08fbc4d91fa2afff5e8f79061b95a7fd318ab802e2",
+    "03_clean_silver.sql": "fc3a5120e24a5f5934d9d67faf62fc0a4ec5e116124aba05f8cf15d2623b897b",
+    "05_gold_views.sql": "656b8213067e262a5277edc8549739fc72c0ec3d252a55d3d46e08f4fce36a09",
+    "06_checks.sql": "94bfbb45eb033c52df24127d59d1804179a9276df575c4c414bd098c12513ab1"
   },
   "log_sha256": {
-    "spotify-setup.txt": "fec101ef376a2b37b434e9836ff331a468e62689c4359dc06cf0857f2eb6ed9a",
-    "spotify-silver.txt": "c8f6a0c4c96489606426f0e077d3b68f544b486333a00f573015562e6f24c88a",
-    "spotify-gold.txt": "35393b448848c55072bf135fc79b682e2f016dae2494c8c49be6eb945f539ca0",
-    "spotify-checks.txt": "dc959c0eedf9409eee2d7c4eb17bd49d853da4ebbb639db71da9087b59b83095"
+    "spotify-setup.txt": "9298351f8ce5f23f471c8252a9f88530b58f83a1f127dbfae798513bfabbb630",
+    "spotify-silver.txt": "a8fb6858425cb8703f1700d59bbd8c2d090c7cd3233a1e0580967e991e436796",
+    "spotify-gold.txt": "fb41889c6846002da70dd7258fd102b0d1a7c4ec50096d16a03f182aaa799cf5",
+    "spotify-checks.txt": "2ff91df263f24e02eb4a74ddb0def1e1f04322a8efd37441ccaa7ec027e431a4",
+    "sql-parse.txt": "751c33c7030b69537ae4f96cb974d53db9fe0bb283c09d9426f6d08b3f28af29"
   },
   "scope": "SQL formatting and comments; explicit aliases and default-space TRIM equivalence checked. SQL Server parse-only checks passed for all reviewed files.",
-  "power_bi_desktop_rerun": false
+  "power_bi_desktop_rerun": false,
+  "readability_review": {
+    "changes": "Whitespace and comments only in the final readability pass.",
+    "executable_token_comparison": "PASS: exact token types and values retained; whitespace inside compound keyword tokens normalized.",
+    "reviewed_sql_files": 4,
+    "runtime_checks": "Rerun after the final readability pass; see captured outputs."
+  }
 }
