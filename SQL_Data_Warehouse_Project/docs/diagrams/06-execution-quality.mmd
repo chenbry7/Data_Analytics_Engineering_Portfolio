@@ -1,0 +1,9 @@
+flowchart TD
+  A[01 reset learning database] --> B[02 + 05 define tables]
+  B --> C[03 + 07 define loaders]
+  C --> D[09 refresh Bronze then Silver]
+  D --> E[10 create or alter Gold views]
+  E --> F[13 inspect quality scorecard]
+  F --> G[Run warehouse assertions and investigate issues]
+  G --> H[14 sales analysis]
+  D -. optional detail .-> I[06 + 08 + 11 + 12 diagnostics]

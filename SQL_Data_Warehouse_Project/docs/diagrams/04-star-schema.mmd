@@ -1,0 +1,39 @@
+erDiagram
+  DIM_CUSTOMERS ||--o{ FACT_SALES : "customer_key (logical)"
+  DIM_PRODUCTS ||--o{ FACT_SALES : "product_key (logical)"
+  DIM_CUSTOMERS {
+    bigint customer_key
+    int customer_id
+    nvarchar customer_number
+    nvarchar first_name
+    nvarchar last_name
+    nvarchar country
+    nvarchar marital_status
+    nvarchar gender
+    date birthdate
+    date create_date
+  }
+  DIM_PRODUCTS {
+    bigint product_key
+    int product_id
+    nvarchar product_number
+    nvarchar product_name
+    nvarchar category_id
+    nvarchar category
+    nvarchar subcategory
+    nvarchar maintenance
+    int cost
+    nvarchar product_line
+    date start_date
+  }
+  FACT_SALES {
+    nvarchar order_number
+    bigint product_key
+    bigint customer_key
+    date order_date
+    date shipping_date
+    date due_date
+    int sales_amount
+    int quantity
+    int price
+  }

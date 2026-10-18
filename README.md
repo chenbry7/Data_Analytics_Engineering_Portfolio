@@ -14,6 +14,7 @@ Each project includes source code, reproduction instructions, validation evidenc
 | [Spotify Analytics](Spotify_Audio_Features_Analysis/README.md) | Python/SQL pipeline, audio-feature analysis and catalog reporting | 114,000 records processed into 89,741 unique tracks; PCA and complementary diagnostics; three-page Power BI report |
 | [NBA Player Role Map](NBA_player_Role_Map/README.md) | Python statistical analysis, standardized PCA and player-role visualization | 421 players and 18 features; two components explain 73.82% of variance; reproducible notebook and multivariate diagnostics |
 | [IHD Mortality Analysis](IHD_Mortality_Analysis/README.md) | R visualization, cross-country mortality comparison and data storytelling | Four countries over 2001–2021; overall standardized rates declined 44.0–60.5%; five figures and an executed R Markdown report |
+| [SQL Server Sales Data Warehouse](SQL_Data_Warehouse_Project/README.md) | CRM/ERP integration, dimensional modeling and SQL sales analysis | Six source files; 60,398 sales records; customer/product dimensions, quality scorecard and four analytical result sets |
 
 ## 1. Serious Occurrence Reporting
 
@@ -97,14 +98,34 @@ This national observational comparison describes mortality patterns rather than 
 
 ![IHD Mortality Trends Across Four Countries](IHD_Mortality_Analysis/figures/overall-trend.png)
 
+## 5. SQL Server Sales Data Warehouse
+
+**SQL Server · T-SQL · ETL · Dimensional Modeling · Data Quality**
+
+A batch sales warehouse that integrates six CRM and ERP CSV files through Bronze, Silver and Gold layers into customer and product dimensions and a sales fact view.
+
+### Key Features
+
+- **Cross-system integration:** combines customer, product, location and sales sources, preserving **60,398 sales records** and producing dimensions with **18,484 customers and 295 current products**.
+- **Data preparation:** deduplicates customer records, normalizes CRM/ERP keys and codes, enriches customer attributes, and validates calendar dates against a documented historical-data window.
+- **Dimensional modeling:** exposes two dimension views and one fact view with a defined sales-record grain, documented relationships and field-level lineage.
+- **Quality and verification:** consolidates PASS/REVIEW/FAIL results and provides regression and warehouse assertions. The documented validation covers repeated refreshes, row-count and revenue reconciliation, and missing-file error propagation.
+- **Sales analysis:** uses CTEs, aggregations and window functions for monthly comparisons, category contribution, repeat purchasing and coverage. Bikes contribute **96.46% of recorded revenue**; **37.14% of observed buyers** placed at least two distinct orders.
+
+Full refreshes are not atomic across all tables, and Gold keys are recalculated rather than durable identifiers. Historical sales use current product attributes; monetary values are in unspecified source units. The analysis retains and discloses **19 sales records without order dates**. This project delivers SQL analytical outputs and architecture diagrams; it does not include a deployed dashboard.
+
+[Project Documentation](SQL_Data_Warehouse_Project/README.md) · [Analysis Findings](SQL_Data_Warehouse_Project/docs/analysis_findings.md) · [Validation](SQL_Data_Warehouse_Project/docs/validation.md) · [Data Catalog](SQL_Data_Warehouse_Project/docs/data_catalog.md)
+
+![SQL Server Sales Warehouse Architecture](SQL_Data_Warehouse_Project/docs/diagrams/01-architecture.svg)
+
 ## Skills Demonstrated
 
 | Area | Implementation Examples |
 |---|---|
-| Data Engineering | Python and SSIS ingestion, layered SQL transformations, transactional snapshot loading |
+| Data Engineering | Python, SSIS and SQL bulk ingestion; layered transformations; full-refresh procedures and transactional snapshot loading |
 | Data Quality | Key constraints, validation rules, source fingerprints, reconciliation and failure tests |
-| Data Modeling | Separate event/category and track/genre grains; explicit relationships and aggregation rules |
-| Data Analysis | Exploratory analysis, PCA, FA, ICA, multivariate diagnostics and cross-country mortality comparisons |
+| Data Modeling | Event/category and track/genre grains; customer/product dimensions and sales fact views; explicit aggregation rules |
+| Data Analysis | Exploratory analysis, PCA, FA, ICA, multivariate diagnostics, mortality comparisons and SQL sales analysis |
 | Business Intelligence | Power BI data models, DAX measures, filtering and interactive report pages |
 | Data Visualization | ggplot2 trend charts, small multiples, endpoint comparisons and statistical role maps |
 | Reproducibility | Execution scripts, documented dependencies, test fixtures and validation evidence |
@@ -112,9 +133,9 @@ This national observational comparison describes mortality patterns rather than 
 ## Explore or Reproduce
 
 1. Open a project README for its objectives, architecture and results.
-2. View project previews and reports: Power BI dashboards for SOR and Spotify, the role map and notebook for NBA, or the GitHub-readable Markdown report for IHD mortality. A self-contained HTML version is also available for offline viewing.
+2. View project previews and reports: Power BI dashboards for SOR and Spotify, the role map and notebook for NBA, the GitHub-readable Markdown report for IHD mortality, or architecture diagrams and sales findings for the SQL warehouse. The IHD report also has a self-contained HTML version for offline viewing.
 3. Follow the project-specific setup instructions to reproduce its pipeline or statistical analysis.
 
 For SOR and Spotify, the saved Power BI reports contain imported data. Refreshing them requires the corresponding SQL Server database and connection configuration.
 
-Pipeline and analysis execution are documented within each project. The NBA notebook was run from start to finish in a fresh kernel, with independent checks of feature scaling, PCA loadings and Mahalanobis distances. The IHD public R Markdown report was rendered in a clean R process; its endpoint values and percentage changes were checked against an independent data audit. The project author has confirmed successful Power BI Desktop refresh and full interactive acceptance for both reports. Data provenance, usage conditions and project-specific limitations are described in the respective READMEs.
+Pipeline and analysis execution are documented within each project. The NBA notebook was run from start to finish in a fresh kernel, with independent checks of feature scaling, PCA loadings and Mahalanobis distances. The IHD public R Markdown report was rendered in a clean R process; its endpoint values and percentage changes were checked against an independent data audit. The project author has confirmed successful Power BI Desktop refresh and full interactive acceptance for both reports. The SQL sales warehouse documents an isolated CSV-to-Gold validation run, repeat-refresh reconciliation, and focused regression checks. Data provenance, usage conditions and project-specific limitations are described in the respective READMEs.

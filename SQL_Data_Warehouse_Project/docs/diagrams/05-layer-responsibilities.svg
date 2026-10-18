@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="730" viewBox="0 0 1500 730" role="img" aria-labelledby="title desc">
+<title id="title">Layer Responsibilities</title><desc id="desc">Medallion organization implemented on relational SQL Server tables and views.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker></defs>
+<rect width="1500" height="730" fill="#f8fafc"/>
+<text x="40" y="50" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#0f172a">Layer Responsibilities</text>
+<text x="40" y="81" font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#475569">Medallion organization implemented on relational SQL Server tables and views.</text>
+<rect x="50" y="150" width="420" height="485" rx="12" fill="white" stroke="#94a3b8"/>
+<path d="M62 150H458Q470 150 470 162V195H50V162Q50 150 62 150" fill="#ffedd5"/>
+<text x="66" y="179" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#0f172a">Bronze | landing</text>
+<text x="66" y="223" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">OBJECTS: six typed tables</text>
+<text x="66" y="248" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">METHOD: TRUNCATE + BULK INSERT</text>
+<text x="66" y="273" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155"></text>
+<text x="66" y="298" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">ROLE: isolate ingestion</text>
+<text x="66" y="323" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">Source-aligned fields</text>
+<text x="66" y="348" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">No intentional business cleansing</text>
+<text x="66" y="373" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">Type conversion can reject input</text>
+<text x="66" y="398" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155"></text>
+<text x="66" y="423" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">AUDIENCE: warehouse developer</text>
+<text x="66" y="448" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">LIMIT: previous loads overwritten</text>
+<rect x="540" y="150" width="420" height="485" rx="12" fill="white" stroke="#94a3b8"/>
+<path d="M552 150H948Q960 150 960 162V195H540V162Q540 150 552 150" fill="#e2e8f0"/>
+<text x="556" y="179" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#0f172a">Silver | preparation</text>
+<text x="556" y="223" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">OBJECTS: six tables</text>
+<text x="556" y="248" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">METHOD: TRUNCATE + INSERT SELECT</text>
+<text x="556" y="273" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155"></text>
+<text x="556" y="298" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">ROLE: clean and standardize</text>
+<text x="556" y="323" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">Latest customer per source ID</text>
+<text x="556" y="348" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">Normalize keys, codes, and countries</text>
+<text x="556" y="373" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">Handle dates and sales amounts</text>
+<text x="556" y="398" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">Derive product end dates</text>
+<text x="556" y="423" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155"></text>
+<text x="556" y="448" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">AUDIENCE: developer / analyst</text>
+<text x="556" y="473" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">METADATA: dwh_create_date</text>
+<rect x="1030" y="150" width="420" height="485" rx="12" fill="white" stroke="#94a3b8"/>
+<path d="M1042 150H1438Q1450 150 1450 162V195H1030V162Q1030 150 1042 150" fill="#fef3c7"/>
+<text x="1046" y="179" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#0f172a">Gold | analytical access</text>
+<text x="1046" y="223" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">OBJECTS: three views</text>
+<text x="1046" y="248" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">METHOD: query-time integration</text>
+<text x="1046" y="273" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155"></text>
+<text x="1046" y="298" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">ROLE: shared business entities</text>
+<text x="1046" y="323" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">Customer and product enrichment</text>
+<text x="1046" y="348" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">Dimension key lookups for sales</text>
+<text x="1046" y="373" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">Row-level fact; reports aggregate</text>
+<text x="1046" y="398" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155"></text>
+<text x="1046" y="423" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">AUDIENCE: analyst / reporting</text>
+<text x="1046" y="448" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">LIMIT: current product attributes</text>
+<text x="1046" y="473" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334155">LIMIT: nonpersistent keys</text>
+<text x="40" y="706" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#64748b">Bryan Chen · SQL Server Sales Data Warehouse</text></svg>
