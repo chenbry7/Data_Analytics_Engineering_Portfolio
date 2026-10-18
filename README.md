@@ -116,7 +116,14 @@ Full refreshes are not atomic across all tables, and Gold keys are recalculated 
 
 [Project Documentation](SQL_Data_Warehouse_Project/README.md) · [Analysis Findings](SQL_Data_Warehouse_Project/docs/analysis_findings.md) · [Validation](SQL_Data_Warehouse_Project/docs/validation.md) · [Data Catalog](SQL_Data_Warehouse_Project/docs/data_catalog.md)
 
-![SQL Server Sales Warehouse Architecture](SQL_Data_Warehouse_Project/docs/diagrams/01-architecture.svg)
+```mermaid
+flowchart LR
+  CSV[CRM + ERP: six CSV files] -->|BULK INSERT| B[Bronze: six tables]
+  B -->|silver.load_silver| S[Silver: six cleaned tables]
+  S --> G[Gold: three analytical views]
+  G --> Q[SQL analysis]
+  G -. proposed .-> BI[BI dashboard]
+```
 
 ## Skills Demonstrated
 
