@@ -1,6 +1,0 @@
-flowchart LR
-  CSV[CRM + ERP: six CSV files] -->|BULK INSERT| B[Bronze: six tables]
-  B -->|silver.load_silver| S[Silver: six cleaned tables]
-  S --> G[Gold: three analytical views]
-  G --> Q[SQL analysis]
-  G -. proposed .-> BI[BI dashboard]

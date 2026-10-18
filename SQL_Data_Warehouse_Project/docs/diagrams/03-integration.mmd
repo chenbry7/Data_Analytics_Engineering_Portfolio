@@ -1,6 +1,0 @@
-flowchart LR
-  SD[silver.crm_sales_details] -->|sls_cust_id = cst_id| CI[silver.crm_cust_info]
-  SD -->|sls_prd_key = prd_key| PI[silver.crm_prd_info]
-  CI -->|cst_key = cid| CA[silver.erp_cust_az12]
-  CI -->|cst_key = cid| LA[silver.erp_loc_a101]
-  PI -->|cat_id = id| PC[silver.erp_px_cat_g1v2]

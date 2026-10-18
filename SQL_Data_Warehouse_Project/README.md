@@ -6,7 +6,14 @@ A sales warehouse that integrates six CRM and ERP CSV files into a SQL Server an
 
 ## Architecture
 
-![Sales warehouse architecture](docs/diagrams/01-architecture.svg)
+```mermaid
+flowchart LR
+  CSV[CRM + ERP: six CSV files] -->|BULK INSERT| B[Bronze: six tables]
+  B -->|silver.load_silver| S[Silver: six cleaned tables]
+  S --> G[Gold: three analytical views]
+  G --> Q[SQL analysis]
+  G -. proposed .-> BI[BI dashboard]
+```
 
 | Layer | Objects | Responsibility |
 |---|---|---|
@@ -72,7 +79,6 @@ SQL_Data_Warehouse_Project/
 ├── scripts/       # setup, loaders, diagnostics, scorecard, and analysis
 ├── tests/         # focused regression cases and warehouse assertions
 ├── docs/          # design, catalogs, operating instructions, and findings
-│   └── diagrams/  # SVG diagrams and editable Mermaid sources
 ├── .gitignore
 ├── LICENSE
 └── README.md
@@ -81,6 +87,7 @@ SQL_Data_Warehouse_Project/
 ## Documentation
 
 - [Complete documentation index](docs/README.md)
+- [SQL script index](scripts/README.md) and [dataset inventory](datasets/README.md)
 - [Architecture, lineage, integration, and star schema](docs/architecture.md)
 - [Source analysis and file scope](docs/source_system_analysis.md)
 - [ETL rules](docs/etl_design.md) and [layer workflows](docs/data_layers.md)

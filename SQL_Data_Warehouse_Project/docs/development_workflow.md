@@ -64,4 +64,4 @@ Do not version passwords, machine-specific credentials, generated scratch files,
 
 ## Maintaining Documentation
 
-Use [the documentation index](README.md) as the entry point. Update transformation rules with SQL changes, maintain column names/types in the catalogs, and update both Mermaid and SVG diagrams when relationships change. Optional analytics examples must remain distinct from executed deliverables and verified findings.
+Use [the documentation index](README.md) as the entry point. Update transformation rules with SQL changes, maintain column names/types in the catalogs, and update the embedded Mermaid diagrams when relationships change. Optional analytics examples must remain distinct from executed deliverables and verified findings.

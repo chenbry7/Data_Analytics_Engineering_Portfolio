@@ -48,4 +48,4 @@ This documentation describes the sales warehouse implementation, its design deci
 
 ## Implementation Status
 
-Architecture documents describe the checked-in SQL. Comparative design patterns explain alternatives and are not additional deployed systems. The analytics guide provides optional read-only examples; executed deliverables are scripts 13 and 14 and the results documented in Analysis Findings. SVG and Mermaid assets are available in [diagrams/](diagrams/).
+Architecture documents describe the checked-in SQL. Comparative design patterns explain alternatives and are not additional deployed systems. The analytics guide provides optional read-only examples; executed deliverables are scripts 13 and 14 and the results documented in Analysis Findings. Mermaid diagrams are embedded directly in the architecture and design documents and render on GitHub.

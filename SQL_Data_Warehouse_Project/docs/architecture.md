@@ -1,6 +1,6 @@
 # Warehouse Architecture and Data Model
 
-This SQL Server project integrates CRM and ERP sales data through Bronze, Silver, and Gold schemas. The design separates source ingestion, data preparation, and analytical access. The diagrams describe the implemented SQL; planned capabilities are identified separately. Mermaid diagrams render directly in this document on GitHub. SVG exports are also available for reuse.
+This SQL Server project integrates CRM and ERP sales data through Bronze, Silver, and Gold schemas. The design separates source ingestion, data preparation, and analytical access. The diagrams describe the implemented SQL; planned capabilities are identified separately. Mermaid diagrams render directly in this document on GitHub.
 
 ## Architecture
 
@@ -15,13 +15,12 @@ flowchart LR
   G -. proposed .-> BI[BI dashboard]
 ```
 
-[SVG export](diagrams/01-architecture.svg) · [Mermaid source](diagrams/01-architecture.mmd)
 
 ## Data Lineage
 
 The customer dimension combines CRM customer profiles with ERP demographics and locations. The product dimension combines current CRM product records with ERP categories. The sales fact view resolves customer and product keys through the dimension views.
 
-Both representations show source-to-target lineage and the dimension lookups used by the fact view.
+The diagram shows source-to-target lineage and the dimension lookups used by the fact view.
 
 ```mermaid
 flowchart LR
@@ -41,7 +40,6 @@ flowchart LR
   P -->|product_number lookup| F
 ```
 
-[SVG export](diagrams/02-lineage.svg) · [Mermaid source](diagrams/02-lineage.mmd)
 
 ## Integration and Key Standardization
 
@@ -58,7 +56,6 @@ flowchart LR
   PI -->|cat_id = id| PC[silver.erp_px_cat_g1v2]
 ```
 
-[SVG export](diagrams/03-integration.svg) · [Mermaid source](diagrams/03-integration.mmd)
 
 ## Logical Star Schema
 
@@ -108,7 +105,6 @@ erDiagram
   }
 ```
 
-[SVG export](diagrams/04-star-schema.svg) · [Mermaid source](diagrams/04-star-schema.mmd)
 
 ## Layer Responsibilities
 
@@ -122,7 +118,6 @@ flowchart LR
   S --> G["Gold | 3 views | no load | integration + analytical model"]
 ```
 
-[SVG export](diagrams/05-layer-responsibilities.svg) · [Mermaid source](diagrams/05-layer-responsibilities.mmd)
 
 ## Execution and Validation
 
@@ -142,7 +137,6 @@ flowchart TD
   D -. optional detail .-> I[06 + 08 + 11 + 12 diagnostics]
 ```
 
-[SVG export](diagrams/06-execution-quality.svg) · [Mermaid source](diagrams/06-execution-quality.mmd)
 
 ## Modeling Decisions and Limitations
 
@@ -164,6 +158,6 @@ flowchart TD
 | Analytical model | [10_gold_layer.sql](../scripts/10_gold_layer.sql) |
 | Gold validation | [12_gold_data_quality.sql](../scripts/12_gold_data_quality.sql) |
 
-SVG assets and corresponding Mermaid sources are maintained in `docs/diagrams/`. Changes to either representation should be reflected in the other.
+Mermaid diagrams are maintained directly in this document. Update the relevant diagram whenever the implemented architecture or relationships change.
 
 See the [documentation index](README.md) for design concepts, source analysis, layer workflows, and analytical patterns.
